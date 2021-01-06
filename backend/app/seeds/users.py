@@ -1,11 +1,10 @@
 from werkzeug.security import generate_password_hash
 from app.models import db, User
 
-# Adds a demo user, you can add other users here if you want
+# Adds a demo user, can add others as well
 def seed_users():
-
-    demo = User(username='Demo', email='demo@aa.io',
-                password='password')
+    demo = User(username='Demo', email='demo@aa.io', password='password',
+    exp=0)
 
     db.session.add(demo)
 
