@@ -1,2 +1,2 @@
 from .db import db
-from .user import user
+from .user import User

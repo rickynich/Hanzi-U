@@ -1,11 +1,13 @@
-from app import app
+from flask import Blueprint, render_template, redirect
 
-@app.route('/')
+bp = Blueprint('',__name__)
+
+@bp.route('/')
 def index():
     return '<h1>Hanzi U<h1><h2>Welcome!</h2>'
 
 #use for testing for now
-@app.route('/characters')
+@bp.route('/characters')
 def characters():
     chars = [
         {
