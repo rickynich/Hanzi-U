@@ -19,5 +19,7 @@ class Character(db.Model):
             "deck_id": self.deck_id,
             "character": self.character,
             "pinyin": self.pinyin,
-            "hint": self.hint
+            "definition": self.definition,
+            "hint": self.hint,
+            "decomposition": self.decomposition
         }

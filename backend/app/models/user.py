@@ -11,6 +11,9 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(255), nullable = False)
   exp = db.Column(db.Integer, nullable = True)
 
+  # decks = db.relationship("Deck", back_populates="user")
+
+
 @property
 def password(self):
   return self.hashed_password

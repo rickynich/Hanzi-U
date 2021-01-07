@@ -131,7 +131,7 @@ def upgrade():
 		"character": "个",
         "deck_id": 1,
 		"definition": "this, that; single; measure word for individuals",
-		"pinyin": ["gè"],
+		"pinyin": "gè",
 		"decomposition": "⿱人丨",
 		"hint": "A tally 丨 of people 人",
 	},
@@ -187,7 +187,7 @@ def upgrade():
 	{
 		"character": "和",
         "deck_id": 1,
-		"definition": "harmony, peace; calm, peaceful",
+		"definition": "and, with; calm, peaceful",
 		"pinyin": "hé",
 		"decomposition": "⿰禾口",
 		"hint": "mouth",
