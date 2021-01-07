@@ -36,7 +36,7 @@ About:
         -amount of info shown will be based on where it is being used
         
 #### Database
-
+![alt text](http://url/to/img.png)
 #### Technologies
 
 #### References
