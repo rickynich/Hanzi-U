@@ -34,3 +34,11 @@ About:
 
     2. CharacterCard
         -amount of info shown will be based on where it is being used
+        
+#### Database
+
+#### Technologies
+
+#### References
+
+
