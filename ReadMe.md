@@ -34,11 +34,12 @@ About:
 
     2. CharacterCard
         -amount of info shown will be based on where it is being used
-        
+
+
 #### Database
-![alt text](HanziU_database.PNG)
+
+![database image](./HanziU_database.PNG)
+
 #### Technologies
 
 #### References
-
-
