@@ -23,14 +23,14 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('password', sa.String(length=255), nullable=False),
     sa.Column('exp', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
     op.bulk_insert(users_table, [{"username":"demo", "email":"demo@aa.io", 
-    "hashed_password": generate_password_hash("password"), "exp": 0,}]) #key value pairs to insert into table, no id necessary
+    "password": generate_password_hash("password"), "exp": 0,}]) #key value pairs to insert into table, no id necessary
     # ### end Alembic commands ###
 
 

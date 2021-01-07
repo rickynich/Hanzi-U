@@ -8,7 +8,7 @@ class User(db.Model, UserMixin):
   id = db.Column(db.Integer, primary_key=True)
   username = db.Column(db.String(40), nullable= False, unique= True)
   email = db.Column(db.String(255), nullable = False, unique = True)
-  hashed_password = db.Column(db.String(255), nullable = False)
+  password = db.Column(db.String(255), nullable = False)
   exp = db.Column(db.Integer, nullable = True)
 
   # decks = db.relationship("Deck", back_populates="user")
@@ -16,12 +16,12 @@ class User(db.Model, UserMixin):
 
 @property
 def password(self):
-  return self.hashed_password
+  return self.password
 
 
 @password.setter
 def password(self, password):
-  self.hashed_password = generate_password_hash(password)
+  self.password = generate_password_hash(password)
 
 
 def check_password(self, password):

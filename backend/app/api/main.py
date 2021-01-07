@@ -30,10 +30,10 @@ def characters():
     theHint = chars[0]['hint']
     return (f'<p>{theChar} {theHint}</p>')
 
-@bp.route("/<int:id>", methods=['GET'])
-# # @login_required
-def getChars(id):
-    deck = Deck.query.get(id)
-    deck1 = jsonify(deck.to_dict_chars())
-    # return (f'<p> {deck1} </p>')
-    return deck1
+# @bp.route("/<int:id>", methods=['GET'])
+# # # @login_required
+# def getChars(id):
+#     deck = Deck.query.get(id)
+#     deck1 = jsonify(deck.to_dict_chars())
+#     # return (f'<p> {deck1} </p>')
+#     return deck1
