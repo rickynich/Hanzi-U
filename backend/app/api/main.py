@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template, redirect, jsonify
+from app.models import User, Character, Deck
 
 bp = Blueprint('',__name__)
 
@@ -28,3 +29,11 @@ def characters():
     theChar = chars[0]['character']
     theHint = chars[0]['hint']
     return (f'<p>{theChar} {theHint}</p>')
+
+@bp.route("/<int:id>", methods=['GET'])
+# # @login_required
+def getChars(id):
+    deck = Deck.query.get(id)
+    deck1 = jsonify(deck.to_dict_chars())
+    # return (f'<p> {deck1} </p>')
+    return deck1

@@ -6,11 +6,17 @@ class Deck(db.Model):
     name = db.Column(db.String(50), nullable=False)
     times_completed = db.Column(db.Integer)
 
-    characters = db.relationship("Character", back_populates="decks")
+    characters = db.relationship("Character", back_populates="deck")
 
     def to_dict(self):
         return {
             "id": self.id,
             "name": self.name,
             "times_completed": self.times_completed
+        }
+
+    def to_dict_chars(self):
+        return {
+            "id": self.id,
+            "characters": [char.to_dict() for char in self.characters]
         }
