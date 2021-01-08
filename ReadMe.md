@@ -45,9 +45,9 @@ About:
 #### Database
 
 ![database image](./HanziU_database.PNG)
--needs to be changed
+-needs to be updated
 
 #### Technologies
 
 #### References
-    
+    character frequency based on https://hanzicraft.com/lists/frequency
