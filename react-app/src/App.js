@@ -5,7 +5,9 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
+import CharactersList from "./components/CharactersList";
 import User from "./components/User";
+import DeckList from "./components/DeckList"
 import { authenticate } from "./services/auth";
 
 function App() {
@@ -43,6 +45,12 @@ function App() {
       </ProtectedRoute>
       <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
         <User />
+      </ProtectedRoute>
+      <ProtectedRoute path="/decks/:deckId/characters" exact={true} authenticated={authenticated}>
+        <CharactersList />
+      </ProtectedRoute>
+      <ProtectedRoute path="/decks" exact={true} authenticated={authenticated}>
+        <DeckList />
       </ProtectedRoute>
       <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
         <h1>My Home Page</h1>

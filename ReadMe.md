@@ -35,11 +35,19 @@ About:
     2. CharacterCard
         -amount of info shown will be based on where it is being used
 
+    3. CharacterList
+        -displays all characters of a deck
+
+    4. DeckList
+        -displays all available decks
+
 
 #### Database
 
 ![database image](./HanziU_database.PNG)
+-needs to be changed
 
 #### Technologies
 
 #### References
+    
