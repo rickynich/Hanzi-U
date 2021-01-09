@@ -4,15 +4,27 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
-deck_completions = db.Table(
-    "completions",  # tablename
-    db.Model.metadata,  # inheritance
-    db.Column('user_id', db.Integer, db.ForeignKey(
-        "users.id"), primary_key=True),  # leader
-    db.Column('deck_id', db.Integer, db.ForeignKey(
-        "decks.id"), primary_key=True),  # follower
-)
+# deck_completions = db.Table(
+#     "deck_completions",  # tablename
+#     db.Model.metadata,  # inheritance
+#     db.Column('user_id', db.Integer, db.ForeignKey(
+#         "users.id"), primary_key=True),  # leader
+#     db.Column('deck_id', db.Integer, db.ForeignKey(
+#         "decks.id"), primary_key=True),  # follower
+# )
 
+# class DecksCompleted(db.Model):
+#     __tablename__ = "deck_completions"
+
+#     user_id = db.Column(db.Integer, db.ForeignKey(
+#         "users.id"), primary_key=True)
+#     deck_id = db.Column(
+#         db.Integer, db.ForeignKey("users.id"), primary_key=True)
+
+#     def get_deck(self):
+#         return {
+#             "deck_id": self.deck_id
+#         }
 
 class User(db.Model, UserMixin):
   __tablename__= 'users'
@@ -23,12 +35,18 @@ class User(db.Model, UserMixin):
   hashed_password = db.Column(db.String(255), nullable = False) 
   exp = db.Column(db.Integer, nullable = True, default=0)
 
-  decks = db.relationship("Deck", back_populates="user")
+  # decks = db.relationship("Deck", back_populates="user")
 
   # deck_tracking = db.relationship(
   #   'User', secondary="deck_completions",
   #   primaryjoin=id == deck_completions.c.deck_id, # replace with deck  
   #   secondaryjoin=id == deck_completions.c.user_id, # replace with user
+  #   backref="deck_completions"
+  # )
+  # deck_tracking = db.relationship(
+  #   'User', secondary="deck_completions",
+  #   primaryjoin=id == DecksCompleted.deck_id, # replace with deck  
+  #   secondaryjoin=id == DecksCompleted.user_id, # replace with user
   #   backref="deck_completions"
   # )
 
@@ -39,9 +57,7 @@ class User(db.Model, UserMixin):
 
   @password.setter
   def password(self, password):
-    print("In password setter***********", password)
     self.hashed_password = generate_password_hash(password)
-    print("***********In password setter", self.hashed_password)
 
 
   def check_password(self, password):
@@ -62,7 +78,8 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "email": self.email,
       "exp": self.exp,
-      "deck_completions": [deck.to_dict() for deck in self.deck_completions]
+      # "deck_completions": [deck.to_dict() for deck in self.deck_completions],
+      # "deck_tracking": [user.to_dict() for user in self.deck_tracking]
     }
 
 # def __repr__(self):

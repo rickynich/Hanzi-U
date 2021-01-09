@@ -24,13 +24,26 @@ def getChars(id):
     # print("Taking a look in your characters route...", deck.to_dict_chars())
     return jsonify(deck.to_dict_chars())
 
-@deck_routes.route("/done/<int:id>", methods=["POST"])
-@login_required
-def deck_completed(id):
-    deck = Deck.query.get(id)
-    user = current_user
+# @deck_routes.route("/done/<int:id>", methods=["POST"])
+# @login_required
+# def deck_completed(id):
+#     deck = Deck.query.get(id)
+#     user = current_user
+#     print("*********Deck in add deck to deck_completions", deck.to_dict())
+#     print("************current user", user.to_dict_full())
+#     user.deck_tracking.append(deck)
+#     db.session.commit()
 
-    user.deck_completions.append(deck)
-    db.session.commit()
+#     return user.to_dict_full()
 
-    return user.to_dict_full()
+# @deck_routes.route("/done/<int:id>", methods=["POST"])
+# @login_required
+# def deck_completed(id):
+#     deck = Deck.query.get(id)
+#     user = current_user
+#     print("*********Deck in add deck to deck_completions", deck.to_dict())
+#     print("************current user", user.to_dict_full())
+#     user.deck_completions.append(deck)
+#     db.session.commit()
+
+#     return user.to_dict_full()

@@ -7,8 +7,8 @@ class Deck(db.Model):
     # times_completed = db.Column(db.Integer)
 
     characters = db.relationship("Character", back_populates="deck")
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), default=1)
-    user = db.relationship("User", back_populates="decks")
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # user = db.relationship("User", back_populates="decks")
 
     def to_dict(self):
         return {
