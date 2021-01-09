@@ -73,7 +73,7 @@ function App() {
 					<User />
 				</ProtectedRoute>
 				<ProtectedRoute
-					path="/decks/:deckId/characters"
+					path="/decks/:deckId"
 					exact={true}
 					authenticated={authenticated}
 				>

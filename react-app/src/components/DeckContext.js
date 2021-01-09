@@ -6,6 +6,8 @@ export function useDeck() {
 	return useContext(DeckContext);
 }
 
+//could use a function here that somehow uses useParams to fetch specific deck characters
+
 export function DeckProvider({ children }) {
     const [decks, setDecks] = useState([]);
     // const [characters, setCharacters] = useState([]);
@@ -17,23 +19,9 @@ export function DeckProvider({ children }) {
 			const responseData = await response.json();
 			setDecks(responseData);
 		}
-		fetchData();
+        fetchData();
+        // setLoaded(true);
     }, []);
-    // let deckId = undefined
-    // if (deckId) {
-    //     useEffect(() => {
-    //         fetch(`/api/decks/${deckId}`)
-    //             .then((response) => response.json())
-    //             .then((responseData) => setCharacters(responseData))
-    //             .then(setLoaded(true));
-    //     }, [deckId]);  
-    // }
 
-	// console.log("characters from State", characters);
-
-	// if (!loaded) {
-	// 	return null;
-	// }
-    //  return <DeckContext.Provider value={{ decks, characters }}></DeckContext.Provider>
     return <DeckContext.Provider value={ decks }>{children}</DeckContext.Provider>;
 }
