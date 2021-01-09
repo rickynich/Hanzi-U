@@ -1,14 +1,15 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Character, Deck, deck_completions
+from app.models import db, User, Character, Deck #, deck_completions
 
 deck_routes = Blueprint('decks', __name__)
 # route: api/decks
 
 @deck_routes.route("/", methods=['GET'])
-# @login_required
-def getDecks(id):
+@login_required
+def getDecks():
     decks = Deck.query.all()
+    print("Decks:", decks)
     return {"decks": [deck.to_dict() for deck in decks]}
 
 @deck_routes.route("/<int:id>", methods=['GET'])
@@ -31,7 +32,7 @@ def getChars(id):
 #     user = current_user
 #     print("*********Deck in add deck to deck_completions", deck.to_dict())
 #     print("************current user", user.to_dict_full())
-#     user.deck_tracking.append(deck)
+#     user.deck_completions.append(deck)
 #     db.session.commit()
 
 #     return user.to_dict_full()
