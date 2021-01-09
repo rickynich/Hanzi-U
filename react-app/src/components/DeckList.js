@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { DeckContext } from "../App";
+// import { DeckContext } from "../App";
 import { NavLink } from "react-router-dom";
+import {useDeck} from './DeckContext'
 
 function DeckList() {
-	const decks = useContext(DeckContext)
+	// const decks = useContext(DeckContext)
+	const decks = useDeck()
 	const decksArray = decks.decks
 	console.log(decks.decks[0]);
 	console.log(decksArray)

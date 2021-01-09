@@ -2,7 +2,6 @@
 
 A simplified Chinese character learning app based on practicality and frequency of use.
 
-About:
 
 ### MVPs
 
@@ -27,18 +26,18 @@ About:
 
     -track user progression and deck mastery
 
+#### Bonus features:
+    -review games: card matching 
+
 #### Components
 
-    1. CharacterInfo
-        -displays all character info, as modal
+    1. CharacterCard
+        -displays all info on specific character
 
-    2. CharacterCard
-        -amount of info shown will be based on where it is being used
-
-    3. CharacterList
+    2. Deck
         -displays all characters of a deck
 
-    4. DeckList
+    3. DeckList
         -displays all available decks
 
 

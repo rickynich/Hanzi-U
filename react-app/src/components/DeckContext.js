@@ -1,17 +1,39 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from "react";
 
-const DeckContext = React.createContext()
+const DeckContext = React.createContext();
 
 export function useDeck() {
-    return useContext(DeckContext)
+	return useContext(DeckContext);
 }
 
 export function DeckProvider({ children }) {
-    const [decks, setDecks] = useState([])
+    const [decks, setDecks] = useState([]);
+    // const [characters, setCharacters] = useState([]);
+	const [loaded, setLoaded] = useState(false);
 
-    return (
-        <DeckContext.Provider value={decks}>
-            {children}
-        </DeckContext.Provider>
-    )
+	useEffect(() => {
+		async function fetchData() {
+			const response = await fetch("/api/decks/");
+			const responseData = await response.json();
+			setDecks(responseData);
+		}
+		fetchData();
+    }, []);
+    // let deckId = undefined
+    // if (deckId) {
+    //     useEffect(() => {
+    //         fetch(`/api/decks/${deckId}`)
+    //             .then((response) => response.json())
+    //             .then((responseData) => setCharacters(responseData))
+    //             .then(setLoaded(true));
+    //     }, [deckId]);  
+    // }
+
+	// console.log("characters from State", characters);
+
+	// if (!loaded) {
+	// 	return null;
+	// }
+    //  return <DeckContext.Provider value={{ decks, characters }}></DeckContext.Provider>
+    return <DeckContext.Provider value={ decks }>{children}</DeckContext.Provider>;
 }

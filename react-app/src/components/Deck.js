@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function CharactersList() {
+function Deck() {
     const [characters, setCharacters] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false)
     const { deckId } = useParams();
@@ -25,7 +25,7 @@ function CharactersList() {
     //     setIsLoaded(true)
     // }, []);
 	useEffect(() => {
-        fetch(`/api/decks/${deckId}/characters`)
+        fetch(`/api/decks/${deckId}`)
             .then(response => response.json())
             .then(responseData => setCharacters(responseData))
             .then(setIsLoaded(true))
@@ -52,4 +52,4 @@ function CharactersList() {
 		</>
 	);
 }
-export default CharactersList;
+export default Deck;

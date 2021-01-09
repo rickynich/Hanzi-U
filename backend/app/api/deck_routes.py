@@ -16,7 +16,7 @@ def getDecks():
 # @login_required
 def getDeck(id):
     deck = Deck.query.get(id)
-    return jsonify(deck.to_dict())
+    return jsonify(deck.to_dict_chars())
 
 @deck_routes.route("/<int:id>/characters", methods=['GET'])
 # @login_required

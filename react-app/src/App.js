@@ -5,17 +5,18 @@ import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
-import CharactersList from "./components/CharactersList";
+import CharactersList from "./components/Deck";
 import User from "./components/User";
 import DeckList from "./components/DeckList";
 import { authenticate } from "./services/auth";
+import { DeckProvider } from "./components/DeckContext"
 
-export const DeckContext = React.createContext()
+// export const DeckContext = React.createContext()
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
-  const [decks, setDecks] = useState([]);
+  // const [decks, setDecks] = useState([]);
 
 	useEffect(() => {
 		(async () => {
@@ -23,26 +24,26 @@ function App() {
 			if (!user.errors) {
 				setAuthenticated(true);
 			}
-			
+			setLoaded(true);
 		})();
 	}, []);
 
-	useEffect(() => {
-		async function fetchData() {
-			const response = await fetch("/api/decks/");
-			const responseData = await response.json();
-			setDecks(responseData);
-		}
-    fetchData();
-    setLoaded(true);
-	}, []);
+	// useEffect(() => {
+	// 	async function fetchData() {
+	// 		const response = await fetch("/api/decks/");
+	// 		const responseData = await response.json();
+	// 		setDecks(responseData);
+	// 	}
+  //   fetchData();
+
+	// }, []);
 
 	if (!loaded) {
 		return null;
 	}
 
   return (
-		<DeckContext.Provider value={decks}>
+		<DeckProvider>
 			<BrowserRouter>
 				<NavBar setAuthenticated={setAuthenticated} />
 				<Route path="/login" exact={true}>
@@ -89,7 +90,7 @@ function App() {
 					<h1>My Home Page</h1>
 				</ProtectedRoute>
 			</BrowserRouter>
-		</DeckContext.Provider>
+		</DeckProvider>
 	);
 }
 
