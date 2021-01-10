@@ -19,5 +19,6 @@ class Deck(db.Model):
     def to_dict_chars(self):
         return {
             "id": self.id,
+            "name": self.name,
             "characters": [char.to_dict() for char in self.characters]
         }

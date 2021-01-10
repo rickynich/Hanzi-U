@@ -6,6 +6,8 @@ import { useDeck } from "./DeckContext";
 function DeckList() {
 	// const decks = useContext(DeckContext)
 	const [characters, setCharacters] = useState([{ character: "是" }]);
+	const [deck, setDeck] = useState();
+	const [isLoaded, setIsLoaded] = useState(false);
 	const decks = useDeck();
 	const decksArray = decks.decks;
 	console.log(decks.decks[0]);
@@ -13,23 +15,21 @@ function DeckList() {
 
 	// useEffect(() => {
 	// 	async function fetchData() {
-	// 		const response = await fetch(`/api/decks/${deckId}`);
+	// 		const response = await fetch(`/api/decks/${deck}`);
 	// 		const responseData = await response.json();
 	// 		console.log("response data", responseData);
 	// 		setCharacters(responseData);
 	// 	}
 	// 	fetchData();
 	// 	setIsLoaded(true);
-	// }, [deckId]);
-
+	// }, [deck]);
 	// const getDeck = (deckId) => {
 	// 	fetch(`/api/decks/${deckId}`)
 	// 		.then((response) => response.json())
 	// 		.then((responseData) => setCharacters(responseData));
 	// 	console.log("Hit it! In the getDeck function. characters:", characters);
 	// };
-	// console.log("characters", characters);
-
+	console.log("characters", characters);
 
 	const deckComponents = decksArray.map((deck) => {
 		console.log("deck in the deckComponents loop", deck);
@@ -37,8 +37,10 @@ function DeckList() {
 			<li key={deck.id}>
 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
 				<button
-					onClick={() => {
-						// getDeck(deck.id);
+					onClick={(e) => {
+						setDeck(e.target.value);
+						console.log("Deck after button push", deck)
+						charComponents(deck)
 					}}
 				>
 					{deck.name}
@@ -46,15 +48,18 @@ function DeckList() {
 			</li>
 		);
 	});
-	const charComponents = characters.map((character) => {
-		console.log("deck in the charComponents loop", character);
-		return (
-			<li key={character.id}>
-				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-				<p>{character.character}</p>
-			</li>
-		);
-	});
+	//so pass in deck object at that id
+	const charComponents = (deck) => {
+		deck.characters.map((character) => {
+			console.log("deck in the charComponents loop", characters);
+			return (
+				<li key={character.id}>
+					{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
+					<p>{character.character}</p>
+				</li>
+			);
+		});
+	};
 
 	return (
 		<>

@@ -54,7 +54,7 @@ function Deck() {
 		isLoaded && (
 			<>
 				<h1>Character List: </h1>
-				{characters.length > 0 ? <ul>{characters[1]}</ul> : null}
+				{characters.length > 0 ? <ul>{characters[2]}</ul> : null}
 			</>
 		)
 	);

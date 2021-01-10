@@ -6,15 +6,16 @@ deck_routes = Blueprint('decks', __name__)
 # route: api/decks
 
 @deck_routes.route("/", methods=['GET'])
-@login_required
+# @login_required
 def getDecks():
     decks = Deck.query.all()
     print("Decks:", decks)
     # use list comprehension to iterate and pull up characters for each deck
-    return {"decks": [deck.to_dict() for deck in decks]}
+    # return {"decks": [deck.to_dict() for deck in decks]}
+    return {"decks": [deck.to_dict_chars() for deck in decks]}
 
 @deck_routes.route("/<int:id>", methods=['GET'])
-@login_required
+# @login_required
 def getDeck(id):
     deck = Deck.query.get(id)
     return jsonify(deck.to_dict_chars())
