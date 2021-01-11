@@ -11,12 +11,9 @@ import DeckList from "./components/DeckList";
 import { authenticate } from "./services/auth";
 import { DeckProvider } from "./components/DeckContext"
 
-// export const DeckContext = React.createContext()
-
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
-  // const [decks, setDecks] = useState([]);
 
 	useEffect(() => {
 		(async () => {
@@ -27,16 +24,6 @@ function App() {
 			setLoaded(true);
 		})();
 	}, []);
-
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		const response = await fetch("/api/decks/");
-	// 		const responseData = await response.json();
-	// 		setDecks(responseData);
-	// 	}
-  //   fetchData();
-
-	// }, []);
 
 	if (!loaded) {
 		return null;

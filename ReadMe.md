@@ -47,6 +47,6 @@ A simplified Chinese character learning app based on practicality and frequency 
 -needs to be updated
 
 #### Technologies
-
+    -Chakra UI
 #### References
-    character frequency based on https://hanzicraft.com/lists/frequency
+    -character frequency based on https://hanzicraft.com/lists/frequency

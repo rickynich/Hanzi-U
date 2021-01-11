@@ -1,21 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
-// import { DeckContext } from "../App";
 import { NavLink } from "react-router-dom";
+
+//context
 import { useDeck } from "./DeckContext";
+//custom components
+import Card from "./Card"
 
 function DeckList() {
 	const [characters, setCharacters] = useState([{ character: "是" }]);
-	const [deck, setDeck] = useState();
 	const [isLoaded, setIsLoaded] = useState(false);
 	const decks = useDeck(); //uses DeckContext
 	const decksArray = decks.decks;
+	const [deck, setDeck] = useState(decksArray[0]);
 
 	console.log("deck at 0 from useDeck deck", decks.decks[0]);
-	console.log("refactored to show array of decks", decksArray);
+	// console.log("refactored to show array of decks", decksArray);
 	console.log("characters", characters);
 	
 	const deckComponents = decksArray.map((deck) => {
 		console.log("deck in the deckComponents loop", deck);
+		//try nesting the characters map in here!
 		return (
 			<li key={deck.id}>
 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
@@ -34,17 +38,18 @@ function DeckList() {
 	});
 
 	//maps over all the characters in a deck and renders 
-	const charComponents = decksArray[0].characters.map((character) => {
-		console.log("deck in the charComponents loop", deck);
-		console.log("character in the map of the charComponent", character.character)
-		return (
-				<li key={character.id}>
-					{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-					<p>{character.character}</p>
-				</li>
-			);
-		});
-		
+	
+	// const charComponents = decksArray[0].characters.map((character) => {
+	// 	console.log("deck in the charComponents loop", deck);
+	// 	console.log("character in the map of the charComponent", character.character)
+	// 	return (
+	// 			<li key={character.id}>
+	// 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
+	// 				<p>{character.character}</p>
+	// 			</li>
+	// 		);
+	// 	});
+
 		return (
 			<>
 			<h1>Deck List: </h1>
@@ -52,6 +57,7 @@ function DeckList() {
 			{/* <ul>{decks.decks[0].name}</ul> */}
 			<h1>Deck Hanzi:</h1>
 			<ul>{charComponents}</ul>
+			{/* <Card character={characters[0]}>{charComponents}</Card> */}
 		</>
 	);
 }
