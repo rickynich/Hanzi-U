@@ -9,14 +9,21 @@ import Card from "./Card"
 function DeckList() {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const decks = useDeck(); //uses DeckContext
-	const decksArray = decks.decks;
-	const deckStarter = decksArray[0]
+	let decksArray = decks.decks;
+	let deckStarter = [1] //trying to fix refresh render error
+	//TypeError: Cannot read property 'map' of undefined
+	if (decksArray != undefined) {
+		decksArray = decks.decks;
+		deckStarter = decksArray[0]
+	} else {
+		decksArray = [1]
+	}
 	const [deck, setDeck] = useState( deckStarter);
 
-	// console.log("Starting deck state useState", deck)
+	console.log("Starting deck state useState", deck)
 	const [characters, setCharacters] = useState([deckStarter.characters]);
 
-	console.log("characters", characters);
+	// console.log("characters", characters);
 	
 	const deckComponents = decksArray.map((deck) => {
 		// console.log("deck in the deckComponents loop", deck);
@@ -47,7 +54,7 @@ function DeckList() {
 		return (
 				<li key={character.id}>
 					{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-				<p>{character.character} - {character.pinyin} - {character.definition}</p>
+				<Card character={character.character}>{character.character} - {character.pinyin} - {character.definition}</Card>
 				</li>
 			);
 	});
