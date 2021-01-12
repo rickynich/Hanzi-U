@@ -1,54 +1,56 @@
 import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-//context
+//context:
 import { useDeck } from "./DeckContext";
-//custom components
+//custom components:
 import Card from "./Card"
 
 function DeckList() {
-	const [characters, setCharacters] = useState([{ character: "是" }]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const decks = useDeck(); //uses DeckContext
 	const decksArray = decks.decks;
-	const [deck, setDeck] = useState(decksArray[0]);
+	const deckStarter = decksArray[0]
+	const [deck, setDeck] = useState( deckStarter);
 
-	console.log("deck at 0 from useDeck deck", decks.decks[0]);
-	// console.log("refactored to show array of decks", decksArray);
+	// console.log("Starting deck state useState", deck)
+	const [characters, setCharacters] = useState([deckStarter.characters]);
+
 	console.log("characters", characters);
 	
 	const deckComponents = decksArray.map((deck) => {
-		console.log("deck in the deckComponents loop", deck);
+		// console.log("deck in the deckComponents loop", deck);
 		//try nesting the characters map in here!
 		return (
 			<li key={deck.id}>
 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
 				<button
+					id={deck.id}
 					onClick={(e) => {
-						setDeck(decks[e.target.value]);
-						console.log("e.target.value", e.target.value)
-						console.log("Deck after button push", deck)
-						charComponents()
+						setDeck(decks[e.target.id]);
+						console.log("e.target.value", e.target.id);
+						// console.log("Deck after button push", deck);
+						// charComponents(deck)
 					}}
-					>
+				>
 					{deck.name}
 				</button>
+				{/* <ul>{charComponents(deck)}</ul> */}
 			</li>
 		);
 	});
 
-	//maps over all the characters in a deck and renders 
 	
-	// const charComponents = decksArray[0].characters.map((character) => {
-	// 	console.log("deck in the charComponents loop", deck);
-	// 	console.log("character in the map of the charComponent", character.character)
-	// 	return (
-	// 			<li key={character.id}>
-	// 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-	// 				<p>{character.character}</p>
-	// 			</li>
-	// 		);
-	// 	});
+	const charComponents = deck.characters.map((character) => {
+		// console.log("deck in the charComponents loop", deck);
+		// console.log("character in the map of the charComponent", character.character)
+		return (
+				<li key={character.id}>
+					{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
+				<p>{character.character} - {character.pinyin} - {character.definition}</p>
+				</li>
+			);
+	});
 
 		return (
 			<>
@@ -62,6 +64,8 @@ function DeckList() {
 	);
 }
 export default DeckList;
+
+//Graveyard:
 
 // useEffect(() => {
 // 	async function fetchData() {
@@ -79,3 +83,20 @@ export default DeckList;
 // 		.then((responseData) => setCharacters(responseData));
 // 	console.log("Hit it! In the getDeck function. characters:", characters);
 // };
+
+//maps over all the characters in a deck and renders 
+	
+	// function charComponents(deck) {
+	// 	let deckCharacters = deck.characters
+	// 	// console.log("characters in deck", deckCharacters);
+	// 	deckCharacters.map((character) => {
+	// 		// console.log("deck in the charComponents loop", deck);
+	// 		// console.log("character in the map of the charComponent", character.character)
+	// 		return (
+	// 			<li key={character.id}>
+	// 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
+	// 				<p>{character.character}</p>
+	// 			</li>
+	// 		);
+	// 	});
+	// }
