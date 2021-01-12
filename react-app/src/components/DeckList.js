@@ -54,7 +54,7 @@ function DeckList() {
 		return (
 				<li key={character.id}>
 					{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-				<Card character={character.character}>{character.character} - {character.pinyin} - {character.definition}</Card>
+				<Card character={character}>{character.character} - {character.pinyin} - {character.definition}</Card>
 				</li>
 			);
 	});

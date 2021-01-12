@@ -8,7 +8,8 @@ function Card(props) {
 	return (
 		<>
 			<Box w="200px" h="15vh" boxShadow="lg" rounded="md">
-				<p>{props.character}</p>
+				<p>{props.character.character}</p>
+				<p>{props.character.definition}</p>
 			</Box>
 		</>
 	);
