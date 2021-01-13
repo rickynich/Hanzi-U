@@ -14,7 +14,7 @@ export function DeckProvider({ children }) {
 		async function fetchData() {
 			const response = await fetch("/api/decks/");
 			const responseData = await response.json();
-			setDecks(responseData); //set to responseData.decks
+			setDecks(responseData.decks); //set to responseData.decks
 		}
         fetchData();
         setLoaded(true);

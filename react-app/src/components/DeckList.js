@@ -14,11 +14,10 @@ function DeckList() {
 	const [deck, setDeck] = useState();
 	const decks = useDeck(); //uses DeckContext
 	
-	let decksArray = decks.decks;
 
 	if (decks.length == 0) return null;
 
-	const deckComponents = decksArray.map((deck) => {
+	const deckComponents = decks.map((deck) => {
 		return (
 			<li key={deck.id}>
 				<Button

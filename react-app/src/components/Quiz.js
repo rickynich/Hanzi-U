@@ -12,12 +12,15 @@ function Quiz() {
 	const decks = useDeck(); //uses DeckContext
     const { deckId } = useParams();
 
-	const decksArray = decks.decks;
-	const deckStarter = decksArray[deckId-1];
+	const deckStarter = decks[deckId-1];
     const [deck, setDeck] = useState(deckStarter);
     
-    console.log("deck from context", deckStarter, deck);
-	return decksArray && (
+    console.log("deck from context", deck);
+
+    // const getQuestions = () => {
+
+    // }
+	return deck && (
 		<>
             <h1>Welcome to the quiz</h1>
             <h1>{deck.name}</h1>

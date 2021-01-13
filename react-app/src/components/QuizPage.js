@@ -13,14 +13,13 @@ function QuizPage() {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const decks = useDeck(); //uses DeckContext
 	const history = useHistory();
-	let decksArray = decks.decks;
-	console.log("decksArray in QuizPage", decksArray);
+	console.log("decks in QuizPage", decks);
 
 	const handleClick = (deckId) => {
 		history.push(`/decks/${deckId}`);
 	};
 	if (decks.length == 0) return null; 
-	const deckComponents = decksArray.map((deck) => {
+	const deckComponents = decks.map((deck) => {
 		return (
 			<li key={deck.id}>
 				<Button onClick={() => handleClick(deck.id)} id={deck.id}>
