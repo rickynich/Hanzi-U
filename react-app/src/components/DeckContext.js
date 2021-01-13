@@ -14,12 +14,12 @@ export function DeckProvider({ children }) {
 		async function fetchData() {
 			const response = await fetch("/api/decks/");
 			const responseData = await response.json();
-			setDecks(responseData);
+			setDecks(responseData); //set to responseData.decks
 		}
         fetchData();
         setLoaded(true);
 	}, []);
 	console.log("DECKS in context:", decks)
-
+	// if(decks.length == 0) return null 
     return <DeckContext.Provider value={ decks }>{children}</DeckContext.Provider>;
 }

@@ -1,72 +1,58 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+
+//Chakra
+import { Button, SimpleGrid } from "@chakra-ui/react";
 
 //context:
 import { useDeck } from "./DeckContext";
 //custom components:
-import Card from "./Card"
+import Card from "./Card";
 
 function DeckList() {
 	const [isLoaded, setIsLoaded] = useState(false);
+	const [deck, setDeck] = useState();
 	const decks = useDeck(); //uses DeckContext
-	let decksArray = decks.decks;
-	let deckStarter = [1] //trying to fix refresh render error
-	//TypeError: Cannot read property 'map' of undefined
-	if (decksArray != undefined) {
-		decksArray = decks.decks;
-		deckStarter = decksArray[0]
-	} else {
-		decksArray = [1]
-	}
-	const [deck, setDeck] = useState( deckStarter);
-
-	console.log("Starting deck state useState", deck)
-	const [characters, setCharacters] = useState([deckStarter.characters]);
-
-	// console.log("characters", characters);
 	
+	let decksArray = decks.decks;
+
+	if (decks.length == 0) return null;
+
 	const deckComponents = decksArray.map((deck) => {
-		// console.log("deck in the deckComponents loop", deck);
-		//try nesting the characters map in here!
 		return (
 			<li key={deck.id}>
-				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-				<button
+				<Button
 					id={deck.id}
-					onClick={(e) => {
-						setDeck(decks[e.target.id]);
-						console.log("e.target.value", e.target.id);
+					onClick={() => {
+						setDeck(deck);
+						// console.log("e.target.value", e.target.id);
 						// console.log("Deck after button push", deck);
 						// charComponents(deck)
 					}}
 				>
 					{deck.name}
-				</button>
-				{/* <ul>{charComponents(deck)}</ul> */}
+				</Button>
 			</li>
 		);
 	});
 
-	
-	const charComponents = deck.characters.map((character) => {
-		// console.log("deck in the charComponents loop", deck);
-		// console.log("character in the map of the charComponent", character.character)
-		return (
-				<li key={character.id}>
-					{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-				<Card character={character}>{character.character} - {character.pinyin} - {character.definition}</Card>
-				</li>
-			);
-	});
-
+	const charComponents = deck && deck.characters.map((character) => {
 		return (
 			<>
+				<Card character={character} />
+			</>
+		);
+	});
+
+	return (
+		<>
 			<h1>Deck List: </h1>
 			<ul>{deckComponents}</ul>
 			{/* <ul>{decks.decks[0].name}</ul> */}
 			<h1>Deck Hanzi:</h1>
-			<ul>{charComponents}</ul>
-			{/* <Card character={characters[0]}>{charComponents}</Card> */}
+			<SimpleGrid columns={2} spacing={10}>
+				{charComponents}
+			</SimpleGrid>
 		</>
 	);
 }
@@ -91,19 +77,19 @@ export default DeckList;
 // 	console.log("Hit it! In the getDeck function. characters:", characters);
 // };
 
-//maps over all the characters in a deck and renders 
-	
-	// function charComponents(deck) {
-	// 	let deckCharacters = deck.characters
-	// 	// console.log("characters in deck", deckCharacters);
-	// 	deckCharacters.map((character) => {
-	// 		// console.log("deck in the charComponents loop", deck);
-	// 		// console.log("character in the map of the charComponent", character.character)
-	// 		return (
-	// 			<li key={character.id}>
-	// 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-	// 				<p>{character.character}</p>
-	// 			</li>
-	// 		);
-	// 	});
-	// }
+//maps over all the characters in a deck and renders
+
+// function charComponents(deck) {
+// 	let deckCharacters = deck.characters
+// 	// console.log("characters in deck", deckCharacters);
+// 	deckCharacters.map((character) => {
+// 		// console.log("deck in the charComponents loop", deck);
+// 		// console.log("character in the map of the charComponent", character.character)
+// 		return (
+// 			<li key={character.id}>
+// 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
+// 				<p>{character.character}</p>
+// 			</li>
+// 		);
+// 	});
+// }

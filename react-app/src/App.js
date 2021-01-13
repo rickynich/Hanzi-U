@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { authenticate } from "./services/auth";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { DeckProvider } from "./components/DeckContext"
 import UsersList from "./components/UsersList";
 import CharactersList from "./components/Deck";
 import User from "./components/User";
 import DeckList from "./components/DeckList";
-import { authenticate } from "./services/auth";
-import { DeckProvider } from "./components/DeckContext"
+import Home from "./components/Home"
+import QuizPage from "./components/QuizPage";
+import Quiz from "./components/Quiz";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -64,7 +67,7 @@ function App() {
 					exact={true}
 					authenticated={authenticated}
 				>
-					<CharactersList />
+					<Quiz />
 				</ProtectedRoute>
 				<ProtectedRoute
 					path="/decks"
@@ -73,8 +76,15 @@ function App() {
 				>
 					<DeckList />
 				</ProtectedRoute>
+				<ProtectedRoute
+					path="/quiz"
+					exact={true}
+					authenticated={authenticated}
+				>
+					<QuizPage />
+				</ProtectedRoute>
 				<ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-					<h1>My Home Page</h1>
+					<Home>My Home Page</Home>
 				</ProtectedRoute>
 			</BrowserRouter>
 		</DeckProvider>

@@ -6,14 +6,24 @@ import { ThemeProvider, Box, Text } from "@chakra-ui/react";
 function Card(props) {
 	console.log("Card props", props);
 	return (
-		<div display="flex">
-			<Box w="400px" h="15vh" boxShadow="lg" rounded="md" bg="gray.200">
-				<Box>{props.character.character}</Box>
-				<Box>
-					<Text>{props.character.definition}</Text>
+		<Box>
+			<Box
+				w="300px"
+				h="30vh"
+				boxShadow="lg"
+				rounded="md"
+				bg="gray.200"
+			>
+				<Box bg="#FAEBD7">
+					<Text>Character: {props.character.character}</Text>
+				</Box>
+				<Box h="15vh">
+					<Text>Pinyin: {props.character.pinyin}</Text>
+					<Text>Definition: {props.character.definition}</Text>
+					<Text>Hint/reminder: {props.character.hint}</Text>
 				</Box>
 			</Box>
-		</div>
+		</Box>
 	);
 }
 
