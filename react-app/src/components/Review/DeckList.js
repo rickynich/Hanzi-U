@@ -1,19 +1,18 @@
+//React:
 import React, { useState, useEffect, useContext } from "react";
 // import { NavLink } from "react-router-dom";
 
-//Chakra
+//Chakra:
 import { Button, SimpleGrid } from "@chakra-ui/react";
 
 //context:
-import { useDeck } from "./DeckContext";
+import { useDeck } from "../Context/DeckContext";
 //custom components:
 import Card from "./Card";
 
 function DeckList() {
-	const [isLoaded, setIsLoaded] = useState(false);
 	const [deck, setDeck] = useState();
 	const decks = useDeck(); //uses DeckContext
-	
 
 	if (decks.length == 0) return null;
 
@@ -25,8 +24,6 @@ function DeckList() {
 					onClick={() => {
 						setDeck(deck);
 						// console.log("e.target.value", e.target.id);
-						// console.log("Deck after button push", deck);
-						// charComponents(deck)
 					}}
 				>
 					{deck.name}
@@ -47,7 +44,6 @@ function DeckList() {
 		<>
 			<h1>Deck List: </h1>
 			<ul>{deckComponents}</ul>
-			{/* <ul>{decks.decks[0].name}</ul> */}
 			<h1>Deck Hanzi:</h1>
 			<SimpleGrid columns={2} spacing={10}>
 				{charComponents}

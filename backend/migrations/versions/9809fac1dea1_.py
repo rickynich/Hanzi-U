@@ -1,4 +1,4 @@
-"""empty message
+"""join table
 
 Revision ID: 9809fac1dea1
 Revises: 5bf2d9da8485
@@ -38,5 +38,5 @@ def downgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name='completions_user_id_fkey'),
     sa.PrimaryKeyConstraint('user_id', 'deck_id', name='completions_pkey')
     )
-    op.drop_table('deck_completions')
+    # op.drop_table('deck_completions')
     # ### end Alembic commands ###

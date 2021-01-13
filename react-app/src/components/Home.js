@@ -7,16 +7,6 @@ function Home(props) {
     const [user, setUser] = useState({});
     const history = useHistory();
 
-	// useEffect(() => {
-	// 	if (!userId) {
-	// 		return;
-	// 	}
-	// 	(async () => {
-	// 		const response = await fetch(`/api/users/${userId}`);
-	// 		const user = await response.json();
-	// 		setUser(user);
-	// 	})();
-	// }, [userId]);
 	const handleClick = (path) => {
 		history.push(`/${path}`);
 	};

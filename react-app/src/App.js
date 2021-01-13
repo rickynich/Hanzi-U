@@ -5,14 +5,13 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
-import { DeckProvider } from "./components/DeckContext"
+import { DeckProvider } from "./components/Context/DeckContext"
 import UsersList from "./components/UsersList";
-import CharactersList from "./components/Deck";
 import User from "./components/User";
-import DeckList from "./components/DeckList";
+import DeckList from "./components/Review/DeckList";
 import Home from "./components/Home"
-import QuizPage from "./components/QuizPage";
-import Quiz from "./components/Quiz";
+import QuizPage from "./components/Quiz/QuizPage";
+import Quiz from "./components/Quiz/Quiz";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);

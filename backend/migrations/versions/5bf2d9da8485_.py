@@ -25,7 +25,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id', 'deck_id')
     )
-    op.drop_column('decks', 'times_completed')
+    # op.drop_column('decks', 'times_completed')
     # ### end Alembic commands ###
 
 
