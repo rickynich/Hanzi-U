@@ -5,28 +5,28 @@ import { useDeck } from "../Context/DeckContext";
 import Answer from "./AnswerChoice";
 
 function Question(props) {
-	const [questionNum, setQuestionNum] = useState(0);
+	
 	// const [answerChoices, setAnswerChoices] = useState([])
 	const [correctAnswer, setCorrectAnswer] = useState();
 	const [clickedAnswer, setClickedAnswer] = useState();
       const [score, setScore] = useState(0);
       const [value, setValue] = useState("1")
-
-	const nextQuestion = () => {
-		setQuestionNum(questionNum + 1);
-	};
+      const {questionNum} = props
+	// const nextQuestion = () => {
+	// 	setQuestionNum(questionNum + 1);
+	// };
 
 	//Make answer choices into Radio, render random wrong answers to go alongside right one. Make function to do this
 	//answer array:
 	//set index 0 to the right answer
 	//set index 1 and 2 to be different answers, but not the same as index 0
 	//shuffle the answer array
-      const answerChoices = () => {
-            //answer choices can come from both(all) decks!
-		let choices = [];
-		// console.log(props.questionDeck.characters[questionNum])
-		while (choices.length < 4) {}
-	};
+      // const answerChoices = () => {
+      //       //answer choices can come from both(all) decks!
+	// 	let choices = [];
+	// 	// console.log(props.questionDeck.characters[questionNum])
+	// 	while (choices.length < 4) {}
+	// };
 
 	const shuffleArray = (ansArray) => {
 		let currentIndex = ansArray.length,
@@ -59,7 +59,7 @@ function Question(props) {
 			</RadioGroup>
 			<h1>{props.questionDeck.characters[questionNum].character}</h1>
 			<p>a reveal character.hint button</p>
-			<Button onClick={() => nextQuestion()}>Next question</Button>
+			
 		</>
 	);
 }
