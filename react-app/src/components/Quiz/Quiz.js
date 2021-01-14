@@ -20,8 +20,6 @@ function Quiz() {
 	const [deck, setDeck] = useState(decks[deckId - 1]);
 	const [questionDeck, setQuestionDeck] = useState([]); //each question will have 3 characters as possible answers, and one pinyin prompt (the q)
 	const [score, useScore] = useState(0);
-	const [answerChoices, setAnswerChoices] = useState([]);
-	const [characterQuestion, setCharacterQuestion] = useState({});
 	
 	if (!deck) return null;
 	// question will be the {character} and the [randomized answers]
@@ -49,9 +47,6 @@ function Quiz() {
 			tempVal = array[currentIndex];
 			console.log("Current Index at array to set to tempVal", tempVal)
 			array[currentIndex] = array[randomIndex];
-			// randomizedArray[currentIndex] = array[randomIndex]
-			// randomizedArray[randomIndex] = tempVal;
-			// setQuestionDeck(array[randomIndex])
 			console.log("(array[currentIndex]) = array[randomIndex]  ", array[randomIndex]);
 			array[randomIndex] = tempVal;
 		}
@@ -60,7 +55,7 @@ function Quiz() {
 		return array;
 	};
 	shuffleArray(array)
-	console.log("Quesiton deck: ",questionDeck)
+	console.log("Question deck: ",questionDeck)
 	console.log("deck selected in quiz", deck);
 
 	// const getQuestions = () => {
