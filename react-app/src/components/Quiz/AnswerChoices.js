@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useDeck } from "../Context/DeckContext";
 
 
-function Answers() {
+function Answers(props) {
 	const [value, setValue] = useState("1");
+	let {choices} = props
+	console.log("Choices in answer Choices", choices)
 	return (
 		<>
 			<RadioGroup onChange={() => setValue(value)} value={value}>

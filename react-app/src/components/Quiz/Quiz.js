@@ -18,7 +18,7 @@ import Question from "./Question";
 function Quiz() {
 	const { deckId } = useParams();
 	const decks = useDeck(); //uses DeckContext
-	// console.log("Decks ", decks)
+	console.log("Decks ", decks)
 	const [questionNum, setQuestionNum] = useState(0);
 	const [deck, setDeck] = useState(decks[deckId - 1]);
 	const [score, useScore] = useState(0);
@@ -51,10 +51,6 @@ function Quiz() {
 	shuffleArray(array)
 	// let shuffleDeck = shuffleArray(array);
 	// setDeck(shuffleDeck);
-
-	// let shuffleDeck = shuffleArray(deck.characters);
-	// setDeck(shuffleDeck);
-
 	// useEffect(() => {
 	// 	if (!deck) return null;
 	// 	let shuffleDeck = shuffleArray(deck.characters);
@@ -63,7 +59,7 @@ function Quiz() {
 
 	console.log("deck in quiz", deck);
 	let correctAnswer = deck.characters[questionNum];
-	console.log("Correct answer at start:", correctAnswer);
+	console.log("Correct answer outside nextQuestion function:", correctAnswer);
 
 	const nextQuestion = () => {
 		setQuestionNum(questionNum + 1);
@@ -75,14 +71,28 @@ function Quiz() {
 
 	const answerChoices = () => {
 		//answer choices can come from both(all) decks!
-		let choices = [];
-		// setCorrectAnswer(deck.characters[questionNum]);
-		console.log("Correct answer should be", correctAnswer);
+	
+		let tempVal;
+		let randomIndex; 
+
+		let choices = [correctAnswer]//start with the correct answer
+		// console.log("Correct answer should be", correctAnswer);
+		let array = deck.characters
+		while (choices.length < 4) {
+			let randomAnswer = array[(Math.floor(Math.random() * array.length))];
+			console.log("Random Answer ", randomAnswer)
+			if (correctAnswer !== randomAnswer && !choices.includes(randomAnswer) ) {
+				choices.push(randomAnswer)
+			}
+		}
+		console.log("Question choices", choices)
 		// choices.push()
 		// console.log(props.questionDeck.characters[questionNum])
 		// while (choices.length < 4) {
 		// }
+		return choices
 	};
+	let choices = answerChoices()
 
 	// console.log("deck.characters", deck.characters)
 	console.log("questionNum", questionNum);
@@ -93,7 +103,7 @@ function Quiz() {
 			) : (
 				<>
 					<h1>Welcome to the {deck.name} quiz, time to start!</h1>
-					<Answers />
+					<Answers questionNum={questionNum} choices={choices} />
 					<Question questionDeck={deck.characters} questionNum={questionNum}>
 						A question will appear
 					</Question>

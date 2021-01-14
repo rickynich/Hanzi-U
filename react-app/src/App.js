@@ -10,7 +10,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import DeckList from "./components/Review/DeckList";
 import Home from "./components/Home"
-import QuizPage from "./components/Quiz/QuizPage";
+import QuizPage from "./components/Quiz/QuizList";
 import Quiz from "./components/Quiz/Quiz";
 
 function App() {
