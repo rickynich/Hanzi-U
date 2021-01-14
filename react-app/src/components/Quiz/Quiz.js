@@ -5,6 +5,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 
 //context:
 import { useDeck } from "../Context/DeckContext";
+import Question from "./Question";
 
 
 //you need to render 2 random characters, and at least 2 answer choices (multiple choice) (let's go with 3)
@@ -16,9 +17,20 @@ function Quiz() {
     const { deckId } = useParams();
 
     const [deck, setDeck] = useState(decks[deckId - 1]);
-    const [questions, setQuestions] = useState([])//each question will have 3 characters as possible answers, and one pinyin prompt (the q)
+    const [quizQuestions, setQuizQuestions] = useState([])//each question will have 3 characters as possible answers, and one pinyin prompt (the q)
     const [score, useScore] = useState(0)
-    const [responses, setResponses] = useState(0)
+    const [answerChoices, setAnswerChoices] = useState([])
+    const [characterQuestion, setCharacterQuestion] = useState({})
+
+    // question will be the {character} and the [randomized answers]
+    useEffect(() => {
+        const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers))
+        setCharacterQuestion(quizQuestions[0])
+    })
+
+    const shuffleArray(array) {
+        let currentIndex = array.length, tempVal, randomIndex
+    }
     
     console.log("deck from context", deck);
 
@@ -27,7 +39,8 @@ function Quiz() {
     // }
 	return deck && (
 		<>
-            <h1>Welcome to the {deck.name} quiz</h1>
+            <h1>Welcome to the {deck.name} quiz, time to start!</h1>
+            <Question>A question will appear</Question>
 		</>
 	);
 }
