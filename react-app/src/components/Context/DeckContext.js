@@ -19,7 +19,7 @@ export function DeckProvider({ children }) {
         fetchData();
         setLoaded(true);
 	}, []);
-	console.log("DECKS in context:", decks)
+	// console.log("DECKS in context:", decks)
 	// if(decks.length == 0) return null 
     return <DeckContext.Provider value={ decks }>{children}</DeckContext.Provider>;
 }

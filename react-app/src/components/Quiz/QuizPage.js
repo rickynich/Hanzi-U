@@ -13,7 +13,6 @@ import { useDeck } from "../Context/DeckContext";
 function QuizPage() {
 	const decks = useDeck(); //uses DeckContext
 	const history = useHistory();
-	console.log("decks in QuizPage", decks);
 
 	const handleClick = (deckId) => {
 		history.push(`/decks/${deckId}`);

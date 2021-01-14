@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 //context:
 import { useDeck } from "../Context/DeckContext";
+import Answers from "./AnswerChoices";
 //custom components
 import Question from "./Question";
 
@@ -17,68 +18,97 @@ import Question from "./Question";
 function Quiz() {
 	const { deckId } = useParams();
 	const decks = useDeck(); //uses DeckContext
+	// console.log("Decks ", decks)
 	const [questionNum, setQuestionNum] = useState(0);
 	const [deck, setDeck] = useState(decks[deckId - 1]);
-	const [questionDeck, setQuestionDeck] = useState([]);
 	const [score, useScore] = useState(0);
-	const [correctAnswer, setCorrectAnswer] = useState();
+	// const [correctAnswer, setCorrectAnswer] = useState([]);
 	const [clickedAnswer, setClickedAnswer] = useState();
 
 	if (!deck) return null;
 
-	let array = deck.characters;
+	console.log("Deck ---- ", deck);
 
+	let array = deck.characters;
 	const shuffleArray = (array) => {
 		let currentIndex = array.length;
 		let tempVal;
 		let randomIndex;
-		console.log("array going in ", array);
-		let randomizedArray = [];
-
+		// console.log("array going in ", array);
 		// While there remain elements to shuffle...
 		while (0 !== currentIndex) {
 			// Pick a remaining element...
 			randomIndex = Math.floor(Math.random() * currentIndex);
 			currentIndex -= 1;
-			console.log("randomIndex", randomIndex);
-			console.log("currentIndex", currentIndex);
 			// And swap it with the current element.
 			tempVal = array[currentIndex];
-			console.log("Current Index at array to set to tempVal", tempVal);
 			array[currentIndex] = array[randomIndex];
-			console.log(
-				"(array[currentIndex]) = array[randomIndex]  ",
-				array[randomIndex]
-			);
 			array[randomIndex] = tempVal;
 		}
-		console.log("Array after shuffle", array);
-		// console.log("randomized after loop", randomizedArray)
+		// console.log("Array after shuffle", array);
 		return array;
 	};
-	shuffleArray(array);
+	shuffleArray(array)
+	// let shuffleDeck = shuffleArray(array);
+	// setDeck(shuffleDeck);
 
-	console.log("Question deck: ", questionDeck);
-	console.log("deck selected in quiz", deck);
+	// let shuffleDeck = shuffleArray(deck.characters);
+	// setDeck(shuffleDeck);
+
+	// useEffect(() => {
+	// 	if (!deck) return null;
+	// 	let shuffleDeck = shuffleArray(deck.characters);
+	// 	setDeck(shuffleDeck)
+	// }, [])
+
+	console.log("deck in quiz", deck);
+	let correctAnswer = deck.characters[questionNum];
+	console.log("Correct answer at start:", correctAnswer);
 
 	const nextQuestion = () => {
 		setQuestionNum(questionNum + 1);
+		// console.log("Deck.characters ", deck.characters);
+		// console.log("Deck.characters @ questionNum", deck.characters[questionNum]);
+		correctAnswer = deck.characters[questionNum];
+		console.log("Correct answer:", correctAnswer);
 	};
 
 	const answerChoices = () => {
 		//answer choices can come from both(all) decks!
 		let choices = [];
+		// setCorrectAnswer(deck.characters[questionNum]);
+		console.log("Correct answer should be", correctAnswer);
+		// choices.push()
 		// console.log(props.questionDeck.characters[questionNum])
-		while (choices.length < 4) {}
+		// while (choices.length < 4) {
+		// }
 	};
 
+	// console.log("deck.characters", deck.characters)
+	console.log("questionNum", questionNum);
 	return (
 		<>
-			<h1>Welcome to the {deck.name} quiz, time to start!</h1>
-			<Question questionDeck={deck} questionNum={questionNum}>A question will appear</Question>
-			<Button onClick={() => nextQuestion()}>Next question</Button>
+			{!deck ? (
+				<p>No deck yet</p>
+			) : (
+				<>
+					<h1>Welcome to the {deck.name} quiz, time to start!</h1>
+					<Answers />
+					<Question questionDeck={deck.characters} questionNum={questionNum}>
+						A question will appear
+					</Question>
+					<p>Reveal a hint</p>
+					<Button onClick={nextQuestion}>Next question</Button>
+				</>
+			)}
 		</>
 	);
 }
 
 export default Quiz;
+
+// TODOs:
+/*
+make a result page for when last quesiton is reached
+
+*/
