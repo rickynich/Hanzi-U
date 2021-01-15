@@ -3,17 +3,11 @@ import { useParams } from "react-router-dom";
 import { ThemeProvider, Box, Text } from "@chakra-ui/react";
 
 // antique white: #FAEBD7
-function Card(props) {
+function AnswerCard(props) {
 	// console.log("Card props", props);
 	return (
 		<Box>
-			<Box
-				w="300px"
-				h="30vh"
-				boxShadow="lg"
-				rounded="md"
-				bg="gray.200"
-			>
+			<Box w="300px" h="30vh" boxShadow="lg" rounded="md" bg="gray.200">
 				<Box bg="#FAEBD7">
 					<Text>Character: {props.character.character}</Text>
 				</Box>
@@ -27,4 +21,4 @@ function Card(props) {
 	);
 }
 
-export default Card;
+export default AnswerCard;

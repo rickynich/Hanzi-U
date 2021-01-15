@@ -70,7 +70,7 @@ function Quiz() {
 	};
 
 	const answerChoices = () => {
-		//answer choices can come from both(all) decks!
+		//todo: answer choices can come from both(all) decks as well
 	
 		let tempVal;
 		let randomIndex; 
