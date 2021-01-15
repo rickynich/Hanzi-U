@@ -18,9 +18,10 @@ import Question from "./Question";
 function Quiz() {
 	const { deckId } = useParams();
 	const decks = useDeck(); //uses DeckContext
-	console.log("Decks ", decks)
+	console.log("Decks ", decks);
 	const [questionNum, setQuestionNum] = useState(0);
 	const [deck, setDeck] = useState(decks[deckId - 1]);
+	const [end, setEnd] = useState(false)
 	const [score, useScore] = useState(0);
 	// const [correctAnswer, setCorrectAnswer] = useState([]);
 	const [clickedAnswer, setClickedAnswer] = useState();
@@ -48,7 +49,7 @@ function Quiz() {
 		// console.log("Array after shuffle", array);
 		return array;
 	};
-	shuffleArray(array)
+	shuffleArray(array);
 	// let shuffleDeck = shuffleArray(array);
 	// setDeck(shuffleDeck);
 	// useEffect(() => {
@@ -60,8 +61,13 @@ function Quiz() {
 	console.log("deck in quiz", deck);
 	let correctAnswer = deck.characters[questionNum];
 	console.log("Correct answer outside nextQuestion function:", correctAnswer);
+	console.log("deck.characters.length", deck.characters.length);
 
 	const nextQuestion = () => {
+		if (questionNum == deck.characters.length-1) {
+			console.log("You've reached the end");
+			setEnd(true)
+		}
 		setQuestionNum(questionNum + 1);
 		// console.log("Deck.characters ", deck.characters);
 		// console.log("Deck.characters @ questionNum", deck.characters[questionNum]);
@@ -71,35 +77,35 @@ function Quiz() {
 
 	const answerChoices = () => {
 		//todo: answer choices can come from both(all) decks as well
-	
-		let tempVal;
-		let randomIndex; 
 
-		let choices = [correctAnswer]//start with the correct answer
+		let tempVal;
+		let randomIndex;
+
+		let choices = [correctAnswer]; //start with the correct answer
 		// console.log("Correct answer should be", correctAnswer);
-		let array = deck.characters
-		while (choices.length < 4) {
-			let randomAnswer = array[(Math.floor(Math.random() * array.length))];
-			console.log("Random Answer ", randomAnswer)
-			if (correctAnswer !== randomAnswer && !choices.includes(randomAnswer) ) {
-				choices.push(randomAnswer)
+		let array = deck.characters;
+		while (choices.length < 3) {
+			let randomAnswer = array[Math.floor(Math.random() * array.length)];
+			console.log("Random Answer ", randomAnswer);
+			if (correctAnswer !== randomAnswer && !choices.includes(randomAnswer)) {
+				choices.push(randomAnswer);
 			}
 		}
-		console.log("Question choices", choices)
+		console.log("Question choices", choices);
 		// choices.push()
 		// console.log(props.questionDeck.characters[questionNum])
 		// while (choices.length < 4) {
 		// }
-		return choices
+		return choices;
 	};
-	let choices = answerChoices()
+	let choices = answerChoices();
 
 	// console.log("deck.characters", deck.characters)
 	console.log("questionNum", questionNum);
 	return (
 		<>
-			{!deck ? (
-				<p>No deck yet</p>
+			{end ? (
+				<p>You've reached the end</p>
 			) : (
 				<>
 					<h1>Welcome to the {deck.name} quiz, time to start!</h1>

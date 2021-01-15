@@ -12,22 +12,16 @@ function Answers(props) {
 		let currentIndex = array.length;
 		let tempVal;
 		let randomIndex;
-		// console.log("array going in ", array);
-		// While there remain elements to shuffle...
 		while (0 !== currentIndex) {
-			// Pick a remaining element...
 			randomIndex = Math.floor(Math.random() * currentIndex);
 			currentIndex -= 1;
-			// And swap it with the current element.
 			tempVal = array[currentIndex];
 			array[currentIndex] = array[randomIndex];
 			array[randomIndex] = tempVal;
 		}
-		// console.log("Array after shuffle", array);
 		return array;
 	};
 	shuffleArray(choices);
-	// console.log("Shuffled array ", array)
 
 	return (
 		<>
@@ -36,7 +30,7 @@ function Answers(props) {
 					<Radio value="1">Answer Choice 1 {choices[0].character}</Radio>
 					<Radio value="2">Answer Choice 2 {choices[1].character}</Radio>
 					<Radio value="3">Answer Choice 3 {choices[2].character}</Radio>
-					<Radio value="4">Answer Choice 4 {choices[3].character}</Radio>
+					{/* <Radio value="4">Answer Choice 4 {choices[3].character}</Radio> */}
 				</Stack>
 			</RadioGroup>
 		</>
