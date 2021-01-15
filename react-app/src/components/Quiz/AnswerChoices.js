@@ -11,16 +11,17 @@ import { useDeck } from "../Context/DeckContext";
 import RadioCard from "./RadioCard";
 
 function Answers(props) {
-	const [value, setValue] = useState("1");
-	const { choices, setChoices, questionNum } = props;
-
+	const [value, setValue] = useState();
+	const { choices, setChoices, questionNum, checkAnswer } = props;
+	const { radioVal, setRadioVal } = useState()
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "framework",
 		defaultValue: "react",
-		onChange: console.log,
-	});
-	console.log("Choices in answer Choices", choices);
+		onChange: setValue
 
+	});
+	// console.log("Choices in answer Choices", choices);
+	console.log("value", value)
 	useEffect(() => {
 		const shuffleArray = () => {
 			const array = [...choices]
@@ -42,13 +43,15 @@ function Answers(props) {
 	const group = getRootProps();
 	return (
 		<Flex w="100%" justify="center">
-			<RadioGroup onChange={props.checkAnswer(value)}>
+			<RadioGroup onChange={setValue} value={value}>
 				<Stack spacing={4} direction="row">
-					{choices.map((value) => {
-						const radio = getRadioProps({ value })
+					{choices.map((choice) => {
+						const radio = getRadioProps({ choice })
+						console.log("const radio... whatever that does ", radio)
+						// console.log("choice in the choices map", choice)
 						return (
-							<RadioCard key={value.character} {...radio}>
-								{value.character}
+							<RadioCard value={choice.character} {...radio}>
+								{choice.character}
 							</RadioCard>
 						)
 					})}

@@ -21,14 +21,14 @@ function Quiz() {
 	const [score, setScore] = useState(0);
 	const [correctAnswer, setCorrectAnswer] = useState({});
 	const [clickedAnswer, setClickedAnswer] = useState();
-	const [choices, setChoices] = useState([])
+	const [choices, setChoices] = useState([]);
 
 	useEffect(() => {
-		if (decks.length == 0) return
+		if (decks.length == 0) return;
 		const currentDeck = decks[deckId - 1];
-		console.log("currentDeck", currentDeck)
+		console.log("currentDeck", currentDeck);
 		setDeck(currentDeck);
-		setCorrectAnswer(currentDeck.characters[questionNum])
+		setCorrectAnswer(currentDeck.characters[questionNum]);
 		const answerChoices = (correctChoice) => {
 			let choices = [correctChoice]; //start with the correct answer
 			let array = currentDeck.characters;
@@ -43,14 +43,11 @@ function Quiz() {
 			return choices;
 		};
 		let choices = answerChoices(currentDeck.characters[questionNum]);
-		setChoices(choices)
-	}, [questionNum, decks])
-	
+		setChoices(choices);
+	}, [questionNum, decks]);
+
 	console.log("deck in quiz", deck);
 	if (!deck) return null;
-	
-
-	
 
 	const nextQuestion = () => {
 		if (questionNum == deck.characters.length - 1) {
@@ -80,15 +77,15 @@ function Quiz() {
 					<h1>Welcome to the {deck.name} quiz!</h1>
 					<Answers
 						questionNum={questionNum}
-							choices={choices}
-							setChoices={setChoices}
+						choices={choices}
+						setChoices={setChoices}
 						checkAnswer={checkAnswer}
 					/>
 					<Question questionDeck={deck.characters} questionNum={questionNum}>
 						A question will appear
 					</Question>
 					<p>Reveal a hint</p>
-					<Button onClick={nextQuestion}>Next question</Button>
+					<Button onClick={nextQuestion, checkAnswer}>Next question</Button>
 				</Flex>
 			)}
 		</>
@@ -102,31 +99,31 @@ export default Quiz;
 make a result page for when last quesiton is reached
 
 */
-	//Graveyard
-	// let array = deck.characters;
-	// const shuffleArray = (array) => {
-	// 	let currentIndex = array.length;
-	// 	let tempVal;
-	// 	let randomIndex;
-	// 	// console.log("array going in ", array);
-	// 	// While there remain elements to shuffle...
-	// 	while (0 !== currentIndex) {
-	// 		// Pick a remaining element...
-	// 		randomIndex = Math.floor(Math.random() * currentIndex);
-	// 		currentIndex -= 1;
-	// 		// And swap it with the current element.
-	// 		tempVal = array[currentIndex];
-	// 		array[currentIndex] = array[randomIndex];
-	// 		array[randomIndex] = tempVal;
-	// 	}
-	// 	// console.log("Array after shuffle", array);
-	// 	return array;
-	// };
-	// shuffleArray(array);
-	// let shuffleDeck = shuffleArray(array);
-	// setDeck(shuffleDeck);
-	// useEffect(() => {
-	// 	if (!deck) return null;
-	// 	let shuffleDeck = shuffleArray(deck.characters);
-	// 	setDeck(shuffleDeck)
-	// }, [])
+//Graveyard
+// let array = deck.characters;
+// const shuffleArray = (array) => {
+// 	let currentIndex = array.length;
+// 	let tempVal;
+// 	let randomIndex;
+// 	// console.log("array going in ", array);
+// 	// While there remain elements to shuffle...
+// 	while (0 !== currentIndex) {
+// 		// Pick a remaining element...
+// 		randomIndex = Math.floor(Math.random() * currentIndex);
+// 		currentIndex -= 1;
+// 		// And swap it with the current element.
+// 		tempVal = array[currentIndex];
+// 		array[currentIndex] = array[randomIndex];
+// 		array[randomIndex] = tempVal;
+// 	}
+// 	// console.log("Array after shuffle", array);
+// 	return array;
+// };
+// shuffleArray(array);
+// let shuffleDeck = shuffleArray(array);
+// setDeck(shuffleDeck);
+// useEffect(() => {
+// 	if (!deck) return null;
+// 	let shuffleDeck = shuffleArray(deck.characters);
+// 	setDeck(shuffleDeck)
+// }, [])
