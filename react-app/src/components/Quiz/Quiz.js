@@ -60,11 +60,17 @@ function Quiz() {
 	};
 
 	const checkAnswer = (answer) => {
-		if (answer === correctAnswer) {
+		console.log("Correct answer in checkAnswer:", correctAnswer.character);
+		let correctChar = correctAnswer.character
+		if (answer == correctChar) {
+			// console.log("In if statement of checkAnswer", score)
 			setScore(score + 1);
+			return
 		}
 		console.log("In checkAnswer", answer);
+		return
 	};
+	console.log("SCORE:", score)
 
 	// console.log("deck.characters", deck.characters)
 	console.log("questionNum", questionNum);
@@ -76,16 +82,18 @@ function Quiz() {
 				<Flex direction="column" align="center">
 					<h1>Welcome to the {deck.name} quiz!</h1>
 					<Answers
-						questionNum={questionNum}
-						choices={choices}
-						setChoices={setChoices}
-						checkAnswer={checkAnswer}
+							questionNum={questionNum}
+							choices={choices}
+							setChoices={setChoices}
+							checkAnswer={checkAnswer}
+							// {clickedAnswer}={clickedAnswer}
+							// {setClickedAnswer}={setClickedAnswer}
 					/>
 					<Question questionDeck={deck.characters} questionNum={questionNum}>
 						A question will appear
 					</Question>
 					<p>Reveal a hint</p>
-					<Button onClick={nextQuestion, checkAnswer}>Next question</Button>
+					<Button onClick={nextQuestion}>Next question</Button>
 				</Flex>
 			)}
 		</>

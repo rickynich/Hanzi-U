@@ -39,6 +39,8 @@ function Answers(props) {
 		};
 		shuffleArray()
 	}, [questionNum])
+	
+	checkAnswer(value)
 
 	const group = getRootProps();
 	return (
