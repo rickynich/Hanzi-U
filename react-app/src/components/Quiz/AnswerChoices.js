@@ -39,8 +39,10 @@ function Answers(props) {
 		};
 		shuffleArray()
 	}, [questionNum])
-	
-	checkAnswer(value)
+
+	useEffect(() => {
+		checkAnswer(value)
+	}, [value])
 
 	const group = getRootProps();
 	return (

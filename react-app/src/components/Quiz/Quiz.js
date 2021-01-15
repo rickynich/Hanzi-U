@@ -22,6 +22,7 @@ function Quiz() {
 	const [correctAnswer, setCorrectAnswer] = useState({});
 	const [clickedAnswer, setClickedAnswer] = useState();
 	const [choices, setChoices] = useState([]);
+	const [answerSubmitted, setAnswerSubmitted] = useState(false)
 
 	useEffect(() => {
 		if (decks.length == 0) return;
@@ -59,16 +60,15 @@ function Quiz() {
 		console.log("Correct answer:", correctAnswer);
 	};
 
+	//need to make answer only get checked when the Next button is clicked, so put in the nextQuestion function
 	const checkAnswer = (answer) => {
 		console.log("Correct answer in checkAnswer:", correctAnswer.character);
 		let correctChar = correctAnswer.character
-		if (answer == correctChar) {
+		if (answer == correctChar && correctChar) {
 			// console.log("In if statement of checkAnswer", score)
 			setScore(score + 1);
-			return
 		}
 		console.log("In checkAnswer", answer);
-		return
 	};
 	console.log("SCORE:", score)
 
@@ -86,14 +86,12 @@ function Quiz() {
 							choices={choices}
 							setChoices={setChoices}
 							checkAnswer={checkAnswer}
-							// {clickedAnswer}={clickedAnswer}
-							// {setClickedAnswer}={setClickedAnswer}
 					/>
 					<Question questionDeck={deck.characters} questionNum={questionNum}>
 						A question will appear
 					</Question>
 					<p>Reveal a hint</p>
-					<Button onClick={nextQuestion}>Next question</Button>
+						<Button onClick={() => { nextQuestion(); setAnswerSubmitted(true) }}>Next question</Button>
 				</Flex>
 			)}
 		</>
