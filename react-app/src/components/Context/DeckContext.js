@@ -8,7 +8,6 @@ export function useDeck() {
 
 export function DeckProvider({ children }) {
     const [decks, setDecks] = useState([]);
-	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -17,7 +16,6 @@ export function DeckProvider({ children }) {
 			setDecks(responseData.decks); //set to responseData.decks
 		}
         fetchData();
-        setLoaded(true);
 	}, []);
 	// console.log("DECKS in context:", decks)
 	// if(decks.length == 0) return null 
