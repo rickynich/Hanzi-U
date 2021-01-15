@@ -37,30 +37,30 @@ function Answers(props) {
 
 	const group = getRootProps();
 	return (
-		<HStack {...group}>
-			{choices.map((value) => {
-				const radio = getRadioProps({ value });
-				return (
-					<RadioCard key={value} {...radio}>
-						{value}
-					</RadioCard>
-				);
-			})}
-		</HStack>
+		<>
+			<RadioGroup defaultValue="1">
+				<Stack spacing={4} direction="row">
+					<Radio value="1">Answer Choice 1 {choices[0].character}</Radio>
+					<Radio value="2">Answer Choice 2 {choices[1].character}</Radio>
+					<Radio value="3">Answer Choice 3 {choices[2].character}</Radio>
+					{/* <Radio value="4">Answer Choice 4 {choices[3].character}</Radio> */}
+				</Stack>
+			</RadioGroup>
+		</>
 	);
 }
 
 export default Answers;
+	// return (
+	// 	<HStack {...group}>
+	// 		{choices.map((value) => {
+	// 			const radio = getRadioProps({ value });
+	// 			return (
+	// 				<RadioCard key={value} {...radio}>
+	// 					{value}
+	// 				</RadioCard>
+	// 			);
+	// 		})}
+	// 	</HStack>
+	// );
 
-// return (
-// 	<>
-// 		<RadioGroup defaultValue="1">
-// 			<Stack spacing={4} direction="row">
-// 				<Radio value="1">Answer Choice 1 {choices[0].character}</Radio>
-// 				<Radio value="2">Answer Choice 2 {choices[1].character}</Radio>
-// 				<Radio value="3">Answer Choice 3 {choices[2].character}</Radio>
-// 				{/* <Radio value="4">Answer Choice 4 {choices[3].character}</Radio> */}
-// 			</Stack>
-// 		</RadioGroup>
-// 	</>
-// );
