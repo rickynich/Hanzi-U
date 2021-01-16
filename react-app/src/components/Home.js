@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
+//Chakra
+import { Image } from "@chakra-ui/react";
+
 function Home(props) {
     const [user, setUser] = useState({});
     const history = useHistory();
