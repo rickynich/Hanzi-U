@@ -25,8 +25,14 @@ function RadioCard(props) {
         _focus={{
           boxShadow: "outline",
         }}
+        _hover={{
+          background: "blue",
+          color: "red"
+        }}
         px={5}
         py={3}
+        
+        fontSize={["25px", "50px"]}
       >
         {props.children}
       </Box>

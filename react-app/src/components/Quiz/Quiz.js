@@ -3,7 +3,19 @@ import { useParams } from "react-router-dom";
 
 //Chakra
 // import { SimpleGrid } from "@chakra-ui/react";
-import { Button, Flex } from "@chakra-ui/react";
+import {
+	Button,
+	ButtonGroup,
+	Flex,
+	Popover,
+	PopoverArrow,
+	PopoverBody,
+	PopoverCloseButton,
+	PopoverContent,
+	PopoverHeader,
+	PopoverTrigger,
+	Text,
+} from "@chakra-ui/react";
 
 //context:
 import { useDeck } from "../Context/DeckContext";
@@ -11,6 +23,7 @@ import Answers from "./AnswerChoices";
 //custom components
 import Question from "./Question";
 import Results from "./Results";
+import HintButton from "./HintButton";
 
 function Quiz() {
 	const { deckId } = useParams();
@@ -20,7 +33,7 @@ function Quiz() {
 	const [end, setEnd] = useState(false);
 	const [score, setScore] = useState(0);
 	const [correctAnswer, setCorrectAnswer] = useState({});
-	const [clickedAnswer, setClickedAnswer] = useState();
+	const [wrongAnswers, setWrongAnswers] = useState([]);
 	const [choices, setChoices] = useState([]);
 	const [answerSubmitted, setAnswerSubmitted] = useState(false);
 
@@ -58,32 +71,14 @@ function Quiz() {
 				array[currentIndex] = array[randomIndex];
 				array[randomIndex] = tempVal;
 			}
-			return array
+			return array;
 		};
-		let choices = shuffleArray(answerChoices(currentDeck.characters[questionNum]));
+		let choices = shuffleArray(
+			answerChoices(currentDeck.characters[questionNum])
+		);
 		setChoices(choices);
 		console.log("Choices from setChoices in useEffect", choices);
 	}, [questionNum, decks]);
-
-		// useEffect(() => {
-		// 	const shuffleArray = () => {
-		// 		const array = [...choices];
-		// 		let currentIndex = array.length;
-		// 		let tempVal;
-		// 		let randomIndex;
-		// 		console.log("Choices in shuffleArray AnswerChoices component", array);
-		// 		while (0 !== currentIndex) {
-		// 			randomIndex = Math.floor(Math.random() * currentIndex);
-		// 			console.log("Random index", randomIndex);
-		// 			currentIndex -= 1;
-		// 			tempVal = array[currentIndex];
-		// 			array[currentIndex] = array[randomIndex];
-		// 			array[randomIndex] = tempVal;
-		// 		}
-		// 		setChoices(array);
-		// 	};
-		// 	shuffleArray();
-		// }, [questionNum]);
 
 	// console.log("deck in quiz", deck);
 	if (!deck) return null;
@@ -111,26 +106,29 @@ function Quiz() {
 	return (
 		<>
 			{end ? (
-				<Results score={score}/>
+				<Results score={score} />
 			) : (
-				<Flex direction="column" align="center">
-					<h1>Welcome to the {deck.name} quiz!</h1>
+				<Flex direction="column" align="center" m={6}>
+					<Text mb={8}>Welcome to the {deck.name} quiz!</Text>
 					<Answers
 						questionNum={questionNum}
 						choices={choices}
 						setChoices={setChoices}
 						checkAnswer={checkAnswer}
 					/>
-					<Question questionDeck={deck.characters} questionNum={questionNum}/>
-					<p>Reveal a hint</p>
-					<Button
-						onClick={() => {
-							nextQuestion();
-							setAnswerSubmitted(true);
-						}}
-					>
-						Next question
-					</Button>
+					<Question questionDeck={deck.characters} questionNum={questionNum} />
+					<ButtonGroup>
+						<HintButton correctAnswer={correctAnswer} />
+						<Button
+							onClick={() => {
+								nextQuestion();
+								setAnswerSubmitted(true);
+							}}
+						>
+							Next question
+						</Button>
+					</ButtonGroup>
+					<Text>Current score: {score}</Text>
 				</Flex>
 			)}
 		</>
