@@ -79,6 +79,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       </div>
       <button type="submit">Sign Up</button>
     </form>
+    
   );
 };
 

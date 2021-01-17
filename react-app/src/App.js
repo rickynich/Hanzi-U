@@ -12,6 +12,7 @@ import DeckList from "./components/Review/DeckList";
 import Home from "./components/Home"
 import QuizPage from "./components/Quiz/QuizList";
 import Quiz from "./components/Quiz/Quiz";
+import LandingPage from "./components/Landing/LandingPage";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
@@ -35,6 +36,12 @@ function App() {
 		<DeckProvider>
 			<BrowserRouter>
 				<NavBar setAuthenticated={setAuthenticated} />
+				<Route path="/landing" exact={true}>
+					<LandingPage
+						authenticated={authenticated}
+						setAuthenticated={setAuthenticated}
+					/>
+				</Route>
 				<Route path="/login" exact={true}>
 					<LoginForm
 						authenticated={authenticated}
