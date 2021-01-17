@@ -57,6 +57,7 @@ function LandingPage() {
 					size="100%"
 					rounded="1rem"
 					shadow="2xl"
+					alt="splash image"
 				/>
 			</Box>
 		</Flex>

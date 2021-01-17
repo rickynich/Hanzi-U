@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { RiAncientGateLine } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
-import { Box, Flex, MenuIcon } from "@chakra-ui/react";
+import { Box, Flex, HStack, MenuIcon } from "@chakra-ui/react";
+import Logo from "./Logo";
 // RiAncientGateLine;
 
 const MenuToggle = ({ toggle, isOpen }) => {
@@ -18,16 +19,14 @@ const MenuToggle = ({ toggle, isOpen }) => {
 const NavBarContainer = (props) => {
 	return (
 		<Flex
-			as="nav"
 			align="center"
 			justify="space-between"
 			wrap="wrap"
 			w="100%"
 			mb={8}
 			p={8}
-			// bg={["primary.500", "primary.500", "transparent", "transparent"]}
-			// color={["black", "white", "primary.700", "primary.700"]}
-			{...props}
+			bg="beige"
+			color="black"
 		>
 			{props.children}
 		</Flex>
@@ -41,16 +40,20 @@ const NavBar = ({ setAuthenticated }) => {
 	return (
 		<Flex>
 			<NavBarContainer>
-				<Flex>
-					<NavLink to="/" exact={true} activeClassName="active">
+				<HStack>
+					<Logo />
+					{/* <NavLink to="/" exact={true} activeClassName="active">
 						Home
-					</NavLink>
+					</NavLink> */}
 					<NavLink to="/landing" exact={true} activeClassName="active">
 						Landing
 					</NavLink>
-				</Flex>
+				</HStack>
 
-				<Flex>
+				<HStack>
+					<NavLink to="/users" exact={true} activeClassName="active">
+						Users
+					</NavLink>
 					<NavLink to="/login" exact={true} activeClassName="active">
 						Login
 					</NavLink>
@@ -59,11 +62,7 @@ const NavBar = ({ setAuthenticated }) => {
 						Sign Up
 					</NavLink>
 					<LogoutButton setAuthenticated={setAuthenticated} />
-				</Flex>
-
-				{/* <NavLink to="/users" exact={true} activeClassName="active">
-				Users
-			</NavLink> */}
+				</HStack>
 
 				{/* <NavLink to="/decks" exact={true} activeClassName="active">
 				Decks

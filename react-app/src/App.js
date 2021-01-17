@@ -16,11 +16,14 @@ import LandingPage from "./components/Landing/LandingPage";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
+	const [currentUser, setCurrentUser] = useState()
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
 		(async () => {
 			const user = await authenticate();
+			
+			console.log("User in useEffect for app", user)
 			if (!user.errors) {
 				setAuthenticated(true);
 			}
