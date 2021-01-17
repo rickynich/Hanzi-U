@@ -164,3 +164,71 @@ chineseCharsLib1 = [
 		hint: "Treasure 玉 within a country's borders 囗",
 	},
 ];
+
+// 	return (
+// 		<>
+// 			<Box
+// 				bg="blue.200"
+// 				width="350px"
+// 				margin="10px"
+// 				p={5}
+// 				boxShadow="sm"
+// 				rounded="lg"
+// 			>
+// 				<Tabs variant="soft-rounded" colorScheme="blue" isFitted m={2}>
+// 					<TabList>
+// 						<Tab>Login</Tab>
+// 						<Tab>Sign Up</Tab>
+// 					</TabList>
+// 					<TabPanels>
+// 						<TabPanel>
+// 							<form onSubmit={onSignUp}>
+// 								<div>
+// 									<label>User Name</label>
+// 									<Input
+// 										type="text"
+// 										name="username"
+// 										onChange={updateUsername}
+// 										value={username}
+// 									></Input>
+// 								</div>
+// 								<div>
+// 									<label>Email</label>
+// 									<Input
+// 										type="text"
+// 										name="email"
+// 										onChange={updateEmail}
+// 										value={email}
+// 									></Input>
+// 								</div>
+// 								<div>
+// 									<label>Password</label>
+// 									<Input
+// 										type="password"
+// 										name="password"
+// 										onChange={updatePassword}
+// 										value={password}
+// 									></Input>
+// 								</div>
+// 								<div>
+// 									<label>Repeat Password</label>
+// 									<Input
+// 										type="password"
+// 										name="repeat_password"
+// 										onChange={updateRepeatPassword}
+// 										value={repeatPassword}
+// 										required={true}
+// 									></Input>
+// 								</div>
+// 								<Button type="submit">Sign Up</Button>
+// 							</form>
+// 						</TabPanel>
+// 						<TabPanel>
+// 							<LoginForm />
+// 						</TabPanel>
+// 					</TabPanels>
+// 				</Tabs>
+// 			</Box>
+// 		</>
+// 	);
+// };

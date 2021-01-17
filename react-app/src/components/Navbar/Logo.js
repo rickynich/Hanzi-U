@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Logo() {
 	return (
-		<Box width="50px">
+		<Box width="62px">
 			<NavLink to="/" exact={true} activeClassName="active">
 				<Image alt="logo" src={"/logo.png"} />
 			</NavLink>

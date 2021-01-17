@@ -4,8 +4,10 @@ import { useParams } from "react-router-dom";
 //Chakra
 // import { SimpleGrid } from "@chakra-ui/react";
 import {
+	Box,
 	Button,
 	ButtonGroup,
+	Container,
 	Flex,
 	Popover,
 	PopoverArrow,
@@ -98,6 +100,12 @@ function Quiz() {
 		if (answer == correctChar && correctChar) {
 			// console.log("In if statement of checkAnswer", score)
 			setScore(score + 1);
+		} else if (!wrongAnswers.includes(answer)) {
+			let array = [...wrongAnswers];
+			// console.log(answer)
+			array.push(answer);
+			setWrongAnswers(array);
+			// console.log("Wrong answers", wrongAnswers)
 		}
 		// console.log("In checkAnswer", answer);
 	};
@@ -106,30 +114,41 @@ function Quiz() {
 	return (
 		<>
 			{end ? (
-				<Results score={score} />
+				<Results score={score} wrongAnswers={wrongAnswers} />
 			) : (
-				<Flex direction="column" align="center" m={6}>
-					<Text mb={8}>Welcome to the {deck.name} quiz!</Text>
-					<Answers
-						questionNum={questionNum}
-						choices={choices}
-						setChoices={setChoices}
-						checkAnswer={checkAnswer}
-					/>
-					<Question questionDeck={deck.characters} questionNum={questionNum} />
-					<ButtonGroup>
-						<HintButton correctAnswer={correctAnswer} />
-						<Button
-							onClick={() => {
-								nextQuestion();
-								setAnswerSubmitted(true);
-							}}
-						>
-							Next question
-						</Button>
-					</ButtonGroup>
-					<Text>Current score: {score}</Text>
-				</Flex>
+				<>
+					<Flex direction="column" align="center" m={6}>
+						<Text mb={8}>Welcome to the {deck.name} quiz!</Text>
+						<Container>
+							<Text alignItems="0">{questionNum + 1})</Text>
+						</Container>
+						<Answers
+							questionNum={questionNum}
+							choices={choices}
+							setChoices={setChoices}
+							checkAnswer={checkAnswer}
+						/>
+						<Question
+							questionDeck={deck.characters}
+							questionNum={questionNum}
+						/>
+						<Box>
+							<ButtonGroup>
+								<HintButton correctAnswer={correctAnswer} />
+								<Button
+									colorScheme="blue"
+									onClick={() => {
+										nextQuestion();
+										setAnswerSubmitted(true);
+									}}
+								>
+									Next question
+								</Button>
+							</ButtonGroup>
+						</Box>
+						<Text>Current score: {score}</Text>
+					</Flex>
+				</>
 			)}
 		</>
 	);

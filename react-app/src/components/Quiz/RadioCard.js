@@ -32,7 +32,7 @@ function RadioCard(props) {
         px={5}
         py={3}
         
-        fontSize={["25px", "50px"]}
+        fontSize={["25px", "80px"]}
       >
         {props.children}
       </Box>

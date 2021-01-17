@@ -63,7 +63,13 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 				boxShadow="sm"
 				rounded="lg"
 			>
-				<Tabs variant="soft-rounded" colorScheme="blue" isFitted m={2}>
+				<Tabs
+					variant="soft-rounded"
+					colorScheme="blue"
+					isFitted
+					m={2}
+					defaultIndex={0}
+				>
 					<TabList>
 						<Tab>Login</Tab>
 						<Tab>Sign Up</Tab>

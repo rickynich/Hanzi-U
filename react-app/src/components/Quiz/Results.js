@@ -7,7 +7,7 @@ import { authenticate } from "../../services/auth";
 //custom components:
 
 function Results(props) {
-	const { score } = props;
+	const { score, wrongAnswers } = props;
     const [user, setUser] = useState();
     const history = useHistory();
     const { deckId } = useParams();
@@ -32,7 +32,14 @@ function Results(props) {
 			<Container>
 				<Stack justify="center" textAlign="center" p={6} spacing="16px">
                     <Heading>You scored {score} out of 20</Heading>
-                    <Text>Study up on: </Text>
+                <Text>Study up on: </Text>
+                {wrongAnswers.map((wrongAnswer) => {
+                    return (
+                        <Text>
+                            {wrongAnswer}
+                        </Text>
+                    )
+                })}
 					<Button
 						onClick={() => {
 							window.location.reload();

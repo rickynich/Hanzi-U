@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { RiAncientGateLine } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
-import { Box, Flex, HStack, MenuIcon } from "@chakra-ui/react";
+import { Box, Flex, HStack, MenuIcon, Stack, Text } from "@chakra-ui/react";
 import Logo from "./Logo";
 // RiAncientGateLine;
 
@@ -19,6 +19,7 @@ const MenuToggle = ({ toggle, isOpen }) => {
 const NavBarContainer = (props) => {
 	return (
 		<Flex
+			as="nav"
 			align="center"
 			justify="space-between"
 			wrap="wrap"
@@ -45,14 +46,17 @@ const NavBar = ({ setAuthenticated }) => {
 					{/* <NavLink to="/" exact={true} activeClassName="active">
 						Home
 					</NavLink> */}
-					<NavLink to="/landing" exact={true} activeClassName="active">
+					{/* <NavLink to="/landing" exact={true} activeClassName="active">
 						Landing
-					</NavLink>
+					</NavLink> */}
 				</HStack>
 
 				<HStack>
 					<NavLink to="/users" exact={true} activeClassName="active">
-						Student List
+						<Stack spacing="0" direction="column" align="center">
+							<RiAncientGateLine size="30px"/>
+							<Text>Students</Text>
+						</Stack>
 					</NavLink>
 					<NavLink to="/login" exact={true} activeClassName="active">
 						Login
