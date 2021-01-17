@@ -10,11 +10,11 @@ import { useDeck } from "../Context/DeckContext";
 import Answers from "./AnswerChoices";
 //custom components
 import Question from "./Question";
+import Results from "./Results";
 
 function Quiz() {
 	const { deckId } = useParams();
 	const decks = useDeck(); //uses DeckContext
-	console.log("Decks ", decks);
 	const [questionNum, setQuestionNum] = useState(0);
 	const [deck, setDeck] = useState(decks[deckId - 1]);
 	const [end, setEnd] = useState(false);
@@ -22,14 +22,15 @@ function Quiz() {
 	const [correctAnswer, setCorrectAnswer] = useState({});
 	const [clickedAnswer, setClickedAnswer] = useState();
 	const [choices, setChoices] = useState([]);
-	const [answerSubmitted, setAnswerSubmitted] = useState(false)
+	const [answerSubmitted, setAnswerSubmitted] = useState(false);
 
 	useEffect(() => {
 		if (decks.length == 0) return;
 		const currentDeck = decks[deckId - 1];
-		console.log("currentDeck", currentDeck);
+		// console.log("currentDeck", currentDeck);
 		setDeck(currentDeck);
 		setCorrectAnswer(currentDeck.characters[questionNum]);
+
 		const answerChoices = (correctChoice) => {
 			let choices = [correctChoice]; //start with the correct answer
 			let array = currentDeck.characters;
@@ -40,14 +41,51 @@ function Quiz() {
 					choices.push(randomAnswer);
 				}
 			}
-			console.log("Question choices", choices);
+			// console.log("Question choices", choices);
 			return choices;
 		};
-		let choices = answerChoices(currentDeck.characters[questionNum]);
+		const shuffleArray = (answers) => {
+			const array = [...answers];
+			let currentIndex = array.length;
+			let tempVal;
+			let randomIndex;
+			console.log("Choices in shuffleArray AnswerChoices component", array);
+			while (0 !== currentIndex) {
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				console.log("Random index", randomIndex);
+				currentIndex -= 1;
+				tempVal = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = tempVal;
+			}
+			return array
+		};
+		let choices = shuffleArray(answerChoices(currentDeck.characters[questionNum]));
 		setChoices(choices);
+		console.log("Choices from setChoices in useEffect", choices);
 	}, [questionNum, decks]);
 
-	console.log("deck in quiz", deck);
+		// useEffect(() => {
+		// 	const shuffleArray = () => {
+		// 		const array = [...choices];
+		// 		let currentIndex = array.length;
+		// 		let tempVal;
+		// 		let randomIndex;
+		// 		console.log("Choices in shuffleArray AnswerChoices component", array);
+		// 		while (0 !== currentIndex) {
+		// 			randomIndex = Math.floor(Math.random() * currentIndex);
+		// 			console.log("Random index", randomIndex);
+		// 			currentIndex -= 1;
+		// 			tempVal = array[currentIndex];
+		// 			array[currentIndex] = array[randomIndex];
+		// 			array[randomIndex] = tempVal;
+		// 		}
+		// 		setChoices(array);
+		// 	};
+		// 	shuffleArray();
+		// }, [questionNum]);
+
+	// console.log("deck in quiz", deck);
 	if (!deck) return null;
 
 	const nextQuestion = () => {
@@ -56,42 +94,43 @@ function Quiz() {
 			setEnd(true);
 		}
 		setQuestionNum(questionNum + 1);
-		// correctAnswer = deck.characters[questionNum];
 		console.log("Correct answer:", correctAnswer);
 	};
 
-	//need to make answer only get checked when the Next button is clicked, so put in the nextQuestion function
 	const checkAnswer = (answer) => {
 		console.log("Correct answer in checkAnswer:", correctAnswer.character);
-		let correctChar = correctAnswer.character
+		let correctChar = correctAnswer.character;
 		if (answer == correctChar && correctChar) {
 			// console.log("In if statement of checkAnswer", score)
 			setScore(score + 1);
 		}
-		console.log("In checkAnswer", answer);
+		// console.log("In checkAnswer", answer);
 	};
-	console.log("SCORE:", score)
+	// console.log("SCORE:", score);
 
-	// console.log("deck.characters", deck.characters)
-	console.log("questionNum", questionNum);
 	return (
 		<>
 			{end ? (
-				<p>You've reached the end</p>
+				<Results score={score}/>
 			) : (
 				<Flex direction="column" align="center">
 					<h1>Welcome to the {deck.name} quiz!</h1>
 					<Answers
-							questionNum={questionNum}
-							choices={choices}
-							setChoices={setChoices}
-							checkAnswer={checkAnswer}
+						questionNum={questionNum}
+						choices={choices}
+						setChoices={setChoices}
+						checkAnswer={checkAnswer}
 					/>
-					<Question questionDeck={deck.characters} questionNum={questionNum}>
-						A question will appear
-					</Question>
+					<Question questionDeck={deck.characters} questionNum={questionNum}/>
 					<p>Reveal a hint</p>
-						<Button onClick={() => { nextQuestion(); setAnswerSubmitted(true) }}>Next question</Button>
+					<Button
+						onClick={() => {
+							nextQuestion();
+							setAnswerSubmitted(true);
+						}}
+					>
+						Next question
+					</Button>
 				</Flex>
 			)}
 		</>

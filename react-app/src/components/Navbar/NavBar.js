@@ -25,7 +25,7 @@ const NavBarContainer = (props) => {
 			w="100%"
 			mb={8}
 			p={8}
-			bg="beige"
+			bg="blue"
 			color="black"
 		>
 			{props.children}
@@ -52,7 +52,7 @@ const NavBar = ({ setAuthenticated }) => {
 
 				<HStack>
 					<NavLink to="/users" exact={true} activeClassName="active">
-						Users
+						Student List
 					</NavLink>
 					<NavLink to="/login" exact={true} activeClassName="active">
 						Login

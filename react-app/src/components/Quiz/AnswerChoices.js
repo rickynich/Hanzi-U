@@ -21,24 +21,26 @@ function Answers(props) {
 
 	});
 	// console.log("Choices in answer Choices", choices);
-	console.log("value", value)
-	useEffect(() => {
-		const shuffleArray = () => {
-			const array = [...choices]
-			let currentIndex = array.length;
-			let tempVal;
-			let randomIndex;
-			while (0 !== currentIndex) {
-				randomIndex = Math.floor(Math.random() * currentIndex);
-				currentIndex -= 1;
-				tempVal = array[currentIndex];
-				array[currentIndex] = array[randomIndex];
-				array[randomIndex] = tempVal;
-			}
-			setChoices(array)
-		};
-		shuffleArray()
-	}, [questionNum])
+	// console.log("value", value)
+	// useEffect(() => {
+	// 	const shuffleArray = () => {
+	// 		const array = [...choices]
+	// 		let currentIndex = array.length;
+	// 		let tempVal;
+	// 		let randomIndex;
+	// 		console.log("Choices in shuffleArray AnswerChoices component", array)
+	// 		while (0 !== currentIndex) {
+	// 			randomIndex = Math.floor(Math.random() * currentIndex);
+	// 			console.log("Random index", randomIndex)
+	// 			currentIndex -= 1;
+	// 			tempVal = array[currentIndex];
+	// 			array[currentIndex] = array[randomIndex];
+	// 			array[randomIndex] = tempVal;
+	// 		}
+	// 		setChoices(array)
+	// 	};
+	// 	shuffleArray()
+	// }, [questionNum])
 
 	useEffect(() => {
 		checkAnswer(value)
@@ -51,7 +53,7 @@ function Answers(props) {
 				<Stack spacing={4} direction="row">
 					{choices.map((choice) => {
 						const radio = getRadioProps({ choice })
-						console.log("const radio... whatever that does ", radio)
+						// console.log("const radio... whatever that does ", radio)
 						// console.log("choice in the choices map", choice)
 						return (
 							<RadioCard value={choice.character} {...radio}>
