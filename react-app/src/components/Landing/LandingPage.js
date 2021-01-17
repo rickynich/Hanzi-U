@@ -9,37 +9,33 @@ function LandingPage() {
 		<Flex
 			align="center"
 			justify={{ base: "center", md: "space-around", xl: "space-between" }}
-			direction={{ base: "column-reverse", md: "row" }}
+			direction={{ base: "column-reverse", md: "row" }} //responsive styling based on width. md for 48 em and up
 			wrap="no-wrap"
 			minH="70vh"
-			px={8}
-			mb={16}
+			px={8} //padding left and right
+			mb={16} //margin bottom
 		>
 			<Stack
 				spacing={4}
 				w={{ base: "80%", md: "40%" }}
-				align={["center", "center", "flex-start", "flex-start"]}
+				align={["center", "center", "flex-start"]} //also based on breakpoints, goes center for base
 			>
 				<Heading
-					as="h1"
 					size="xl"
 					fontWeight="bold"
-					color="primary.800"
 					textAlign={["center", "center", "left", "left"]}
 				>
 					Welcome to Hanzi U!
 				</Heading>
 				<Heading
-					as="h2"
 					size="md"
-					color="primary.800"
 					opacity="0.8"
 					fontWeight="normal"
 					lineHeight={1.5}
 					textAlign={["center", "center", "left", "left"]}
 				>
-					Hanzi U is a character learning app based on frequency of appearance.
-					Happy studying!
+					Learn Chinese characters(hanzi) the practical way - based on frequency of appearance!
+					快了， 快乐学习!
 				</Heading>
 				<Link to="/sign-up">
 					<Button
@@ -51,7 +47,7 @@ function LandingPage() {
 						size="md"
 						// rightIcon="chevron-right"
 					>
-						Create an account!
+						Create account
 					</Button>
 				</Link>
 			</Stack>

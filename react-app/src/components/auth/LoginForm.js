@@ -69,8 +69,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 						<Tab>Sign Up</Tab>
 					</TabList>
 					<TabPanels>
-            <TabPanel>
-              {/* Login form: */}
+						<TabPanel>
+							{/* Login form: */}
 							<form onSubmit={onLogin}>
 								<div>
 									{errors.map((error) => (
@@ -100,9 +100,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 										<Button type="submit">Login</Button>
 										<Button type="submit">Sign Up Here</Button>
 									</Stack>
-									{/* <Link href="/sign-up">
-                  Sign up here
-                </Link> */}
+									{/* <Link href="/sign-up">Sign up here</Link> */}
 								</div>
 							</form>
 						</TabPanel>
