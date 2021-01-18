@@ -1,4 +1,4 @@
-import { Container, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import { Container, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 

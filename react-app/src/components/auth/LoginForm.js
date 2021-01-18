@@ -13,7 +13,6 @@ import {
 	TabPanels,
 	Tabs,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import SignUpForm from "./SignUpForm";
 
 const LoginForm = ({ authenticated, setAuthenticated, formTab }, props) => {

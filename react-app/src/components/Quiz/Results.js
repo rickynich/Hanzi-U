@@ -11,6 +11,7 @@ function Results(props) {
     const [user, setUser] = useState();
     const history = useHistory();
     const { deckId } = useParams();
+    const {expGained, setExpGained} = useState(0)
 
 	useEffect(() => {
 		(async () => {
@@ -26,7 +27,30 @@ function Results(props) {
 
 	const handleClick = (path) => {
 		history.push(`/${path}`);
-	};
+    };
+    
+    // const handleExp = () => {
+	// 		fetch("http://localhost:5000/api/users/exp", {
+	// 			method: "POST",
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			body: JSON.stringify({
+	// 				exp: score,
+	// 			}),
+	// 		})  .then((response) => console.log(response.json()))
+	// 			// .then((response) => response.json())
+	// 			// .then((json) => {
+	// 			// 	const accessToken = json.access_token;
+	// 			// 	this.props.onLogin(accessToken);
+	// 			// })
+	// 			.catch((error) => {
+	// 				console.log("Error in exp post", error)
+	// 			});
+    // };
+
+    // handleExp()
+
 
     return (
 			<Container>

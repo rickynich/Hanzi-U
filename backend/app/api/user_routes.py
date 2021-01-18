@@ -17,3 +17,22 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+# @user_routes.route('/exp', methods=['POST'])
+# @login_required
+# def exp_gain(id):
+#     """
+#     Gives a user exp
+#     """
+#     user = User.query.filter(User.email == form.data['email']).first()
+
+#     user_id = request.get_json().get('id')
+#     expGain = request.get_json().get('exp')
+
+#     experience = User(exp+expGain)
+
+#     db.session.add(experience)
+#     db.session.commit()
+#     print("User in exp", user)
+#     return user.to_dict()
+

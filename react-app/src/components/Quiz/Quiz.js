@@ -9,13 +9,6 @@ import {
 	ButtonGroup,
 	Container,
 	Flex,
-	Popover,
-	PopoverArrow,
-	PopoverBody,
-	PopoverCloseButton,
-	PopoverContent,
-	PopoverHeader,
-	PopoverTrigger,
 	Text,
 } from "@chakra-ui/react";
 
@@ -119,9 +112,9 @@ function Quiz() {
 				<>
 					<Flex direction="column" align="center" m={6}>
 						<Text mb={8}>Welcome to the {deck.name} quiz!</Text>
-						<Container>
+						{/* <Container>
 							<Text alignItems="0">{questionNum + 1})</Text>
-						</Container>
+						</Container> */}
 						<Answers
 							questionNum={questionNum}
 							choices={choices}

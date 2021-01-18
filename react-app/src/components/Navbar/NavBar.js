@@ -26,8 +26,10 @@ const NavBarContainer = (props) => {
 			w="100%"
 			mb={8}
 			p={8}
-			bg="blue"
-			color="black"
+			// bg="blue"
+			// color="black"
+			bg={["primary.500", "blue.200", "blue.200", "blue.200"]}
+			color={["white", "white", "primary.700", "primary.700"]}
 		>
 			{props.children}
 		</Flex>
@@ -54,7 +56,7 @@ const NavBar = ({ setAuthenticated }) => {
 				<HStack>
 					<NavLink to="/users" exact={true} activeClassName="active">
 						<Stack spacing="0" direction="column" align="center">
-							<RiAncientGateLine size="30px"/>
+							<RiAncientGateLine size="30px" />
 							<Text>Students</Text>
 						</Stack>
 					</NavLink>
