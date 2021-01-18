@@ -44,7 +44,7 @@ function Quiz() {
 			let array = currentDeck.characters;
 			while (choices.length < 3) {
 				let randomAnswer = array[Math.floor(Math.random() * array.length)];
-				console.log("Random Answer ", randomAnswer);
+				// console.log("Random Answer ", randomAnswer);
 				if (correctChoice !== randomAnswer && !choices.includes(randomAnswer)) {
 					choices.push(randomAnswer);
 				}
@@ -60,7 +60,6 @@ function Quiz() {
 			console.log("Choices in shuffleArray AnswerChoices component", array);
 			while (0 !== currentIndex) {
 				randomIndex = Math.floor(Math.random() * currentIndex);
-				console.log("Random index", randomIndex);
 				currentIndex -= 1;
 				tempVal = array[currentIndex];
 				array[currentIndex] = array[randomIndex];
@@ -72,10 +71,8 @@ function Quiz() {
 			answerChoices(currentDeck.characters[questionNum])
 		);
 		setChoices(choices);
-		console.log("Choices from setChoices in useEffect", choices);
 	}, [questionNum, decks]);
 
-	// console.log("deck in quiz", deck);
 	if (!deck) return null;
 
 	const nextQuestion = () => {
@@ -84,7 +81,7 @@ function Quiz() {
 			setEnd(true);
 		}
 		setQuestionNum(questionNum + 1);
-		console.log("Correct answer:", correctAnswer);
+		// console.log("Correct answer:", correctAnswer);
 	};
 
 	const checkAnswer = (answer) => {

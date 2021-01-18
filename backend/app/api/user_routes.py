@@ -18,6 +18,16 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+@user_routes.route("/<int:id>", methods=["PUT"])
+def addExp(id):
+    user = User.query.get(id)
+    print("User in exp", user)
+    user.exp = request.json['exp'] # or user.exp
+    db.session.commit()
+    print("User in exp", user)
+    return user.to_dict()
+
+
 # @user_routes.route('/exp', methods=['POST'])
 # @login_required
 # def exp_gain(id):

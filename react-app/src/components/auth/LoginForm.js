@@ -14,6 +14,7 @@ import {
 	Tabs,
 } from "@chakra-ui/react";
 import SignUpForm from "./SignUpForm";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const LoginForm = ({ authenticated, setAuthenticated, formTab }, props) => {
 	const [errors, setErrors] = useState([]);
@@ -25,6 +26,15 @@ const LoginForm = ({ authenticated, setAuthenticated, formTab }, props) => {
 	const onLogin = async (e) => {
 		e.preventDefault();
 		const user = await login(email, password);
+		if (!user.errors) {
+			setAuthenticated(true);
+		} else {
+			setErrors(user.errors);
+		}
+	};
+	const demoLogin = async (e) => {
+		// e.preventDefault();
+		const user = await login("demo@aa.io", "password");
 		if (!user.errors) {
 			setAuthenticated(true);
 		} else {
@@ -109,11 +119,11 @@ const LoginForm = ({ authenticated, setAuthenticated, formTab }, props) => {
 											placeholder="password"
 											bg="white"
 										/>
-										{/* <Link href="/sign-up">Sign up here</Link> */}
 									</div>
 									<Button type="submit" boxShadow="md">
 										Login
 									</Button>
+									<Button onClick={() => demoLogin()} boxShadow="md">Demo Login</Button>
 								</Stack>
 							</form>
 						</TabPanel>
