@@ -9,7 +9,7 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    print("USERS*********", users)
+    # print("USERS*********", dict(users))
     # sUsers = sorted(users.to_dict_full().exp)
     # print("sUSERS$$$$", sUsers)
     return {"users": [user.to_dict_full() for user in users]}
@@ -24,8 +24,8 @@ def user(id):
 @user_routes.route("/<int:id>", methods=["PUT"])
 def addExp(id):
     user = User.query.get(id)
-    print("User in exp", user)
-    user.exp = request.json['exp'] # or user.exp
+    print("User exp from request", request.json['exp'])
+    user.exp += request.json['exp'] # or user.exp
     db.session.commit()
     print("User in exp", user)
     return user.to_dict()

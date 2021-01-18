@@ -33,32 +33,13 @@ function Results(props) {
 				body: JSON.stringify({ exp: score }),
 			});
 			res = await res.json();
-			// console.log("res", res);
+			console.log("res", res);
 			if (res.errors) {
 				alert(res.errors[0]);
 				return;
 			}
 		})();
 	}, []);
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		let res = await fetch(`/api/users/${user.id}`, {
-	// 			method: "PUT",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 			},
-	// 			body: JSON.stringify({ exp: score }),
-	// 		});
-	// 		res = await res.json();
-	// 		console.log(score)
-	// 		console.log(res)
-	// 		if (res.errors) {
-	// 			alert(res.errors[0]);
-	// 			return;
-	// 		}
-	// 	})();
-	// }, [])
 
 	const handleClick = (path) => {
 		history.push(`/${path}`);
