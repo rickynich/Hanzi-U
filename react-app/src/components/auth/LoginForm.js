@@ -4,9 +4,7 @@ import { login } from "../../services/auth";
 import {
 	Box,
 	Button,
-	ButtonGroup,
-	Container,
-	Image,
+	Flex,
 	Input,
 	Stack,
 	Tab,
@@ -18,10 +16,12 @@ import {
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import SignUpForm from "./SignUpForm";
 
-const LoginForm = ({ authenticated, setAuthenticated }) => {
+const LoginForm = ({ authenticated, setAuthenticated, formTab }, props) => {
 	const [errors, setErrors] = useState([]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	// const { formTab } = props
+	console.log("formTab", formTab);
 
 	const onLogin = async (e) => {
 		e.preventDefault();
@@ -46,7 +46,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 	}
 
 	return (
-		<>
+		<Flex justify="center">
 			{/* <Box boxSize="xl">
 				<Image
 					src={require("../images/bruno-aguirre-qfZKpM0wjd8-unsplash.jpg")}
@@ -56,19 +56,22 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 				/>
 			</Box> */}
 			<Box
-				bg="blue.200"
+				bg="#CC232A"
 				width="350px"
 				margin="10px"
 				p={5}
 				boxShadow="sm"
 				rounded="lg"
+				textAlign="center"
 			>
 				<Tabs
 					variant="soft-rounded"
-					colorScheme="blue"
+					colorScheme="red"
+					bg="yellow.50"
 					isFitted
 					m={2}
-					defaultIndex={0}
+					defaultIndex={formTab}
+					rounded="lg"
 				>
 					<TabList>
 						<Tab>Login</Tab>
@@ -78,36 +81,41 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 						<TabPanel>
 							{/* Login form: */}
 							<form onSubmit={onLogin}>
-								<div>
-									{errors.map((error) => (
-										<div>{error}</div>
-									))}
-								</div>
-								<div>
-									<label htmlFor="email">Email</label>
-									<Input
-										name="email"
-										type="text"
-										placeholder="Email"
-										value={email}
-										onChange={updateEmail}
-									/>
-								</div>
-								<div>
-									<label htmlFor="password">Password</label>
-									<Input
-										name="password"
-										type="password"
-										placeholder="Password"
-										value={password}
-										onChange={updatePassword}
-									/>
-									<Stack spacing={2}>
-										<Button type="submit">Login</Button>
-										<Button type="submit">Sign Up Here</Button>
-									</Stack>
-									{/* <Link href="/sign-up">Sign up here</Link> */}
-								</div>
+								<Stack spacing={4}>
+									<div>
+										{errors.map((error) => (
+											<div>{error}</div>
+										))}
+									</div>
+									<div>
+										<label htmlFor="email"></label>
+										<Input
+											name="email"
+											type="text"
+											placeholder="Email"
+											value={email}
+											onChange={updateEmail}
+											placeholder="Email"
+											bg="white"
+										/>
+									</div>
+									<div>
+										<label htmlFor="password"></label>
+										<Input
+											name="password"
+											type="password"
+											placeholder="Password"
+											value={password}
+											onChange={updatePassword}
+											placeholder="password"
+											bg="white"
+										/>
+										{/* <Link href="/sign-up">Sign up here</Link> */}
+									</div>
+									<Button type="submit" boxShadow="md">
+										Login
+									</Button>
+								</Stack>
 							</form>
 						</TabPanel>
 						<TabPanel>
@@ -116,7 +124,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 					</TabPanels>
 				</Tabs>
 			</Box>
-		</>
+		</Flex>
 	);
 };
 

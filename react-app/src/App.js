@@ -47,12 +47,14 @@ function App() {
 				</Route>
 				<Route path="/login" exact={true}>
 					<LoginForm
+						formTab={0}
 						authenticated={authenticated}
 						setAuthenticated={setAuthenticated}
 					/>
 				</Route>
 				<Route path="/sign-up" exact={true}>
-					<SignUpForm
+					<LoginForm
+						formTab={1}
 						authenticated={authenticated}
 						setAuthenticated={setAuthenticated}
 					/>
@@ -85,11 +87,7 @@ function App() {
 				>
 					<DeckList />
 				</ProtectedRoute>
-				<ProtectedRoute
-					path="/quiz"
-					exact={true}
-					authenticated={authenticated}
-				>
+				<ProtectedRoute path="/quiz" exact={true} authenticated={authenticated}>
 					<QuizPage />
 				</ProtectedRoute>
 				<ProtectedRoute path="/" exact={true} authenticated={authenticated}>
