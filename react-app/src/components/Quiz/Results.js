@@ -20,7 +20,7 @@ function Results(props) {
 		(async () => {
 			const user = await authenticate();
 
-			console.log("User in useEffect for Home", user);
+			console.log("User in useEffect for Results", user.id);
 			if (!user.errors) {
 				setUser(user);
 				console.log("SetUser in Results component", user);
@@ -33,8 +33,7 @@ function Results(props) {
 				body: JSON.stringify({ exp: score }),
 			});
 			res = await res.json();
-			console.log("In Results useEffect, score", score);
-			console.log(res);
+			// console.log("res", res);
 			if (res.errors) {
 				alert(res.errors[0]);
 				return;

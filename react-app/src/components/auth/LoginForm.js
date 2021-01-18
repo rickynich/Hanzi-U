@@ -14,14 +14,11 @@ import {
 	Tabs,
 } from "@chakra-ui/react";
 import SignUpForm from "./SignUpForm";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const LoginForm = ({ authenticated, setAuthenticated, formTab }, props) => {
+const LoginForm = ({ authenticated, setAuthenticated, formTab }) => {
 	const [errors, setErrors] = useState([]);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	// const { formTab } = props
-	console.log("formTab", formTab);
 
 	const onLogin = async (e) => {
 		e.preventDefault();
