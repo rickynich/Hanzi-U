@@ -9,11 +9,14 @@ function UsersList() {
 		async function fetchData() {
 			const response = await fetch("/api/users/");
 			const responseData = await response.json();
+			console.log(responseData)
+			if(responseData.users.exp) setUsers(users.exp.sort()) //not working...
 			setUsers(responseData.users);
 		}
 		fetchData();
 	}, []);
-
+	
+	console.log(users)
 	const userComponents = users.map((user) => {
 		return (
 			<Flex justify="space-between">
