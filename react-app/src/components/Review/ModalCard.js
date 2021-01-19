@@ -1,4 +1,7 @@
-function BasicUsage() {
+import React from "react";
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+
+export default function ModalCard() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	return (
 		<>
@@ -10,7 +13,7 @@ function BasicUsage() {
 					<ModalHeader>Modal Title</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
-						<Lorem count={2} />
+						<p>hello</p>
 					</ModalBody>
 
 					<ModalFooter>
