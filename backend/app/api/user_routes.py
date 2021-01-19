@@ -9,9 +9,10 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
-    # print("USERS*********", dict(users))
-    # sUsers = sorted(users.to_dict_full().exp)
-    # print("sUSERS$$$$", sUsers)
+    # sUsers = [user.to_dict_full() for user in users]
+    # print("******************users.to dict", sUsers)
+    # sort_users = (sUsers, lambda x: x[3])
+    # print("******************users.to dict", sort_users)
     return {"users": [user.to_dict_full() for user in users]}
 
 

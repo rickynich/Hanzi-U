@@ -78,8 +78,6 @@ class User(db.Model, UserMixin):
       "username": self.username,
       "email": self.email,
       "exp": self.exp,
-      # "deck_completions": [deck.to_dict() for deck in self.deck_completions],
-      # "deck_tracking": [user.to_dict() for user in self.deck_tracking]
     }
 
 # def __repr__(self):

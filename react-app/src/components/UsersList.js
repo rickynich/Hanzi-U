@@ -10,14 +10,16 @@ function UsersList() {
 			const response = await fetch("/api/users/");
 			const responseData = await response.json();
 			console.log(responseData)
-			if(responseData.users.exp) setUsers(users.exp.sort()) //not working...
-			setUsers(responseData.users);
+			if (responseData.users.exp) setUsers(users.exp.sort()) //not working...
+			let sUsers = responseData.users;
+			// sUsers.sort((a,b ) => (a.exp > b.exp) ? 1: -1)
+			setUsers(sUsers);
 		}
 		fetchData();
 	}, []);
 	
 	console.log(users)
-	const userComponents = users.map((user) => {
+	const userComponents = users.slice(0).reverse().map((user) => {
 		return (
 			<Flex justify="space-between">
 				{/* <li key={user.id}> */}
