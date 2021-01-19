@@ -31,6 +31,7 @@ const NavBarContainer = (props) => {
 			opacity="0.8"
 			bg={["gray.200"]}
 			color={["black", "black", "primary.700", "primary.700"]}
+			// borderBottom="1px solid red"
 		>
 			{props.children}
 		</Flex>
