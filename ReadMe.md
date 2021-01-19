@@ -18,20 +18,18 @@ A simplified Chinese character learning app based on practicality and frequency 
 
     -test users' knowledge and promote progress
 
-#### 4. Review characters
-
-    -Review entire decks in an unrestricted way
-
-#### 5. Progress tracker
+#### 4. Progress tracker
 
     -track user progression and deck mastery
+    -leaderboard
 
 #### Bonus features:
     -review games: card matching 
+    -custom decks
 
 #### Components
 
-    1. CharacterCard
+    1. Card
         -displays all info on specific character
 
     2. Deck
@@ -39,14 +37,18 @@ A simplified Chinese character learning app based on practicality and frequency 
 
     3. DeckList
         -displays all available decks
+    
+    4. Quiz
+        -brings together the quiz components
+    
 
 
 #### Database
 
 ![database image](./HanziU_database.PNG)
--needs to be updated
 
 #### Technologies
     -Chakra UI
 #### References
     -character frequency based on https://hanzicraft.com/lists/frequency
+    -character definitions referenced from cc-cedict.org
