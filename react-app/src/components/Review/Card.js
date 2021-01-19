@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Text, Button, Container, Spacer } from "@chakra-ui/react";
+import {
+	Box,
+	Text,
+	Button,
+	Container,
+	Spacer,
+	Flex,
+	HStack,
+} from "@chakra-ui/react";
 // import ModalCard from "./ModalCard";
 import {
 	Modal,
@@ -20,23 +28,23 @@ function Card(props) {
 	// }
 
 	return (
-		<Box mb={7}>
+		<Box mb={7} onClick={onOpen} as="button">
 			<Box w="300px" h="300px" boxShadow="lg" rounded="md" bg="gray.200">
-				<Box bg="#FAEBD7">
-					<Text fontSize="4em" textAlign={["left", "center"]}>
+				<Box bg="#A3262A">
+					<Text fontSize="4em" textAlign={["left", "center"]} color="white">
 						{props.character.character}
 					</Text>
 				</Box>
-				<Box h="15vh" textAlign={["left"]}>
+				<Box h="15vh" textAlign={["left"]} mt={3}>
 					<Text>Pinyin: {props.character.pinyin}</Text>
 					<Text>Definition: {props.character.definition}</Text>
 					<Text>Hint/reminder: {props.character.hint}</Text>
 				</Box>
 				{/* <Button onClick={onOpen}>View Card</Button> */}
 				<Container>
-					<Button onClick={onOpen}>View Card</Button>
+					{/* <Button onClick={onOpen}>View Card</Button> */}
 
-					<Modal isOpen={isOpen} onClose={onClose}>
+					<Modal isOpen={isOpen} onClose={onClose} autoFocus="true">
 						<ModalOverlay />
 						<ModalContent>
 							<Text fontSize="4em" textAlign={["left", "center"]}>
@@ -44,12 +52,21 @@ function Card(props) {
 							</Text>
 							<ModalCloseButton />
 							<ModalBody>
-								<Text>Pinyin: {props.character.pinyin}</Text>
-								<Text>Definition: {props.character.definition}</Text>
-								<Text>Hint/reminder: {props.character.hint}</Text>
+								<HStack>
+									<Text>Pinyin: </Text>
+									<Text>{props.character.pinyin}</Text>
+								</HStack>
+								<HStack>
+									<Text>Definition: </Text>
+									<Text>{props.character.definition}</Text>
+								</HStack>
+								<HStack>
+									<Text>Hint/reminder: </Text>
+									<Text>{props.character.hint}</Text>
+								</HStack>
 							</ModalBody>
 
-							<ModalFooter justifyContent="space-between">
+							<ModalFooter>
 								{/* <Button variant="ghost" mr={3}>
 									Add to deck
 								</Button> */}
