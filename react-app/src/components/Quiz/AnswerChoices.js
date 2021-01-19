@@ -1,13 +1,10 @@
 import {
 	Flex,
-	HStack,
-	Radio,
 	RadioGroup,
 	Stack,
 	useRadioGroup,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
-import { useDeck } from "../Context/DeckContext";
 import RadioCard from "./RadioCard";
 
 function Answers(props) {
@@ -30,7 +27,7 @@ function Answers(props) {
 	const group = getRootProps();
 	return (
 		<Flex w="100%" justify="center">
-			<RadioGroup onChange={setValue} value={value} size="lg">
+			<RadioGroup onChange={setValue} value={value} size="lg" mb="30px">
 				<Stack spacing={4} direction="row">
 					{choices.map((choice) => {
 						const radio = getRadioProps({ choice })

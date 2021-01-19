@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { ThemeProvider, Box, Text, useRadio } from "@chakra-ui/react";
+import React from "react";
+import {  Box, Text, useRadio } from "@chakra-ui/react";
 
 // antique white: #FAEBD7
 function RadioCard(props) {

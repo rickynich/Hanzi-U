@@ -1,5 +1,5 @@
 //React
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 //Chakra

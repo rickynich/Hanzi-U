@@ -7,7 +7,6 @@ import {
 	Box,
 	Button,
 	ButtonGroup,
-	Container,
 	Flex,
 	Text,
 } from "@chakra-ui/react";
@@ -76,7 +75,7 @@ function Quiz() {
 	if (!deck) return null;
 
 	const nextQuestion = () => {
-		if (questionNum == deck.characters.length - 1) {
+		if (questionNum === deck.characters.length - 1) {
 			console.log("You've reached the end");
 			setEnd(true);
 		}
@@ -116,11 +115,12 @@ function Quiz() {
 							questionNum={questionNum}
 							choices={choices}
 							setChoices={setChoices}
-							checkAnswer={checkAnswer}
+								checkAnswer={checkAnswer}
+								mb={6}
 						/>
 						<Question
 							questionDeck={deck.characters}
-							questionNum={questionNum}
+								questionNum={questionNum}
 						/>
 						<Box>
 							<ButtonGroup>
@@ -136,7 +136,7 @@ function Quiz() {
 								</Button>
 							</ButtonGroup>
 						</Box>
-						<Text>Current score: {score}</Text>
+						<Text m="20px">Current score: {score}</Text>
 					</Flex>
 				</>
 			)}

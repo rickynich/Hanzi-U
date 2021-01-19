@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import React from "react";
 import { logout } from "../../services/auth";
 
@@ -7,7 +8,7 @@ const LogoutButton = ({setAuthenticated}) => {
     setAuthenticated(false);
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <Button onClick={onLogout}>Logout</Button>;
 };
 
 export default LogoutButton;

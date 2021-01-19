@@ -29,7 +29,11 @@ function Home(props) {
 	};
 	// console.log("Home page props", props)
 	return (
-		<Flex align="center" direction="column">
+		<Flex
+			align="center"
+			direction="column"
+			justify={{ base: "center", md: "space-around", xl: "space-between" }}
+		>
 			<Heading mb={10}>
 				<strong>Welcome, {user.username}!</strong>
 			</Heading>
@@ -45,14 +49,15 @@ function Home(props) {
 					Leaderboard
 				</Button>
 			</ButtonGroup>
-			<Box w={{ md: "30%" }} >
-				<UsersList />
+			<Box w={{ md: "30%" }}>
+				<UsersList size="md" />
 				<Image
 					src={"clark-gu-thaqlzZPgl4-unsplash.jpg"}
 					size="100%"
 					rounded="1rem"
 					shadow="2xl"
 					alt="home image"
+					w={{ base: "80%", sm: "60%", md: "100%" }}
 				/>
 			</Box>
 		</Flex>

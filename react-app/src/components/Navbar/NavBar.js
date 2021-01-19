@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import { RiAncientGateLine } from "react-icons/ri";
-import { AiOutlineClose } from "react-icons/ai";
-import { Box, Flex, HStack, MenuIcon, Stack, Text } from "@chakra-ui/react";
+// import { AiOutlineClose } from "react-icons/ai";
+import { Flex, HStack, MenuIcon, Stack, Text } from "@chakra-ui/react";
 import Logo from "./Logo";
-// RiAncientGateLine;
 
-const MenuToggle = ({ toggle, isOpen }) => {
-	//will show and hide menu using display
-	return (
-		<Box display={{ base: "block", md: "none" }} onClick={toggle}>
-			{isOpen ? <AiOutlineClose /> : <MenuIcon />}
-		</Box>
-	);
-};
+// const MenuToggle = ({ toggle, isOpen }) => {
+// 	//will show and hide menu using display
+// 	return (
+// 		<Box display={{ base: "block", md: "none" }} onClick={toggle}>
+// 			{isOpen ? <AiOutlineClose /> : <MenuIcon />}
+// 		</Box>
+// 	);
+// };
 
 const NavBarContainer = (props) => {
 	return (
@@ -26,28 +25,28 @@ const NavBarContainer = (props) => {
 			w="100%"
 			mb={8}
 			p={8}
+			fontWeight="bold"
 			// bg="blue"
 			// color="black"
-			bg={["primary.500", "blue.200", "blue.200", "blue.200"]}
-			color={["white", "white", "primary.700", "primary.700"]}
+			opacity="0.8"
+			bg={["gray.200"]}
+			color={["black", "black", "primary.700", "primary.700"]}
 		>
 			{props.children}
 		</Flex>
 	);
 };
 
-const NavBar = ({ setAuthenticated }) => {
+const NavBar = ({ authenticated, setAuthenticated }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const toggle = () => setIsOpen(!isOpen);
+
+	// const toggle = () => setIsOpen(!isOpen);
 
 	return (
 		<Flex>
 			<NavBarContainer>
 				<HStack>
 					<Logo />
-					{/* <NavLink to="/" exact={true} activeClassName="active">
-						Home
-					</NavLink> */}
 					{/* <NavLink to="/landing" exact={true} activeClassName="active">
 						Landing
 					</NavLink> */}
@@ -60,23 +59,18 @@ const NavBar = ({ setAuthenticated }) => {
 							<Text>Students</Text>
 						</Stack>
 					</NavLink>
-					<NavLink to="/login" exact={true} activeClassName="active">
-						Login
-					</NavLink>
-
-					<NavLink to="/sign-up" exact={true} activeClassName="active">
-						Sign Up
-					</NavLink>
-					<LogoutButton setAuthenticated={setAuthenticated} />
+					{!authenticated && (
+						<>
+							<NavLink to="/login" exact={true} activeClassName="active">
+								Login
+							</NavLink>
+							<NavLink to="/sign-up" exact={true} activeClassName="active">
+								Sign Up
+							</NavLink>
+						</>
+					)}
+					{authenticated && <LogoutButton setAuthenticated={setAuthenticated} />}
 				</HStack>
-
-				{/* <NavLink to="/decks" exact={true} activeClassName="active">
-				Decks
-			</NavLink>
-
-			<NavLink to="/quiz" exact={true} activeClassName="active">
-        Quizzes
-			</NavLink> */}
 			</NavBarContainer>
 		</Flex>
 	);

@@ -1,9 +1,14 @@
 //React:
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import { NavLink } from "react-router-dom";
 
 //Chakra:
-import { Button, SimpleGrid } from "@chakra-ui/react";
+import {
+	Button,
+	Flex,
+	Heading,
+	HStack,
+} from "@chakra-ui/react";
 
 //context:
 import { useDeck } from "../Context/DeckContext";
@@ -18,37 +23,40 @@ function DeckList() {
 
 	const deckComponents = decks.map((deck) => {
 		return (
-			<li key={deck.id}>
-				<Button
-					id={deck.id}
-					onClick={() => {
-						setDeck(deck);
-						// console.log("e.target.value", e.target.id);
-					}}
-				>
-					{deck.name}
-				</Button>
-			</li>
+			<Button
+				id={deck.id}
+				onClick={() => {
+					setDeck(deck);
+				}}
+			>
+				{deck.name}
+			</Button>
 		);
 	});
 
-	const charComponents = deck && deck.characters.map((character) => {
-		return (
-			<>
-				<Card character={character} />
-			</>
-		);
-	});
+	const charComponents =
+		deck &&
+		deck.characters.map((character) => {
+			return <Card character={character} />;
+		});
 
 	return (
-		<>
-			<h1>Deck List: </h1>
-			<ul>{deckComponents}</ul>
-			<h1>Deck Hanzi:</h1>
-			<SimpleGrid columns={2} spacing={10}>
+		<Flex direction="column">
+			<Flex>
+				<Heading size="lg" mb={3} mr={3}>
+					Deck List:{" "}
+				</Heading>
+				<HStack mb={6}>{deckComponents}</HStack>
+			</Flex>
+			<Flex>
+				<Heading mb={3} size="lg">
+					Deck Hanzi:
+				</Heading>
+			</Flex>
+			<Flex m={6} wrap="wrap" direction="row" justify="space-between" spacing={10}>
 				{charComponents}
-			</SimpleGrid>
-		</>
+			</Flex>
+		</Flex>
 	);
 }
 export default DeckList;

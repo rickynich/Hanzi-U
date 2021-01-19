@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { ThemeProvider, Box, Text, Button } from "@chakra-ui/react";
+import React from "react";
+import { Box, Text, Button } from "@chakra-ui/react";
 
 // antique white: #FAEBD7
 function Card(props) {
 	// console.log("Card props", props);
 	return (
-		<Box>
+		<Box mb={7}>
 			<Box w="300px" h="300px" boxShadow="lg" rounded="md" bg="gray.200">
-				<Box bg="#FAEBD7">
+				<Box bg="#FAEBD7" >
 					<Text fontSize="4em" textAlign={["left", "center"]}>
 						{props.character.character}
 					</Text>

@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { authenticate } from "./services/auth";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/Navbar/NavBar";
 import { DeckProvider } from "./components/Context/DeckContext"
 import UsersList from "./components/UsersList";
@@ -38,7 +37,7 @@ function App() {
   return (
 		<DeckProvider>
 			<BrowserRouter>
-				<NavBar setAuthenticated={setAuthenticated} />
+				<NavBar setAuthenticated={setAuthenticated} authenticated={authenticated} />
 				<Route path="/landing" exact={true}>
 					<LandingPage
 						authenticated={authenticated}

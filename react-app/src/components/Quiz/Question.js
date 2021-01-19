@@ -1,6 +1,6 @@
 // import { Button, Radio, RadioGroup, Stack } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import { Flex, Text } from "@chakra-ui/react";
+import React from "react";
 // import { useDeck } from "../Context/DeckContext";
 //custom components:
 
@@ -8,10 +8,10 @@ import React, { useState, useEffect } from "react";
 function Question(props) {
       const {questionNum} = props
 	return (
-		<>
-			<Text>pinyin: {props.questionDeck[questionNum].pinyin}</Text>
-			<Text>definition: {props.questionDeck[questionNum].definition}</Text>
-		</>
+		<Flex direction="column" mb="30px" align="center">
+			<Text fontWeight="bold">{props.questionDeck[questionNum].pinyin}</Text>
+			<Text>{props.questionDeck[questionNum].definition}</Text>
+		</Flex>
 	);
 }
 
