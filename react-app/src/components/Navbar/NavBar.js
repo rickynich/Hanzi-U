@@ -24,7 +24,7 @@ const NavBarContainer = (props) => {
 			wrap="wrap"
 			w="100%"
 			mb={8}
-			p={8}
+			p={3}
 			fontWeight="bold"
 			// bg="blue"
 			// color="black"
@@ -53,12 +53,12 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 				</HStack>
 
 				<HStack>
-					<NavLink to="/users" exact={true} activeClassName="active">
+					{authenticated && <NavLink to="/users" exact={true} activeClassName="active">
 						<Stack spacing="0" direction="column" align="center">
 							<RiAncientGateLine size="30px" />
 							<Text>Students</Text>
 						</Stack>
-					</NavLink>
+					</NavLink>}
 					{!authenticated && (
 						<>
 							<NavLink to="/login" exact={true} activeClassName="active">
