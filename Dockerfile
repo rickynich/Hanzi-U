@@ -21,7 +21,7 @@ EXPOSE 8000
 
 WORKDIR /var/www
 COPY backend/. .
-COPY --from=build-stage /react-app/build/* backend/app/static/
+COPY --from=build-stage /react-app/build/* app/static/
 
 # Install Python Dependencies
 RUN pip install -r requirements.txt

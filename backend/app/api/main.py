@@ -3,9 +3,9 @@ from app.models import User, Character, Deck
 
 bp = Blueprint('',__name__)
 
-@bp.route('/')
-def index():
-    return '<h1>Hanzi U<h1><h2>Welcome!</h2>'
+# @bp.route('/')
+# def index():
+#     return '<h1>Hanzi U<h1><h2>Welcome!</h2>'
 
 #use for testing for now
 @bp.route('/characters')

@@ -52,7 +52,7 @@ function Home(props) {
 			<Box w={{ md: "30%" }}>
 				<UsersList size="md" />
 				<Image
-					src={"clark-gu-thaqlzZPgl4-unsplash.jpg"}
+					src={require("../images/clark-gu-thaqlzZPgl4-unsplash.jpg")}
 					size="100%"
 					rounded="1rem"
 					shadow="2xl"
