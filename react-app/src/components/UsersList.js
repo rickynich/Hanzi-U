@@ -43,7 +43,9 @@ function UsersList() {
 			>
 				Student Leaderboard:{" "}
 			</Heading>
-			<Text opacity="0.8" mb={6}>{userComponents}</Text>
+			<Text opacity="0.8" mb={6}>
+				{userComponents}
+			</Text>
 		</Container>
 	);
 }

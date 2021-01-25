@@ -29,7 +29,7 @@ function QuizPage() {
 	});
 
 	return (
-		<Flex direction="column">
+		<Flex direction="column" height="100%">
 			<Heading size="lg" mb={3} mr={3}>
 				Deck List:{" "}
 			</Heading>

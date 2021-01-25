@@ -50,7 +50,7 @@ function Home(props) {
 				</Button>
 			</ButtonGroup>
 			<Box w={{ md: "30%" }}>
-				<UsersList size="md" />
+				<UsersList size="md"  height="30px"/>
 				<Image
 					src={require("./images/clark-gu-thaqlzZPgl4-unsplash.jpg")}
 					size="100%"

@@ -14,6 +14,7 @@ function LandingPage() {
 			minH="70vh"
 			px={8} //padding left and right
 			mb={16} //margin bottom
+			height="100%"
 		>
 			<Stack
 				spacing={4}
@@ -34,8 +35,8 @@ function LandingPage() {
 					lineHeight={1.5}
 					textAlign={["center", "center", "left", "left"]}
 				>
-					Learn Chinese characters(hanzi) the practical way - based on frequency of appearance!
-					快了， 快乐学习!
+					Learn Chinese characters(hanzi) the practical way - based on frequency
+					of appearance! 快了， 快乐学习!
 				</Heading>
 				<Link to="/sign-up">
 					<Button

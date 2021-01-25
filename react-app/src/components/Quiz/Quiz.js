@@ -106,7 +106,7 @@ function Quiz() {
 				<Results score={score} wrongAnswers={wrongAnswers} />
 			) : (
 				<>
-					<Flex direction="column" align="center" m={6}>
+					<Flex direction="column" align="center" m={6} height="100%">
 						<Text mb={8}>Welcome to the {deck.name} quiz!</Text>
 						{/* <Container>
 							<Text alignItems="0">{questionNum + 1})</Text>
@@ -115,12 +115,12 @@ function Quiz() {
 							questionNum={questionNum}
 							choices={choices}
 							setChoices={setChoices}
-								checkAnswer={checkAnswer}
-								mb={6}
+							checkAnswer={checkAnswer}
+							mb={6}
 						/>
 						<Question
 							questionDeck={deck.characters}
-								questionNum={questionNum}
+							questionNum={questionNum}
 						/>
 						<Box>
 							<ButtonGroup>
