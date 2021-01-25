@@ -24,7 +24,7 @@ A simplified Chinese character learning app based on practicality and frequency 
     -leaderboard
 
 #### Bonus features:
-    -review games: card matching 
+    -quiz timer
     -custom decks
 
 #### Components
