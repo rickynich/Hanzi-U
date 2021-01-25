@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
-import { RiAncientGateLine } from "react-icons/ri";
-// import { AiOutlineClose } from "react-icons/ai";
-import { Flex, HStack, MenuIcon, Stack, Text } from "@chakra-ui/react";
+import React from "react";
+import { SiAngellist, SiLinkedin } from "react-icons/si";
+import { AiOutlineGithub } from "react-icons/ai";
+import { Flex, HStack } from "@chakra-ui/react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 // const MenuToggle = ({ toggle, isOpen }) => {
 // 	//will show and hide menu using display
@@ -18,9 +17,9 @@ const FooterContainer = (props) => {
 	return (
 		<Flex
 			// as="nav"
-			align="end"
-            justify="space-between"
-			wrap="wrap"
+			align="flex-end"
+			justify="space-between"
+			// wrap="wrap"
 			w="100%"
 			mt={8}
 			p={3}
@@ -41,39 +40,22 @@ const FooterContainer = (props) => {
 	);
 };
 
-const Footer = ({ authenticated, setAuthenticated }) => {
+const Footer = () => {
 	return (
-			<FooterContainer>
-				<HStack>
-					{/* <NavLink to="/landing" exact={true} activeClassName="active">
-						Landing
-					</NavLink> */}
-				</HStack>
-
-				<HStack>
-					{authenticated && (
-						<NavLink to="/users" exact={true} activeClassName="active">
-							<Stack spacing="0" direction="column" align="center">
-								<RiAncientGateLine size="30px" />
-								<Text>Students</Text>
-							</Stack>
-						</NavLink>
-					)}
-					{!authenticated && (
-						<>
-							<NavLink to="/login" exact={true} activeClassName="active">
-								Login
-							</NavLink>
-							<NavLink to="/sign-up" exact={true} activeClassName="active">
-								Sign Up
-							</NavLink>
-						</>
-					)}
-					{authenticated && (
-						<LogoutButton setAuthenticated={setAuthenticated} />
-					)}
-				</HStack>
-			</FooterContainer>
+		<FooterContainer>
+			{/* <Flex isInline="true" direction="row-reverse" width="100px"> */}
+			<Flex >
+				<a href="https://www.linkedin.com/in/nicholas-richard-77a9a066/">
+					<SiLinkedin size="30px" />
+				</a>{" "}
+				<a href="https://github.com/rickynich/Hanzi-U" target="_blank">
+					<AiOutlineGithub size="30px" />
+				</a>
+				<a href="https://angel.co/u/nicholas-richard">
+					<SiAngellist size="30px" />
+				</a>{" "}
+			</Flex>
+		</FooterContainer>
 	);
 };
 
