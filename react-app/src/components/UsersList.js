@@ -20,9 +20,9 @@ function UsersList() {
 
 	console.log(users);
 	const userComponents = users
-		.slice(0)
-		.reverse()
+		.slice(0).sort((a, b) => a.exp > b.exp ? -1:1)
 		.map((user) => {
+			console.log("user in users", user)
 			return (
 				<Flex justify="space-between">
 					{/* <li key={user.id}> */}

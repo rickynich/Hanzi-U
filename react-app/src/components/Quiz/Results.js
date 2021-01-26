@@ -45,50 +45,13 @@ function Results(props) {
 		history.push(`/${path}`);
 	};
 
-	// 		const addExp = () => {
-	// 	// e.preventDefault();
-	// 	let res = await fetch(`/api/users/${user.id}`, {
-	// 		method: "PUT",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 		},
-	// 		body: JSON.stringify({ exp:score }),
-	// 	});
-	// 	res = await res.json();
-	// 	if (res.errors) {
-	// 		alert(res.errors[0]);
-	// 		return;
-	// 	}
-	// }()
-	// const handleExp = () => {
-	// 		fetch("http://localhost:5000/api/users/exp", {
-	// 			method: "POST",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 			},
-	// 			body: JSON.stringify({
-	// 				exp: score,
-	// 			}),
-	// 		})  .then((response) => console.log(response.json()))
-	// 			// .then((response) => response.json())
-	// 			// .then((json) => {
-	// 			// 	const accessToken = json.access_token;
-	// 			// 	this.props.onLogin(accessToken);
-	// 			// })
-	// 			.catch((error) => {
-	// 				console.log("Error in exp post", error)
-	// 			});
-	// };
-
-	// handleExp()
-
 	return (
-		<Container>
+		<Container height="100%">
 			<Stack justify="center" textAlign="center" p={6} spacing="16px">
 				<Heading>You scored {score} out of 20</Heading>
 				<Text>Study up on: </Text>
 				{wrongAnswers.map((wrongAnswer) => {
-					return <Text>{wrongAnswer}</Text>;
+					return <Text fontSize="30px">{wrongAnswer}</Text>;
 				})}
 				<Button
 					onClick={() => {

@@ -39,7 +39,7 @@ const NavBarContainer = (props) => {
 };
 
 const NavBar = ({ authenticated, setAuthenticated }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	// const [isOpen, setIsOpen] = useState(false);
 
 	// const toggle = () => setIsOpen(!isOpen);
 
@@ -48,18 +48,14 @@ const NavBar = ({ authenticated, setAuthenticated }) => {
 			<NavBarContainer>
 				<HStack>
 					<Logo />
-					{/* <NavLink to="/landing" exact={true} activeClassName="active">
-						Landing
-					</NavLink> */}
 				</HStack>
-
 				<HStack>
-					{authenticated && <NavLink to="/users" exact={true} activeClassName="active">
+					{/* {authenticated && <NavLink to="/users" exact={true} activeClassName="active">
 						<Stack spacing="0" direction="column" align="center">
 							<RiAncientGateLine size="30px" />
 							<Text>Students</Text>
 						</Stack>
-					</NavLink>}
+					</NavLink>} */}
 					{!authenticated && (
 						<>
 							<NavLink to="/login" exact={true} activeClassName="active">

@@ -52,7 +52,7 @@ const LoginForm = ({ authenticated, setAuthenticated, formTab }) => {
 	}
 
 	return (
-		<Flex justify="center">
+		<Flex justify="center" mb="40%">
 			{/* <Box boxSize="xl">
 				<Image
 					src={require("../images/bruno-aguirre-qfZKpM0wjd8-unsplash.jpg")}
