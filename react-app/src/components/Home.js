@@ -33,9 +33,10 @@ function Home(props) {
 			align="center"
 			direction="column"
 			justify={{ base: "center", md: "space-around", xl: "space-between" }}
+			height="100%"
 		>
 			<Heading mb={10}>
-				<strong>Welcome, {user.username}!</strong>
+				<strong>Welcome to Hanzi U, {user.username}!</strong>
 			</Heading>
 			<ButtonGroup mb={12}>
 				<Button width="150px" onClick={() => handleClick("decks")}>
@@ -50,7 +51,7 @@ function Home(props) {
 				</Button>
 			</ButtonGroup>
 			<Box w={{ md: "30%" }}>
-				<UsersList size="md"  height="30px"/>
+				{/* <UsersList size="md"  height="10px"/> */}
 				<Image
 					src={require("./images/clark-gu-thaqlzZPgl4-unsplash.jpg")}
 					size="100%"

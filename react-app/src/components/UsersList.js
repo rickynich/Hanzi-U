@@ -34,7 +34,7 @@ function UsersList() {
 		});
 
 	return (
-		<Container>
+		<Container height="100%">
 			<Heading
 				size="md"
 				fontWeight="normal"
