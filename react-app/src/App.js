@@ -17,7 +17,6 @@ import { Flex, Text } from "@chakra-ui/react";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);
-	const [currentUser, setCurrentUser] = useState()
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {

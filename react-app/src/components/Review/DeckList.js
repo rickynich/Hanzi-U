@@ -43,8 +43,8 @@ function DeckList() {
 		});
 
 	return (
-		<Flex height="200%" direction="column">
-			<Flex>
+		<Flex height="200%" direction="column" width="100%">
+			<Flex >
 				<Heading size="lg" mb={3} mr={3}>
 					Deck List:{" "}
 				</Heading>

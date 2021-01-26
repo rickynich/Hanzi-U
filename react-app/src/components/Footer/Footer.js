@@ -2,7 +2,7 @@ import React from "react";
 import { SiAngellist, SiLinkedin } from "react-icons/si";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
-import { Flex, Grid, HStack } from "@chakra-ui/react";
+import { Flex, Grid, HStack, Text } from "@chakra-ui/react";
 
 
 // const MenuToggle = ({ toggle, isOpen }) => {
@@ -56,7 +56,8 @@ const Footer = () => {
 					<a href="https://github.com/rickynich/Hanzi-U" target="_blank">
 						<AiOutlineGithub size="30px" />
 					</a>
-				</Flex>
+                </Flex>
+                <Text>Created by Nick Richard</Text>
 				<Flex mx="6px">
 					<a href="https://angel.co/u/nicholas-richard">
 						<SiAngellist size="28px" />
