@@ -1,8 +1,9 @@
 import React from "react";
 import { SiAngellist, SiLinkedin } from "react-icons/si";
 import { AiOutlineGithub } from "react-icons/ai";
+import { FaEnvelope } from "react-icons/fa";
 import { Flex, Grid, HStack } from "@chakra-ui/react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 
 // const MenuToggle = ({ toggle, isOpen }) => {
 // 	//will show and hide menu using display
@@ -50,17 +51,22 @@ const Footer = () => {
 					>
 						<SiLinkedin size="29px" />
 					</a>
-                </Flex>
-                <Flex mx="6px">
-                    <a href="https://github.com/rickynich/Hanzi-U" target="_blank">
-                        <AiOutlineGithub size="30px" />
-                    </a>
-                </Flex>
-                <Flex mx="6px">
-                        <a href="https://angel.co/u/nicholas-richard">
-                            <SiAngellist size="28px" />
-                        </a>
-                </Flex>
+				</Flex>
+				<Flex mx="6px">
+					<a href="https://github.com/rickynich/Hanzi-U" target="_blank">
+						<AiOutlineGithub size="30px" />
+					</a>
+				</Flex>
+				<Flex mx="6px">
+					<a href="https://angel.co/u/nicholas-richard">
+						<SiAngellist size="28px" />
+					</a>
+				</Flex>
+				<Flex mx="6px">
+					<a href={`mailto:nrich414@gmail.com`}>
+						<FaEnvelope size="28px" />
+					</a>
+				</Flex>
 			</Flex>
 		</FooterContainer>
 	);
