@@ -23,7 +23,7 @@ def upgrade():
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    op.bulk_insert(decks_table, [{"name":"Level 1 - Top 20"}]) 
+    op.bulk_insert(decks_table, [{"name":"Level 1"}]) 
     op.bulk_insert(decks_table, [{"name":"Level 2"}]) 
 
     characters_table = op.create_table('characters',
