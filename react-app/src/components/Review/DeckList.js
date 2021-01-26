@@ -3,21 +3,18 @@ import React, { useState } from "react";
 // import { NavLink } from "react-router-dom";
 
 //Chakra:
-import {
-	Button,
-	Flex,
-	Heading,
-	HStack,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 
 //context:
 import { useDeck } from "../Context/DeckContext";
 //custom components:
 import Card from "./Card";
+import { RiTruckLine } from "react-icons/ri";
 
 function DeckList() {
 	const [deck, setDeck] = useState();
 	const decks = useDeck(); //uses DeckContext
+	const [selected, setSelected] = useState(false);
 
 	if (decks.length == 0) return null;
 
@@ -27,9 +24,14 @@ function DeckList() {
 				id={deck.id}
 				onClick={() => {
 					setDeck(deck);
+					setSelected(true);
 				}}
-			>
-				{deck.name}
+				height="70px"
+				>
+				<VStack>
+					<Text>{deck.name}</Text>
+					<Text>第 {deck.id}</Text>
+				</VStack>
 			</Button>
 		);
 	});
@@ -41,7 +43,7 @@ function DeckList() {
 		});
 
 	return (
-		<Flex height="200%">
+		<Flex height="200%" direction="column">
 			<Flex>
 				<Heading size="lg" mb={3} mr={3}>
 					Deck List:{" "}
@@ -49,50 +51,22 @@ function DeckList() {
 				<HStack mb={6}>{deckComponents}</HStack>
 			</Flex>
 			<Flex>
-				<Heading mb={3} size="lg">
-					Deck Hanzi:
-				</Heading>
+				{selected && (
+					<Heading mb={3} size="lg">
+						Deck Hanzi:
+					</Heading>
+				)}
 			</Flex>
-			<Flex m={6} wrap="wrap" direction="row" justify="space-between" spacing={10}>
+			<Flex
+				m={6}
+				wrap="wrap"
+				direction="row"
+				justify="space-between"
+				spacing={10}
+			>
 				{charComponents}
 			</Flex>
 		</Flex>
 	);
 }
 export default DeckList;
-
-//Graveyard:
-
-// useEffect(() => {
-// 	async function fetchData() {
-// 		const response = await fetch(`/api/decks/${deck}`);
-// 		const responseData = await response.json();
-// 		console.log("response data", responseData);
-// 		setCharacters(responseData);
-// 	}
-// 	fetchData();
-// 	setIsLoaded(true);
-// }, [deck]);
-// const getDeck = (deckId) => {
-// 	fetch(`/api/decks/${deckId}`)
-// 		.then((response) => response.json())
-// 		.then((responseData) => setCharacters(responseData));
-// 	console.log("Hit it! In the getDeck function. characters:", characters);
-// };
-
-//maps over all the characters in a deck and renders
-
-// function charComponents(deck) {
-// 	let deckCharacters = deck.characters
-// 	// console.log("characters in deck", deckCharacters);
-// 	deckCharacters.map((character) => {
-// 		// console.log("deck in the charComponents loop", deck);
-// 		// console.log("character in the map of the charComponent", character.character)
-// 		return (
-// 			<li key={character.id}>
-// 				{/* <NavLink to={`/decks/${deck.id}`}>{deck.name}</NavLink> */}
-// 				<p>{character.character}</p>
-// 			</li>
-// 		);
-// 	});
-// }
