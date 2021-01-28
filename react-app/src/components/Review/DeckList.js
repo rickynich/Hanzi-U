@@ -25,8 +25,11 @@ function DeckList() {
 					setDeck(deck);
 					setSelected(true);
 				}}
-				height="70px"
-				>
+				height="150px"
+				width="115px"
+				m={3}
+				colorScheme="blue"
+			>
 				<VStack>
 					<Text>{deck.name}</Text>
 					<Text>第 {deck.id}</Text>
@@ -42,12 +45,12 @@ function DeckList() {
 		});
 
 	return (
-		<Flex height="200%" direction="column" width="100%">
-			<Flex >
-				<Heading size="lg" mb={3} mr={3}>
-					Deck List:{" "}
-				</Heading>
-				<HStack mb={6}>{deckComponents}</HStack>
+		<Flex height="200%" direction="column" width="100%" align="center">
+			<Heading size="lg" mb={3} mr={3}>
+				Decks:{" "}
+			</Heading>
+			<Flex mb={6} justify="space-around" width="40%">
+				{deckComponents}
 			</Flex>
 			<Flex>
 				{selected && (
