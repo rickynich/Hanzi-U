@@ -3,7 +3,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 //Chakra
-import { Button, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { useDeck } from "../Context/DeckContext";
 
 //context:
@@ -26,8 +26,19 @@ function QuizPage() {
 				height="150px"
 				width="115px"
 				colorScheme="red"
+				bg="#A3262A"
 				m={3}
 				// minWidth="20"
+				_active={{
+					bg: "#dddfe2",
+					transform: "scale(0.98)",
+					borderColor: "#bec3c9",
+				}}
+				_hover={{
+					bg: "#ebedf0",
+					color: "#A3262A",
+					// borderColor: "#A3262A",
+				}}
 			>
 				<VStack>
 					<Text>{deck.name}</Text>

@@ -34,16 +34,17 @@ function Card(props) {
 					<Text>Pinyin: {props.character.pinyin}</Text>
 					<Text>Definition: {props.character.definition}</Text>
 					<Text>Hint/reminder: {props.character.hint}</Text>
+					<Text>Decomposition: {props.character.decomposition}</Text>
 				</Box>
 				<Container>
 					<Modal isOpen={isOpen} onClose={onClose} autoFocus="true">
 						<ModalOverlay />
-						<ModalContent>
-							<Text fontSize="4em" textAlign={["left", "center"]}>
+						<ModalContent alignSelf="center">
+							<Text fontSize="4em" textAlign={["left", "center"]} mt={6}>
 								{props.character.character}
 							</Text>
 							<ModalCloseButton />
-							<ModalBody>
+							<ModalBody mt={4}>
 								<HStack>
 									<Text>Pinyin: </Text>
 									<Text>{props.character.pinyin}</Text>
@@ -51,6 +52,10 @@ function Card(props) {
 								<HStack>
 									<Text>Definition: </Text>
 									<Text>{props.character.definition}</Text>
+								</HStack>
+								<HStack>
+									<Text>Decomposition: </Text>
+									<Text>{props.character.decomposition}</Text>
 								</HStack>
 								<HStack>
 									<Text>Hint/reminder: </Text>
