@@ -25,6 +25,7 @@ def upgrade():
     )
     op.bulk_insert(decks_table, [{"name":"Level 1"}]) 
     op.bulk_insert(decks_table, [{"name":"Level 2"}]) 
+    op.bulk_insert(decks_table, [{"name":"Level 3"}]) 
 
     characters_table = op.create_table('characters',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -367,6 +368,170 @@ def upgrade():
 		"pinyin": "yú",
 		"decomposition": "⿻二亅",
 		"hint": " 一, 一, 丨, 亅",
+	},
+]
+) 
+## Level 3 deck
+    op.bulk_insert(characters_table, [
+	{
+		"character": "着",
+        "deck_id": 3,
+		"definition": "to make a move, to take action; aspect particle indicating action in progress",
+		"pinyin": "zhe",
+		"decomposition": "⿸羊目",
+		"hint": "radical: 目",
+	},
+	{
+		"character": "下",
+        "deck_id": 3,
+		"definition": "below, underneath; inferior; to bring down; next",
+		"pinyin": "xià",
+		"decomposition": "⿱一卜",
+		"hint": "One stroke under another",
+	},
+	{
+		"character": "自",
+        "deck_id": 3,
+		"definition": "self; private, personal; from",
+		"pinyin": "zì",
+		"decomposition": "⿻目",
+		"hint": "A nose; in China, people refer to themselves by pointing to their noses",
+	},
+	{
+		"character": "之",
+        "deck_id": 3,
+		"definition": "marks preceding phrase as modifier of following phrase; it, him her, them; to go to",
+		"pinyin": "zhī",
+		"decomposition": "⿱丶？",
+		"hint": "A foot meaning \"to follow\"; cursive version of 止",
+	},
+	{
+		"character": "年",
+        "deck_id": 3,
+		"definition": "year; anniversary; a person's age",
+		"pinyin": "nián",
+		"decomposition": "⿻干？",
+		"hint": "A man 干 carrying grain, representing the annual harvest",
+	},
+	{
+		"character": "过",
+        "deck_id": 3,
+		"definition": "pass; to go across, to pass through",
+		"pinyin": "guò",
+		"decomposition": "⿺辶寸",
+		"hint": "walk",
+	},
+	{
+		"character": "发",
+        "deck_id": 3,
+		"definition": "to issue, to dispatch, to send out; hair",
+		"pinyin": "fā",
+		"decomposition": "⿸？又",
+		"hint": "radical:又",
+	},
+	{
+		"character": "后",
+        "deck_id": 3,
+		"definition": "after; behind, rear; descendants",
+		"pinyin": "hòu",
+		"decomposition": "⿸？口",
+		"hint": "口",
+	},
+	{
+		"character": "作",
+        "deck_id": 3,
+		"definition": "to make; to write, to compose; to act, to perform",
+		"pinyin": "zuò",
+		"decomposition": "⿰亻乍",
+		"hint": "A person 亻 making something for the first time",
+	},
+	{
+		"character": "里",
+        "deck_id": 3,
+		"definition": "unit of distance equal to 0.5km; village; lane",
+		"pinyin": "lǐ",
+		"decomposition": "⿱田土",
+		"hint": "Unit of measure for farm 田 land 土",
+	},
+	{
+		"character": "用",
+        "deck_id": 3,
+		"definition": "to use, to employ, to apply; use",
+		"pinyin": "yòng",
+		"decomposition": "⿵冂",
+		"hint": "用",
+	},
+	{
+		"character": "道",
+        "deck_id": 3,
+		"definition": "method, way; path, road",
+		"pinyin": "dào",
+		"decomposition": "⿺辶首",
+		"hint": "walk"
+	},
+	{
+		"character": "行",
+        "deck_id": 3,
+		"definition": "to go, to walk, to move; professional",
+		"pinyin": "xíng",
+		"decomposition": "⿰彳亍",
+		"hint": "To take small steps 亍 with one's feet 彳",
+	},
+	{
+		"character": "所",
+        "deck_id": 3,
+		"definition":"place, location; \'that which\', a particle introducing a passive clause",
+		"pinyin": "suǒ",
+		"decomposition": "⿰户斤",
+		"hint": "An axe 斤 swung at a door 户",
+	},
+	{
+		"character": "然",
+        "deck_id": 3,
+		"definition": "certainly; naturally; suddenly",
+		"pinyin": "rán",
+		"decomposition": "⿱肰灬",
+		"hint": "fire",
+	},
+	{
+		"character": "家",
+        "deck_id": 3,
+		"definition": "house, home, residence; family",
+		"pinyin": "jiā",
+		"decomposition": "⿱宀豕",
+		"hint": "roof",
+	},
+	{
+		"character": "种",
+        "deck_id": 3,
+		"definition": "race, kind, breed; seed; to plant",
+		"pinyin": "zhǒng",
+		"decomposition": "⿰禾中",
+		"hint": "grain",
+	},
+	{
+		"character": "事",
+        "deck_id": 3,
+		"definition": "affair, matter, business; to serve; accident, incident",
+		"pinyin": "shì",
+		"decomposition": "⿻⿳一口彐亅",
+        "hint": "亅"
+	},
+	{
+		"character": "成",
+        "deck_id": 3,
+		"definition": "to accomplish; to become; to complete, to finish; to succeed",
+		"pinyin": "chéng",
+		"decomposition": "⿰丁戈",
+		"hint": "戈",
+	},
+	{
+		"character": "方",
+        "deck_id": 3,
+		"definition": "surname Fang; square, rectangle; side; region; flag",
+		"pinyin": "fāng",
+		"decomposition": "⿱亠?",
+		"hint": "skipping",
 	},
 ]
 ) 
