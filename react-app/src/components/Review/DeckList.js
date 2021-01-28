@@ -9,7 +9,6 @@ import { Button, Flex, Heading, HStack, Text, VStack } from "@chakra-ui/react";
 import { useDeck } from "../Context/DeckContext";
 //custom components:
 import Card from "./Card";
-import { RiTruckLine } from "react-icons/ri";
 
 function DeckList() {
 	const [deck, setDeck] = useState();

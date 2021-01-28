@@ -1,6 +1,5 @@
 import {
 	Button,
-	Flex,
 	Popover,
 	PopoverArrow,
 	PopoverBody,
@@ -8,9 +7,8 @@ import {
 	PopoverContent,
 	PopoverHeader,
 	PopoverTrigger,
-	Text,
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React from "react";
 // import { useDeck } from "../Context/DeckContext";
 //custom components:
 

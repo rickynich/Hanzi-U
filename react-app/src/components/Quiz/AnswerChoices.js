@@ -9,16 +9,14 @@ import RadioCard from "./RadioCard";
 
 function Answers(props) {
 	const [value, setValue] = useState();
-	const { choices, setChoices, questionNum, checkAnswer } = props;
-	const { radioVal, setRadioVal } = useState()
+	const { choices, questionNum, checkAnswer } = props;
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "framework",
 		defaultValue: "react",
 		onChange: setValue
 
 	});
-	// console.log("Choices in answer Choices", choices);
-	// console.log("value", value)
+
 
 	useEffect(() => {
 		checkAnswer(value)
@@ -44,34 +42,3 @@ function Answers(props) {
 }
 
 export default Answers;
-	// return (
-	// 	<HStack {...group}>
-	// 		{choices.map((value) => {
-	// 			const radio = getRadioProps({ value });
-	// 			return (
-	// 				<RadioCard key={value} {...radio}>
-	// 					{value}
-	// 				</RadioCard>
-	// 			);
-	// 		})}
-	// 	</HStack>
-	// );
-	// useEffect(() => {
-	// 	const shuffleArray = () => {
-	// 		const array = [...choices]
-	// 		let currentIndex = array.length;
-	// 		let tempVal;
-	// 		let randomIndex;
-	// 		console.log("Choices in shuffleArray AnswerChoices component", array)
-	// 		while (0 !== currentIndex) {
-	// 			randomIndex = Math.floor(Math.random() * currentIndex);
-	// 			console.log("Random index", randomIndex)
-	// 			currentIndex -= 1;
-	// 			tempVal = array[currentIndex];
-	// 			array[currentIndex] = array[randomIndex];
-	// 			array[randomIndex] = tempVal;
-	// 		}
-	// 		setChoices(array)
-	// 	};
-	// 	shuffleArray()
-	// }, [questionNum])

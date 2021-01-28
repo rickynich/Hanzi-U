@@ -23,9 +23,11 @@ function QuizPage() {
 			<Button
 				id={deck.id}
 				onClick={() => handleClick(deck.id)}
-				height="140px"
-				width="100px"
+				height="150px"
+				width="115px"
 				colorScheme="red"
+				m={3}
+				// minWidth="20"
 			>
 				<VStack>
 					<Text>{deck.name}</Text>
@@ -38,7 +40,7 @@ function QuizPage() {
 	return (
 		<Flex direction="column" height="100%" width="100%" align="center">
 			<Heading size="lg" mb={3} mr={3}>
-				Deck List:{" "}
+				Decks:{" "}
 			</Heading>
 			<Flex mb={6} justify="space-around" width="40%">{deckComponents}</Flex>
 		</Flex>

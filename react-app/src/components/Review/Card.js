@@ -4,8 +4,6 @@ import {
 	Text,
 	Button,
 	Container,
-	Spacer,
-	Flex,
 	HStack,
 } from "@chakra-ui/react";
 // import ModalCard from "./ModalCard";
@@ -23,9 +21,6 @@ import {
 // antique white: #FAEBD7
 function Card(props) {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	// const renderModal = () => {
-	// 	return <ModalCard character={props.character}></ModalCard>
-	// }
 
 	return (
 		<Box mb={7} onClick={onOpen} as="button">
@@ -40,10 +35,7 @@ function Card(props) {
 					<Text>Definition: {props.character.definition}</Text>
 					<Text>Hint/reminder: {props.character.hint}</Text>
 				</Box>
-				{/* <Button onClick={onOpen}>View Card</Button> */}
 				<Container>
-					{/* <Button onClick={onOpen}>View Card</Button> */}
-
 					<Modal isOpen={isOpen} onClose={onClose} autoFocus="true">
 						<ModalOverlay />
 						<ModalContent>

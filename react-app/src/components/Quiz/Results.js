@@ -13,8 +13,6 @@ function Results(props) {
 	const { score, wrongAnswers } = props;
 	const [user, setUser] = useState();
 	const history = useHistory();
-	const { deckId } = useParams();
-	const { expGained, setExpGained } = useState(0);
 
 	useEffect(() => {
 		(async () => {
@@ -61,6 +59,7 @@ function Results(props) {
 					Take again
 				</Button>
 				<Button onClick={() => handleClick(`quiz`)}>Quizzes</Button>
+				<Button onClick={() => handleClick(``)}>Home</Button>
 			</Stack>
 		</Container>
 	);

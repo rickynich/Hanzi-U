@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { login } from "../../services/auth";
+import { authenticate, login } from "../../services/auth";
 import {
 	Box,
 	Button,
@@ -125,7 +125,7 @@ const LoginForm = ({ authenticated, setAuthenticated, formTab }) => {
 							</form>
 						</TabPanel>
 						<TabPanel>
-							<SignUpForm></SignUpForm>
+							<SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated}></SignUpForm>
 						</TabPanel>
 					</TabPanels>
 				</Tabs>
