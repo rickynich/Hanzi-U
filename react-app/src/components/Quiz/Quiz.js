@@ -7,6 +7,7 @@ import {
 	Box,
 	Button,
 	ButtonGroup,
+	Container,
 	Flex,
 	Text,
 } from "@chakra-ui/react";
@@ -106,11 +107,14 @@ function Quiz() {
 				<Results score={score} wrongAnswers={wrongAnswers} />
 			) : (
 				<>
-					<Flex direction="column" align="center" m={6} height="100%">
-						<Text mb={8}>Welcome to the {deck.name} quiz!</Text>
-						{/* <Container>
-							<Text alignItems="0">{questionNum + 1})</Text>
-						</Container> */}
+					<Flex
+						direction="column"
+						align="center"
+						m={6}
+						height="100%"
+						width="400px"
+					>
+						<Text mb={8} fontSize={20} as="u">{deck.name} - Question {questionNum + 1}</Text>
 						<Answers
 							questionNum={questionNum}
 							choices={choices}
@@ -137,6 +141,13 @@ function Quiz() {
 							</ButtonGroup>
 						</Box>
 						<Text m="20px">Current score: {score}</Text>
+						<Button
+							onClick={() => {
+								window.location.reload();
+							}}
+						>
+							Restart
+						</Button>
 					</Flex>
 				</>
 			)}

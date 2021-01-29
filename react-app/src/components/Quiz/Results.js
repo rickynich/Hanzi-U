@@ -3,7 +3,6 @@ import { Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import {
 	useHistory,
-	useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
 import { authenticate } from "../../services/auth";
 // import { useDeck } from "../Context/DeckContext";
@@ -21,7 +20,6 @@ function Results(props) {
 			console.log("User in useEffect for Results", user.id);
 			if (!user.errors) {
 				setUser(user);
-				console.log("SetUser in Results component", user);
 			}
 			let res = await fetch(`/api/users/${user.id}`, {
 				method: "PUT",
@@ -31,7 +29,7 @@ function Results(props) {
 				body: JSON.stringify({ exp: score }),
 			});
 			res = await res.json();
-			console.log("res", res);
+			// console.log("res", res);
 			if (res.errors) {
 				alert(res.errors[0]);
 				return;
@@ -43,11 +41,21 @@ function Results(props) {
 		history.push(`/${path}`);
 	};
 
+	const scoreFeedback = (score) => {
+		console.log("Score:", score)
+		if (score === 20) return "You got a 100%! Awesome!"
+		if (17 < score < 20) return "Awesome job!"
+		if (15 <= score <= 17) return "Great work!"
+		if (10 < score < 15) return "Nice!"
+		else return "Keep at it!"
+	}
+
 	return (
 		<Container height="100%">
 			<Stack justify="center" textAlign="center" p={6} spacing="16px">
 				<Heading>You scored {score} out of 20</Heading>
-				<Text>Study up on: </Text>
+				<Text>{scoreFeedback(score)}</Text>
+				<Text fontWeight="bold">Study up on: </Text>
 				{wrongAnswers.map((wrongAnswer) => {
 					return <Text fontSize="30px">{wrongAnswer}</Text>;
 				})}

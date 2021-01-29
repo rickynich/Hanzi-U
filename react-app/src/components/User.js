@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -23,17 +24,19 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
-  );
+		<Flex height="100%">
+			<ul>
+				<li>
+					<strong>User Id</strong> {userId}
+				</li>
+				<li>
+					<strong>Username</strong> {user.username}
+				</li>
+				<li>
+					<strong>Email</strong> {user.email}
+				</li>
+			</ul>
+		</Flex>
+	);
 }
 export default User;

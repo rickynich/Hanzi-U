@@ -8,8 +8,8 @@ import React from "react";
 function Question(props) {
       const {questionNum} = props
 	return (
-		<Flex direction="column" mb="30px" align="center">
-			<Text fontWeight="bold">{props.questionDeck[questionNum].pinyin}</Text>
+		<Flex direction="column" mb="30px" align="center" height="110px">
+			<Text fontWeight="bold" mb={3}>{props.questionDeck[questionNum].pinyin}</Text>
 			<Text>{props.questionDeck[questionNum].definition}</Text>
 		</Flex>
 	);

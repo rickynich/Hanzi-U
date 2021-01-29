@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Flex, Heading } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -39,15 +39,83 @@ function Home(props) {
 				<strong>Welcome to Hanzi U, {user.username}!</strong>
 			</Heading>
 			<ButtonGroup mb={12}>
-				<Button width="150px" onClick={() => handleClick("decks")}>
-					Review
+				<Button
+					width="150px"
+					onClick={() => handleClick("decks")}
+					height="150px"
+					width="115px"
+					m={3}
+					colorScheme="red"
+					bg="#A3262A"
+					// borderRadius="3px"
+					// borderColor="yellow"
+					_active={{
+						bg: "#dddfe2",
+						transform: "scale(0.98)",
+						borderColor: "#bec3c9",
+					}}
+					_hover={{
+						bg: "#ebedf0",
+						color: "#A3262A",
+						// borderColor: "#A3262A",
+					}}
+				>
+					<VStack>
+						<Text>Review</Text>
+						<Text>学习</Text>
+					</VStack>
 				</Button>
-				{/*Put icon in here with leftIcon or rightIcon=<Iconname/> */}
-				<Button width="150px" onClick={() => handleClick("quiz")}>
-					Quiz Yourself
+				<Button
+					width="150px"
+					onClick={() => handleClick("quiz")}
+					height="150px"
+					width="115px"
+					m={3}
+					colorScheme="red"
+					bg="#A3262A"
+					// borderRadius="3px"
+					// borderColor="yellow"
+					_active={{
+						bg: "#dddfe2",
+						transform: "scale(0.98)",
+						borderColor: "#bec3c9",
+					}}
+					_hover={{
+						bg: "#ebedf0",
+						color: "#A3262A",
+						// borderColor: "#A3262A",
+					}}
+				>
+					<VStack>
+						<Text>Quiz</Text>
+						<Text>小考试</Text>
+					</VStack>
 				</Button>
-				<Button width="150px" onClick={() => handleClick("users")}>
-					Leaderboard
+				<Button
+					width="150px"
+					onClick={() => handleClick("users")}
+					height="150px"
+					width="115px"
+					m={3}
+					colorScheme="red"
+					bg="#A3262A"
+					// borderRadius="3px"
+					// borderColor="yellow"
+					_active={{
+						bg: "#dddfe2",
+						transform: "scale(0.98)",
+						borderColor: "#bec3c9",
+					}}
+					_hover={{
+						bg: "#ebedf0",
+						color: "#A3262A",
+						// borderColor: "#A3262A",
+					}}
+				>
+					<VStack>
+						<Text>Leaderboard</Text>
+						<Text>计分板</Text>
+					</VStack>
 				</Button>
 			</ButtonGroup>
 			<Box w={{ md: "30%" }}>
