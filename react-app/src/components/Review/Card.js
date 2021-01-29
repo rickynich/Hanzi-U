@@ -42,7 +42,10 @@ function Card(props) {
 				boxShadow="lg"
 				rounded="md"
 				bg="gray.200"
-				overflow="auto"
+				overflowY="auto"
+				overflowX="hidden"
+
+				wrap
 			>
 				<Box bg="#A3262A">
 					<Text fontSize="5em" textAlign={["left", "center"]} color="white">
@@ -50,7 +53,12 @@ function Card(props) {
 					</Text>
 				</Box>
 				<Box h="15vh" textAlign={["left"]} mt={3}>
-					<Stack spacing="16px" textAlign="end" fontFamily='"Goudy Bookletter 1911", sans-serif' padding={5}>
+					<Stack
+						spacing="16px"
+						textAlign="end"
+						fontFamily='"Goudy Bookletter 1911", sans-serif'
+						padding={5}
+					>
 						<Flex justify="space-between" direction="row">
 							<Text fontWeight="bold">Pinyin: </Text>
 							<Text>{props.character.pinyin}</Text>
@@ -76,30 +84,39 @@ function Card(props) {
 						autoFocus="true"
 						blockScrollOnMount={false}
 						isCentered
+						overflowWrap="break-word"
 					>
 						<ModalOverlay />
 						<ModalContent>
-							<Text fontSize="6em" textAlign={["left", "center"]} mt={6}>
+							<Text fontSize="6em" textAlign={["center"]} mt={6}>
 								{props.character.character}
 							</Text>
 							<ModalCloseButton />
 							<ModalBody mt={4}>
-								<HStack>
-									<Text>Pinyin: </Text>
-									<Text>{props.character.pinyin}</Text>
-								</HStack>
-								<HStack>
-									<Text>Definition: </Text>
-									<Text>{props.character.definition}</Text>
-								</HStack>
-								<HStack>
-									<Text>Decomposition: </Text>
-									<Text>{props.character.decomposition}</Text>
-								</HStack>
-								<HStack>
-									<Text>Hint/reminder: </Text>
-									<Text>{props.character.hint}</Text>
-								</HStack>
+								<Flex
+									justify="space-between"
+									overflowWrap= "break-word"
+									direction="column"
+									p={18}
+									fontSize={22}
+								>
+									<Flex justify="space-between" mb={3}>
+										<Text>Pinyin: </Text>
+										<Text>{props.character.pinyin}</Text>
+									</Flex>
+									<Flex justify="space-between" mb={3}>
+										<Text>Definition: </Text>
+										<Text align="end">{props.character.definition}</Text>
+									</Flex>
+									<Flex justify="space-between" mb={3}>
+										<Text>Decomposition: </Text>
+										<Text>{props.character.decomposition}</Text>
+									</Flex>
+									<Flex justify="space-between" mb={3}>
+										<Text>Hint: </Text>
+										<Text align="end">{props.character.hint}</Text>
+									</Flex>
+								</Flex>
 							</ModalBody>
 
 							<ModalFooter>
