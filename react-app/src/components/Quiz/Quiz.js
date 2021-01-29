@@ -7,7 +7,6 @@ import {
 	Box,
 	Button,
 	ButtonGroup,
-	Container,
 	Flex,
 	Text,
 } from "@chakra-ui/react";
@@ -35,7 +34,6 @@ function Quiz() {
 	useEffect(() => {
 		if (decks.length == 0) return;
 		const currentDeck = decks[deckId - 1];
-		// console.log("currentDeck", currentDeck);
 		setDeck(currentDeck);
 		setCorrectAnswer(currentDeck.characters[questionNum]);
 
@@ -44,12 +42,10 @@ function Quiz() {
 			let array = currentDeck.characters;
 			while (choices.length < 3) {
 				let randomAnswer = array[Math.floor(Math.random() * array.length)];
-				// console.log("Random Answer ", randomAnswer);
 				if (correctChoice !== randomAnswer && !choices.includes(randomAnswer)) {
 					choices.push(randomAnswer);
 				}
 			}
-			// console.log("Question choices", choices);
 			return choices;
 		};
 		const shuffleArray = (answers) => {
@@ -57,7 +53,6 @@ function Quiz() {
 			let currentIndex = array.length;
 			let tempVal;
 			let randomIndex;
-			console.log("Choices in shuffleArray AnswerChoices component", array);
 			while (0 !== currentIndex) {
 				randomIndex = Math.floor(Math.random() * currentIndex);
 				currentIndex -= 1;
@@ -77,29 +72,21 @@ function Quiz() {
 
 	const nextQuestion = () => {
 		if (questionNum === deck.characters.length - 1) {
-			console.log("You've reached the end");
 			setEnd(true);
 		}
 		setQuestionNum(questionNum + 1);
-		// console.log("Correct answer:", correctAnswer);
 	};
 
 	const checkAnswer = (answer) => {
-		console.log("Correct answer in checkAnswer:", correctAnswer.character);
 		let correctChar = correctAnswer.character;
 		if (answer == correctChar && correctChar) {
-			// console.log("In if statement of checkAnswer", score)
 			setScore(score + 1);
 		} else if (!wrongAnswers.includes(answer)) {
 			let array = [...wrongAnswers];
-			// console.log(answer)
 			array.push(answer);
 			setWrongAnswers(array);
-			// console.log("Wrong answers", wrongAnswers)
 		}
-		// console.log("In checkAnswer", answer);
 	};
-	// console.log("SCORE:", score);
 
 	return (
 		<>

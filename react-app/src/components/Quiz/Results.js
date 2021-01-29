@@ -54,7 +54,7 @@ function Results(props) {
 		<Container height="100%">
 			<Stack justify="center" textAlign="center" p={6} spacing="16px">
 				<Heading>You scored {score} out of 20</Heading>
-				<Text>{scoreFeedback(score)}</Text>
+				<Text>{scoreFeedback(score)} Points gained: {score}</Text>
 				<Text fontWeight="bold">Study up on: </Text>
 				{wrongAnswers.map((wrongAnswer) => {
 					return <Text fontSize="30px">{wrongAnswer}</Text>;

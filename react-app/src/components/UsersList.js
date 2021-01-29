@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
+//Leaderboard
 function UsersList() {
 	const [users, setUsers] = useState([]);
 	const history = useHistory();
@@ -11,10 +12,8 @@ function UsersList() {
 		async function fetchData() {
 			const response = await fetch("/api/users/");
 			const responseData = await response.json();
-			// console.log(responseData);
 			if (responseData.users.exp) setUsers(users.exp.sort()); //not working...
 			let sUsers = responseData.users;
-			// sUsers.sort((a,b ) => (a.exp > b.exp) ? 1: -1)
 			setUsers(sUsers);
 		}
 		fetchData();
@@ -22,14 +21,12 @@ function UsersList() {
 
 	const userComponents = users
 		.slice(0)
-		.sort((a, b) => (a.exp > b.exp ? -1 : 1))
+		.sort((a, b) => (a.exp > b.exp ? -1 : 1)) //sort users based on exp, highest at top
 		.map((user) => {
 			return (
 				<Flex justify="space-between">
-					{/* <li key={user.id}> */}
 					<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
 					<Text opacity={.8}>{user.exp}</Text>
-					{/* </li> */}
 				</Flex>
 			);
 		});
@@ -51,9 +48,9 @@ function UsersList() {
 			<Text opacity="1" mb={6}>
 				{userComponents}
 			</Text>
-			<Button justify="center" onClick={() => handleClick(``)}>
+			{/* <Button justify="center" onClick={() => handleClick(``)}>
 				Return Home
-			</Button>
+			</Button> */}
 		</Container>
 	);
 }
