@@ -54,11 +54,11 @@ function DeckList() {
 	const charComponents =
 		deck &&
 		deck.characters.map((character) => {
-			return <Card character={character} />;
+			return <Card characters={deck.characters} character={character} />;
 		});
 
 	return (
-		<Flex height="200%" direction="column" width="100%" align="center">
+		<Flex height="300%" direction="column" width="100%" align="center">
 			<Heading size="lg" mb={3} mr={3}>
 				Decks:{" "}
 			</Heading>
