@@ -106,7 +106,9 @@ function Quiz() {
 							questionNum={questionNum}
 							choices={choices}
 							setChoices={setChoices}
-							checkAnswer={checkAnswer}
+								checkAnswer={checkAnswer}
+								nextQuestion={nextQuestion}
+								setAnswerSubmitted={setAnswerSubmitted}
 							mb={6}
 						/>
 						<Question
