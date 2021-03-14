@@ -1,6 +1,6 @@
 # Hanzi U
 
-A simplified Chinese character learning app based on practicality and frequency of use.
+A Chinese character learning app based on frequency of character appearance.
 
 ## Demo:
 Live working demo: https://hanzi-u-app.herokuapp.com/
