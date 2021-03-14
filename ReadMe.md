@@ -44,8 +44,9 @@ Live working demo: https://hanzi-u-app.herokuapp.com/
     -track user progression and deck mastery
     -leaderboard
 
-#### Bonus features:
+#### Next features:
     -quiz timer
+    -card matching game
     -custom decks
 
 #### Components
@@ -68,8 +69,8 @@ Live working demo: https://hanzi-u-app.herokuapp.com/
 
 ![database image](./HanziU_database.PNG)
 
-#### Technologies
-    -Chakra UI
 #### References
     -character frequency based on https://hanzicraft.com/lists/frequency
     -character definitions referenced from cc-cedict.org
+    
+#### Created by Nick Richard
