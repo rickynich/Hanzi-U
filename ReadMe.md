@@ -2,6 +2,8 @@
 
 A simplified Chinese character learning app based on practicality and frequency of use.
 
+https://hanzi-u-app.herokuapp.com/
+
 
 ### MVPs
 
