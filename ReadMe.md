@@ -4,6 +4,10 @@ A simplified Chinese character learning app based on practicality and frequency 
 
 https://hanzi-u-app.herokuapp.com/
 
+## Site:
+### Landing Page:
+![image](https://user-images.githubusercontent.com/8583940/111081664-bfc49300-84da-11eb-9846-66c6ec18bd7c.png)
+
 
 ### MVPs
 
