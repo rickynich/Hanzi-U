@@ -6,8 +6,8 @@ A Chinese character learning app based on frequency of character appearance.
 Live working demo: https://hanzi-u-app.herokuapp.com/
 
 ## Built With:
-<a href="#Built-With"><img alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-f7df1e?style=for-the-badge&logo=JavaScript&logoColor=black" /></a>
-<a href="#Built-With"><img alt="Python" src="https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" /></a>
+<a href="#Built-With"><img alt="JavaScript" src="https://img.shields.io/badge/-JavaScript-f7df1e?style=flat-square&logo=JavaScript&logoColor=black" /></a>
+<a href="#Built-With"><img alt="Python" src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=Python&logoColor=white" /></a>
 <a href="#Built-With"><img alt="html5" src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" /></a>
 <a href="#Built-With"><img alt="CSS" src="https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white" /></a>
 <a href="#Built-With"><img alt="ChakraUI" src="https://img.shields.io/badge/ChakraUI-Chakra%20UI-blue?label=&chakraui.svg?" /></a>
