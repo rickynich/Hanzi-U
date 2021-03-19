@@ -146,36 +146,3 @@ function Quiz() {
 
 export default Quiz;
 
-// TODOs:
-/*
-make a result page for when last quesiton is reached
-
-*/
-//Graveyard
-// let array = deck.characters;
-// const shuffleArray = (array) => {
-// 	let currentIndex = array.length;
-// 	let tempVal;
-// 	let randomIndex;
-// 	// console.log("array going in ", array);
-// 	// While there remain elements to shuffle...
-// 	while (0 !== currentIndex) {
-// 		// Pick a remaining element...
-// 		randomIndex = Math.floor(Math.random() * currentIndex);
-// 		currentIndex -= 1;
-// 		// And swap it with the current element.
-// 		tempVal = array[currentIndex];
-// 		array[currentIndex] = array[randomIndex];
-// 		array[randomIndex] = tempVal;
-// 	}
-// 	// console.log("Array after shuffle", array);
-// 	return array;
-// };
-// shuffleArray(array);
-// let shuffleDeck = shuffleArray(array);
-// setDeck(shuffleDeck);
-// useEffect(() => {
-// 	if (!deck) return null;
-// 	let shuffleDeck = shuffleArray(deck.characters);
-// 	setDeck(shuffleDeck)
-// }, [])
