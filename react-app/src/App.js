@@ -13,7 +13,7 @@ import QuizPage from "./components/Quiz/QuizList";
 import Quiz from "./components/Quiz/Quiz";
 import LandingPage from "./components/Landing/LandingPage";
 import Footer from "./components/Footer/Footer";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 function App() {
 	const [authenticated, setAuthenticated] = useState(false);

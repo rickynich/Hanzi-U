@@ -4,8 +4,6 @@ import {
 	Text,
 	Button,
 	Container,
-	HStack,
-	VStack,
 	Flex,
 	Stack,
 } from "@chakra-ui/react";
