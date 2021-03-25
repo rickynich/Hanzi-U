@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 //Chakra UI
-import { Box, Button, Flex, Image, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Heading, Stack } from "@chakra-ui/react";
 
 function LandingPage() {
 	return (

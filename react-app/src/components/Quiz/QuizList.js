@@ -17,7 +17,7 @@ function QuizPage() {
 	const handleClick = (deckId) => {
 		history.push(`/decks/${deckId}`);
 	};
-	if (decks.length == 0) return null;
+	if (decks.length === 0) return null;
 	const deckComponents = decks.map((deck) => {
 		return (
 			<Button

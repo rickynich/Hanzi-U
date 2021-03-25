@@ -9,7 +9,7 @@ import RadioCard from "./RadioCard";
 
 function Answers(props) {
 	const [value, setValue] = useState();
-	const { choices, questionNum, checkAnswer, setAnswerSubmitted, nextQuestion } = props;
+	const { choices, questionNum, checkAnswer } = props;
 	const { getRootProps, getRadioProps } = useRadioGroup({
 		name: "framework",
 		defaultValue: "react",
