@@ -6,15 +6,19 @@ import React, { useState } from "react";
 import { Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 
 //context:
-import { useDeck } from "../Context/DeckContext";
+import { useDeck, useCardUpdate } from "../Context/DeckContext";
+
 //custom components:
 import Card from "./Card";
 
 function DeckList() {
 	const [deck, setDeck] = useState();
-	const decks = useDeck(); //uses DeckContext
-	const [selected, setSelected] = useState(false);
 
+	const decks = useDeck(); //uses DeckContext
+	const setCard = useCardUpdate(); //uses CardUpdateContext
+
+	const [selected, setSelected] = useState(false);
+	// console.log("What is decks from useDeck?", decks);
 	if (decks.length == 0) return null;
 
 	const deckComponents = decks.map((deck) => {

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+//chakra UI:
 import {
 	Box,
 	Text,
@@ -7,7 +9,6 @@ import {
 	Flex,
 	Stack,
 } from "@chakra-ui/react";
-// import ModalCard from "./ModalCard";
 import {
 	Modal,
 	ModalBody,
@@ -19,11 +20,15 @@ import {
 	useDisclosure,
 } from "@chakra-ui/react";
 
+//context:
+import { useCardUpdate } from "../Context/DeckContext";
+
 // antique white: #FAEBD7
 function Card(props) {
 	const [curChar, setCurChar] = useState(0);
 	const { characters } = props;
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const setCard = useCardUpdate(); //uses CardUpdateContext
 
 	return (
 		<Box
@@ -31,6 +36,8 @@ function Card(props) {
 			onClick={() => {
 				onOpen();
 				setCurChar(props.character.id);
+				setCard()
+				console.log("setCard is :", setCard)
 			}}
 			as="button"
 		>
@@ -42,7 +49,6 @@ function Card(props) {
 				bg="gray.200"
 				overflowY="auto"
 				overflowX="hidden"
-
 				wrap
 			>
 				<Box bg="#A3262A">
@@ -93,7 +99,7 @@ function Card(props) {
 							<ModalBody mt={4}>
 								<Flex
 									justify="space-between"
-									overflowWrap= "break-word"
+									overflowWrap="break-word"
 									direction="column"
 									p={18}
 									fontSize={22}

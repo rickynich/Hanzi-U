@@ -1,9 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
 
 const DeckContext = React.createContext();
+const DeckUpdateContext = React.createContext();
+const CardUpdateContext = React.createContext();
 
 export function useDeck() { 
 	return useContext(DeckContext);
+}
+
+export function useDeckUpdate() { 
+	return useContext(DeckUpdateContext);
+}
+
+export function useCardUpdate() { 
+	return useContext(CardUpdateContext);
 }
 
 export function DeckProvider({ children }) {
@@ -19,8 +29,25 @@ export function DeckProvider({ children }) {
 		}
         fetchData();
 	}, []);
-	// console.log("DECKS in context:", decks)
-	// if(decks.length == 0) return null 
+
+	useEffect(() => {
+		console.log("Selected deck in context is", selectedDeck)
+	}, [selectedDeck])
+	useEffect(() => {
+		async function fetchData() {
+			const response = await fetch("/api/decks/${id}"); //${id}
+			const responseData = await response.json();
+			setDecks(responseData.decks); //set to responseData.decks
+		}
+		fetchData();
+		console.log("Selected card in context is", selectedCard)
+	}, [selectedCard])
 	
-    return <DeckContext.Provider value={ decks }>{children}</DeckContext.Provider>;
+    return (
+			<DeckContext.Provider value={decks}>
+				<CardUpdateContext.Provider value={setSelectedCard}>
+					{children}
+				</CardUpdateContext.Provider>
+			</DeckContext.Provider>
+		);
 }
