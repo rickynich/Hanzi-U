@@ -21,14 +21,19 @@ import {
 } from "@chakra-ui/react";
 
 //context:
-import { useCardUpdate } from "../Context/DeckContext";
+import { useCardUpdate, useDeckUpdate } from "../Context/DeckContext";
 
 // antique white: #FAEBD7
 function Card(props) {
-	const [curChar, setCurChar] = useState(0);
-	const { characters } = props;
-	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [deck, setDeck] = useDeckUpdate(); //uses CardUpdateContext
 	const setCard = useCardUpdate(); //uses CardUpdateContext
+
+	const [curChar, setCurChar] = useState(0);
+
+	// const { characters } = props;
+	const characters = deck.characters;
+
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
 		<Box
@@ -36,8 +41,8 @@ function Card(props) {
 			onClick={() => {
 				onOpen();
 				setCurChar(props.character.id);
-				setCard()
-				console.log("setCard is :", setCard)
+				setCard();
+				console.log("setCard is :", setCard);
 			}}
 			as="button"
 		>
@@ -124,7 +129,9 @@ function Card(props) {
 							</ModalBody>
 
 							<ModalFooter>
-								<Button id={props.character.id}>Next Card</Button>
+								<Button id={props.character.id}
+									// onClick={() => }
+								>Next Card</Button>
 							</ModalFooter>
 						</ModalContent>
 					</Modal>

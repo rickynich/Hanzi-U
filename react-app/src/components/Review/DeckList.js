@@ -12,14 +12,12 @@ import { useDeck, useCardUpdate, useDeckUpdate } from "../Context/DeckContext";
 import Card from "./Card";
 
 function DeckList() {
-	// const [deck, setDeck] = useState();
-
 	const decks = useDeck(); //uses DeckContext
 	const setCard = useCardUpdate(); //uses CardUpdateContext
 	const [deck, setDeck] = useDeckUpdate(); //uses CardUpdateContext
 
 	const [selected, setSelected] = useState(false);
-	// console.log("What is decks from useDeck?", decks);
+
 	if (decks.length == 0) return null;
 
 	const deckComponents = decks.map((deck) => {
@@ -35,8 +33,6 @@ function DeckList() {
 				m={3}
 				colorScheme="red"
 				bg="#A3262A"
-				// borderRadius="3px"
-				// borderColor="yellow"
 				_active={{
 					bg: "#dddfe2",
 					transform: "scale(0.98)",
@@ -45,7 +41,6 @@ function DeckList() {
 				_hover={{
 					bg: "#ebedf0",
 					color: "#A3262A",
-					// borderColor: "#A3262A",
 				}}
 			>
 				<VStack>
