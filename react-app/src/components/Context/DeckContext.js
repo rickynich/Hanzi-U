@@ -46,7 +46,9 @@ export function DeckProvider({ children }) {
     return (
 			<DeckContext.Provider value={decks}>
 				<CardUpdateContext.Provider value={setSelectedCard}>
-					{children}
+					<DeckUpdateContext.Provider value={[selectedDeck, setSelectedDeck]}>
+						{children}
+					</DeckUpdateContext.Provider>
 				</CardUpdateContext.Provider>
 			</DeckContext.Provider>
 		);
