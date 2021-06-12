@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 
 //chakra UI:
-import {
-	Box,
-	Text,
-	Button,
-	Container,
-	Flex,
-	Stack,
-} from "@chakra-ui/react";
+import { Box, Text, Button, Container, Flex, Stack } from "@chakra-ui/react";
 import {
 	Modal,
 	ModalBody,
@@ -25,8 +18,8 @@ import { useCardUpdate, useDeckUpdate } from "../Context/DeckContext";
 
 // antique white: #FAEBD7
 function Card(props) {
-	const [deck, setDeck] = useDeckUpdate(); //uses CardUpdateContext
-	const setCard = useCardUpdate(); //uses CardUpdateContext
+	const [deck, setDeck] = useDeckUpdate(); //uses DeckUpdateContext
+	const [card, setCard] = useCardUpdate(); //uses CardUpdateContext
 
 	const [curChar, setCurChar] = useState(0);
 
@@ -40,9 +33,9 @@ function Card(props) {
 			mb={7}
 			onClick={() => {
 				onOpen();
-				setCurChar(props.character.id);
-				setCard();
-				console.log("setCard is :", setCard);
+				// setCurChar(props.character.id);
+				setCard(props.character.id);
+				console.log("setCard is :", card);
 			}}
 			as="button"
 		>
@@ -129,9 +122,14 @@ function Card(props) {
 							</ModalBody>
 
 							<ModalFooter>
-								<Button id={props.character.id}
-									// onClick={() => }
-								>Next Card</Button>
+								<Button
+									id={props.character.id}
+									onClick={() => {
+										setCard(props.character.id + 1)
+									}}
+								>
+									Next Card
+								</Button>
 							</ModalFooter>
 						</ModalContent>
 					</Modal>
