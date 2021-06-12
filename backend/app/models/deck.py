@@ -7,6 +7,7 @@ class Deck(db.Model):
     # times_completed = db.Column(db.Integer)
 
     characters = db.relationship("Character", back_populates="deck")
+    # user_id there for custom deck feature (not yet implemented)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # user = db.relationship("User", back_populates="decks")
 

@@ -8,7 +8,7 @@ function LandingPage() {
 	return (
 		<Flex
 			align="center"
-			justify={{ base: "center", md: "space-around", xl: "space-between" }}
+			justify={{ base: "center", md: "space-around", xl: "space-between" }} //breakpoints based on viewport size
 			direction={{ base: "column-reverse", md: "row" }} //responsive styling based on width. md for 48 em and up
 			wrap="no-wrap"
 			minH="70vh"
