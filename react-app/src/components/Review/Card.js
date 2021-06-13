@@ -19,7 +19,8 @@ import { useCardUpdate, useDeckUpdate } from "../Context/DeckContext";
 // antique white: #FAEBD7
 function Card(props) {
 	const [deck, setDeck] = useDeckUpdate(); //uses DeckUpdateContext
-	const [card, setCard] = useCardUpdate(); //uses CardUpdateContext
+	// const [card, setCard] = useCardUpdate(); //uses CardUpdateContext
+	const card = useCardUpdate(); //uses CardUpdateContext
 
 	const [curChar, setCurChar] = useState(0);
 
@@ -33,9 +34,16 @@ function Card(props) {
 			mb={7}
 			onClick={() => {
 				onOpen();
-				// setCurChar(props.character.id);
-				setCard(props.character.id);
+				setCurChar(props.character.id);
+				// setCard(props.character.id);
+				console.log(
+					"props characters id is",
+					props.character.id
+					// deck.characters[id]
+				);
+				console.log("deck is", deck);
 				console.log("setCard is :", card);
+				console.log("curChar is :", curChar);
 			}}
 			as="button"
 		>
@@ -125,7 +133,8 @@ function Card(props) {
 								<Button
 									id={props.character.id}
 									onClick={() => {
-										setCard(props.character.id + 1)
+									// 	setCard(props.character.id + 1)
+									 setCurChar(props.character.id);
 									}}
 								>
 									Next Card

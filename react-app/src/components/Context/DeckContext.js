@@ -36,12 +36,14 @@ export function DeckProvider({ children }) {
 
 	useEffect(() => {
 		// setSelectedCard(setSelectedDeck[])
+		// setSelectedCard(selectedCard)
 		console.log("Selected card in context is", selectedCard)
 	}, [selectedCard])
 	
     return (
 			<DeckContext.Provider value={decks}>
-				<CardUpdateContext.Provider value={[selectedCard, setSelectedCard]}>
+				{/* <CardUpdateContext.Provider value={[selectedCard, setSelectedCard]}> */}
+				<CardUpdateContext.Provider value={selectedCard}>
 					<DeckUpdateContext.Provider value={[selectedDeck, setSelectedDeck]}>
 						{children}
 					</DeckUpdateContext.Provider>
