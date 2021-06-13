@@ -22,7 +22,7 @@ function Card(props) {
 	// const [card, setCard] = useCardUpdate(); //uses CardUpdateContext
 	const card = useCardUpdate(); //uses CardUpdateContext
 
-	const [curChar, setCurChar] = useState(0);
+	const [curChar, setCurChar] = useState(props.character.id);
 
 	// const { characters } = props;
 	const characters = deck.characters;
@@ -32,15 +32,15 @@ function Card(props) {
 	return (
 		<Box
 			mb={7}
-			onClick={() => {
+			onClick={async () => {
 				onOpen();
-				setCurChar(props.character.id);
 				// setCard(props.character.id);
 				console.log(
 					"props characters id is",
 					props.character.id
 					// deck.characters[id]
-				);
+					);
+				// await setCurChar(props.character.id);
 				console.log("deck is", deck);
 				console.log("setCard is :", card);
 				console.log("curChar is :", curChar);
@@ -132,9 +132,10 @@ function Card(props) {
 							<ModalFooter>
 								<Button
 									id={props.character.id}
-									onClick={() => {
+									onClick={async () => {
 									// 	setCard(props.character.id + 1)
-									 setCurChar(props.character.id);
+										await setCurChar(curChar + 1);
+										console.log("curChar is ", curChar)
 									}}
 								>
 									Next Card
