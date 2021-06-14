@@ -6,13 +6,16 @@ import React, { useState } from "react";
 import { Button, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 
 //context:
-import { useDeck } from "../Context/DeckContext";
+import { useDeck, useCardUpdate, useDeckUpdate } from "../Context/DeckContext";
+
 //custom components:
 import Card from "./Card";
 
 function DeckList() {
-	const [deck, setDeck] = useState();
 	const decks = useDeck(); //uses DeckContext
+	const setCard = useCardUpdate(); //uses CardUpdateContext
+	const [deck, setDeck] = useDeckUpdate(); //uses CardUpdateContext
+
 	const [selected, setSelected] = useState(false);
 
 	if (decks.length == 0) return null;
@@ -30,8 +33,6 @@ function DeckList() {
 				m={3}
 				colorScheme="red"
 				bg="#A3262A"
-				// borderRadius="3px"
-				// borderColor="yellow"
 				_active={{
 					bg: "#dddfe2",
 					transform: "scale(0.98)",
@@ -40,7 +41,6 @@ function DeckList() {
 				_hover={{
 					bg: "#ebedf0",
 					color: "#A3262A",
-					// borderColor: "#A3262A",
 				}}
 			>
 				<VStack>
@@ -53,9 +53,11 @@ function DeckList() {
 
 	const charComponents =
 		deck &&
-		deck.characters.map((character) => {
-			return <Card characters={deck.characters} character={character} />;
-		});
+		<Card />
+		// deck.characters.map((character) => {
+		// 	// return <Card characters={deck.characters} character={character} characterId={character.id} />;
+		// 	return <Card characters={deck.characters} character={character} characterId={character.id} />;
+		// });
 
 	return (
 		<Flex height="300%" direction="column" width="100%" align="center">
