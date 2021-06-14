@@ -31,6 +31,12 @@ export function DeckProvider({ children }) {
 	}, []);
 
 	useEffect(() => {
+		// async function fetchData() {
+		// 	const response = await fetch("/api/decks/${id}"); //${id}
+		// 	const responseData = await response.json();
+		// 	setDecks(responseData.decks); //set to responseData.decks
+		// }
+		// fetchData();
 		console.log("Selected deck in context is", selectedDeck)
 	}, [selectedDeck])
 
@@ -42,8 +48,8 @@ export function DeckProvider({ children }) {
 	
     return (
 			<DeckContext.Provider value={decks}>
-				{/* <CardUpdateContext.Provider value={[selectedCard, setSelectedCard]}> */}
-				<CardUpdateContext.Provider value={selectedCard}>
+				<CardUpdateContext.Provider value={[selectedCard, setSelectedCard]}>
+				{/* <CardUpdateContext.Provider value={selectedCard}> */}
 					<DeckUpdateContext.Provider value={[selectedDeck, setSelectedDeck]}>
 						{children}
 					</DeckUpdateContext.Provider>

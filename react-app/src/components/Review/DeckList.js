@@ -53,9 +53,11 @@ function DeckList() {
 
 	const charComponents =
 		deck &&
-		deck.characters.map((character) => {
-			return <Card characters={deck.characters} character={character} />;
-		});
+		<Card />
+		// deck.characters.map((character) => {
+		// 	// return <Card characters={deck.characters} character={character} characterId={character.id} />;
+		// 	return <Card characters={deck.characters} character={character} characterId={character.id} />;
+		// });
 
 	return (
 		<Flex height="300%" direction="column" width="100%" align="center">
