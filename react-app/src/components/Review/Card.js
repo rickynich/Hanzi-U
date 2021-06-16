@@ -26,18 +26,6 @@ function Card(props) {
 
 	const characters = deck.characters;
 
-	// console.log("Characters at props.character.id", characters[character.id]);
-	console.log("Characters ", characters);
-	console.log("deck ", deck);
-
-	// useEffect(async () => {
-	// 	await setCurChar(character.id);
-	// 	await setCard(character.id);
-	// 	console.log("===card from context", card);
-	// 	console.log("======Characters at curChar", characters[curChar]);
-	// 	console.log("========curChar", curChar);
-	// }, []);
-
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const charComponents =
@@ -48,9 +36,9 @@ function Card(props) {
 					mb={7}
 					onClick={() => {
 						onOpen();
-						// setCard(props.character.id);
+						setCard(character.id);
 						// await setCurChar(character.id);
-						console.log("deck is", deck);
+						// console.log("deck is", deck);
 						console.log("setCard is :", card);
 						console.log("curChar is :", curChar);
 						console.log("character", character);
