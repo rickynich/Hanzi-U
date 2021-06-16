@@ -16,17 +16,25 @@ import {
 //context:
 import { useCardUpdate, useDeckUpdate } from "../Context/DeckContext";
 
+//components
+import CardModal from "./CardModal";
+
 // antique white: #FAEBD7
 function Card(props) {
 	const [deck, setDeck] = useDeckUpdate(); //uses DeckUpdateContext
 	const [card, setCard] = useCardUpdate(); //uses CardUpdateContext
 	// const card = useCardUpdate(); //uses CardUpdateContext
 
-	const [curChar, setCurChar] = useState();
+	const [curChar, setCurChar] = useState(1);
+	const [selected, setSelected] = useState(false);
 
 	const characters = deck.characters;
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	useEffect(() => {
+		setCard(card.id);
+	}, [selected])
 
 	const charComponents =
 		deck &&
@@ -37,7 +45,8 @@ function Card(props) {
 					onClick={() => {
 						onOpen();
 						setCard(character.id);
-						// await setCurChar(character.id);
+						setCurChar(character.id);
+						setSelected(true)
 						// console.log("deck is", deck);
 						console.log("setCard is :", card);
 						console.log("curChar is :", curChar);
@@ -90,73 +99,19 @@ function Card(props) {
 						</Flex> */}
 							</Stack>
 						</Box>
-						<Container>
-							<Modal
-								isOpen={isOpen}
-								onClose={onClose}
-								autoFocus="true"
-								blockScrollOnMount={false}
-								isCentered
-								overflowWrap="break-word"
-							>
-								<ModalOverlay />
-								<ModalContent>
-									<Text fontSize="6em" textAlign={["center"]} mt={6}>
-										{character.character}
-									</Text>
-									<ModalCloseButton />
-									<ModalBody mt={4}>
-										<Flex
-											justify="space-between"
-											overflowWrap="break-word"
-											direction="column"
-											p={18}
-											fontSize={22}
-										>
-											<Flex justify="space-between" mb={3}>
-												<Text>Pinyin: </Text>
-												<Text>{character.pinyin}</Text>
-											</Flex>
-											<Flex justify="space-between" mb={3}>
-												<Text>Definition: </Text>
-												<Text align="end">{character.definition}</Text>
-											</Flex>
-											<Flex justify="space-between" mb={3}>
-												<Text>Decomposition: </Text>
-												<Text>{character.decomposition}</Text>
-											</Flex>
-											<Flex justify="space-between" mb={3}>
-												<Text>Hint: </Text>
-												<Text align="end">{character.hint}</Text>
-											</Flex>
-										</Flex>
-									</ModalBody>
-
-									<ModalFooter>
-										<Button
-											id={character.id}
-											onClick={async () => {
-												await setCard(character.id + 1)
-												await setCurChar(character.id++);
-												console.log("curChar is ", curChar);
-												console.log(typeof character.id)
-												console.log(
-													"character ifd + 1 ",
-													character.id,", "+ (character.id + 1)
-												);
-											}}
-										>
-											Next Card
-										</Button>
-									</ModalFooter>
-								</ModalContent>
-							</Modal>
-						</Container>
+						{/* <CardModal
+							isOpen={isOpen}
+							onClose={onClose}
+							autoFocus="true"
+							blockScrollOnMount={false}
+							isCentered
+							overflowWrap="break-word"
+						/> */}
 					</Box>
 				</Box>
 			);
 		});
-	
+
 	return (
 		<Flex
 			m={6}
@@ -166,6 +121,67 @@ function Card(props) {
 			spacing={10}
 		>
 			{charComponents}
+			{card && selected && (
+				<Container>
+					<Modal
+						isOpen={isOpen}
+						onClose={onClose}
+						autoFocus="true"
+						blockScrollOnMount={false}
+						isCentered
+						overflowWrap="break-word"
+					>
+						<ModalOverlay />
+						<ModalContent>
+							<Text fontSize="6em" textAlign={["center"]} mt={6}>
+								{card.character}
+							</Text>
+							<ModalCloseButton />
+							<ModalBody mt={4}>
+								<Flex
+									justify="space-between"
+									overflowWrap="break-word"
+									direction="column"
+									p={18}
+									fontSize={22}
+								>
+									<Flex justify="space-between" mb={3}>
+										<Text>Pinyin: </Text>
+										<Text>{card.pinyin}</Text>
+									</Flex>
+									<Flex justify="space-between" mb={3}>
+										<Text>Definition: </Text>
+										<Text align="end">{card.definition}</Text>
+									</Flex>
+									<Flex justify="space-between" mb={3}>
+										<Text>Decomposition: </Text>
+										<Text>{card.decomposition}</Text>
+									</Flex>
+									<Flex justify="space-between" mb={3}>
+										<Text>Hint: </Text>
+										<Text align="end">{card.hint}</Text>
+									</Flex>
+								</Flex>
+							</ModalBody>
+
+							<ModalFooter>
+								<Button
+									id={card.id}
+									onClick={async () => {
+										await setCard(card.id + 1);
+										await setCurChar(card.id++);
+										console.log("curChar is ", curChar);
+										console.log(typeof card.id);
+										console.log("card id + 1 ", card.id, ", " + (card.id + 1));
+									}}
+								>
+									Next Card
+								</Button>
+							</ModalFooter>
+						</ModalContent>
+					</Modal>
+				</Container>
+			)}
 		</Flex>
 	);
 }

@@ -13,7 +13,7 @@ import Card from "./Card";
 
 function DeckList() {
 	const decks = useDeck(); //uses DeckContext
-	const setCard = useCardUpdate(); //uses CardUpdateContext
+	// const setCard = useCardUpdate(); //uses CardUpdateContext
 	const [deck, setDeck] = useDeckUpdate(); //uses CardUpdateContext
 
 	const [selected, setSelected] = useState(false);

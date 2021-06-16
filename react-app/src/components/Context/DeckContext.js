@@ -19,7 +19,7 @@ export function useCardUpdate() {
 export function DeckProvider({ children }) {
 	const [decks, setDecks] = useState([]);
 	const [selectedDeck, setSelectedDeck] = useState();
-	const [selectedCard, setSelectedCard] = useState();
+	const [selectedCard, setSelectedCard] = useState(1);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -42,18 +42,24 @@ export function DeckProvider({ children }) {
 
 	useEffect(() => {
 		// setSelectedCard(setSelectedDeck[])
-		// setSelectedCard(1)
-		console.log("Selected card in context is", selectedCard);
-		async function fetchData() {
-			// const response = await fetch("/api/decks/1/characters/${selectedCard}"); //${id}
-			const response = await fetch("/api/decks/1/characters/1"); //${id}
-			const responseData = await response.json();
-			console.log("======response data", responseData)
-			setSelectedCard(responseData); //set to responseData.decks
-		}
-		fetchData();
-		console.log("Selected card in context is", selectedCard);
-	}, []);
+		// setSelectedCard(selectedCard)
+		console.log("/// Selected card in context is", selectedCard);
+	}, [selectedCard]);
+
+	// useEffect(() => {
+	// 	// setSelectedCard(setSelectedDeck[])
+	// 	// setSelectedCard(1)
+	// 	console.log("Selected card in context is", selectedCard);
+	// 	async function fetchData() {
+	// 		// const response = await fetch("/api/decks/1/characters/${selectedCard}"); //${id}
+	// 		const response = await fetch("/api/decks/1/characters/1"); //${id}
+	// 		const responseData = await response.json();
+	// 		console.log("======response data", responseData);
+	// 		setSelectedCard(responseData); //set to responseData.decks
+	// 	}
+	// 	fetchData();
+	// 	console.log("Selected card in context is", selectedCard);
+	// }, []);
 
 	return (
 		<DeckContext.Provider value={decks}>
