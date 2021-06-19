@@ -19,7 +19,7 @@ export function useCardUpdate() {
 export function DeckProvider({ children }) {
 	const [decks, setDecks] = useState([]);
 	const [selectedDeck, setSelectedDeck] = useState();
-	const [selectedCard, setSelectedCard] = useState(1);
+	const [selectedCard, setSelectedCard] = useState();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -32,7 +32,7 @@ export function DeckProvider({ children }) {
 
 	useEffect(() => {
 		// async function fetchData() {
-		// 	const response = await fetch("/api/decks/${id}"); //${id}
+		// 	const response = await fetch(`/api/decks/${selectedDeck.id}`); //${id}
 		// 	const responseData = await response.json();
 		// 	setDecks(responseData.decks); //set to responseData.decks
 		// }

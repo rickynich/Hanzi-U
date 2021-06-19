@@ -32,9 +32,13 @@ function Card(props) {
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
+	// useEffect(() => {
+	// 	setCard(card.id);
+	// }, [selected])
+	
 	useEffect(() => {
-		setCard(card.id);
-	}, [selected])
+		console.log("useEffect setCard is :", card);
+	}, [card])
 
 	const charComponents =
 		deck &&
@@ -42,20 +46,20 @@ function Card(props) {
 			return (
 				<Box
 					mb={7}
-					onClick={() => {
+					id={character.id}
+					onClick={(e) => {
 						onOpen();
-						setCard(character.id);
+						console.log("=========== e", e)
+						console.log("(before) setCard from context is :", card); // + 1 error
+						setCard(e.target.id);
+						console.log("(after) setCard from context is :", card); // + 1 error
 						setCurChar(character.id);
-						setSelected(true)
+						setSelected(true);
 						// console.log("deck is", deck);
-						console.log("setCard is :", card);
-						console.log("curChar is :", curChar);
-						console.log("character", character);
-						console.log("character.pinyin", character.pinyin);
-						console.log("character.definition", character.definition);
-						console.log("character.hint", character.hint);
-						console.log("character.id", character.id);
-						// console.log("Characters ", characters[0].character);
+						console.log("local curChar is :", curChar);
+						console.log("mapped character", character);
+						console.log("mapped character.pinyin", character.pinyin);
+						console.log("Characters ", characters);
 					}}
 					as="button"
 				>
@@ -121,7 +125,7 @@ function Card(props) {
 			spacing={10}
 		>
 			{charComponents}
-			{card && selected && (
+			{card ? (
 				<Container>
 					<Modal
 						isOpen={isOpen}
@@ -134,7 +138,7 @@ function Card(props) {
 						<ModalOverlay />
 						<ModalContent>
 							<Text fontSize="6em" textAlign={["center"]} mt={6}>
-								{card.character}
+								{characters[card].character}
 							</Text>
 							<ModalCloseButton />
 							<ModalBody mt={4}>
@@ -147,7 +151,7 @@ function Card(props) {
 								>
 									<Flex justify="space-between" mb={3}>
 										<Text>Pinyin: </Text>
-										<Text>{card.pinyin}</Text>
+										<Text>{characters[card].pinyin}</Text>
 									</Flex>
 									<Flex justify="space-between" mb={3}>
 										<Text>Definition: </Text>
@@ -167,12 +171,12 @@ function Card(props) {
 							<ModalFooter>
 								<Button
 									id={card.id}
-									onClick={async () => {
-										await setCard(card.id + 1);
-										await setCurChar(card.id++);
+									onClick={ () => {
+										// setCard(card.id + 1);
+										// setCurChar(card.id++);
 										console.log("curChar is ", curChar);
 										console.log(typeof card.id);
-										console.log("card id + 1 ", card.id, ", " + (card.id + 1));
+										// console.log("card id + 1 ", card.id, ", " + (card.id + 1));
 									}}
 								>
 									Next Card
@@ -181,6 +185,8 @@ function Card(props) {
 						</ModalContent>
 					</Modal>
 				</Container>
+			) : (
+				<div />
 			)}
 		</Flex>
 	);

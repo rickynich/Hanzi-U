@@ -76,8 +76,8 @@ function CardModal(props) {
 								<Button
 									id={card.id}
 									onClick={async () => {
-										await setCard(card.id + 1);
-										await setCurChar(card.id++);
+										// await setCard(card.id + 1);
+										// await setCurChar(card.id++);
 										console.log("curChar is ", curChar);
 										console.log(typeof card.id);
 										console.log(
